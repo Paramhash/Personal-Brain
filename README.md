@@ -1,4 +1,4 @@
-# personal-brain
+# Personal-Brain
 
 A two-level AI knowledge vault. Drop raw files in; get a structured, cross-linked wiki out. Browse it in Obsidian.
 
