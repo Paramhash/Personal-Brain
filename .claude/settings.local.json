@@ -1,0 +1,16 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(cd \"c:/Code/Active/personal-brain\" && mkdir -p raw/assets wiki/concepts wiki/entities wiki/sources wiki/research)",
+      "Bash(git init *)",
+      "Bash(git add *)",
+      "Bash(git commit *)",
+      "Bash(pip install *)",
+      "Bash(Get-ChildItem \"c:\\\\Code\\\\Active\\\\personal-brain\\\\raw\" -Recurse)",
+      "Bash(Select-Object FullName, LastWriteTime)"
+    ],
+    "additionalDirectories": [
+      "c:\\Code\\Active\\personal-brain\\raw"
+    ]
+  }
+}
