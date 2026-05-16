@@ -1,7 +1,12 @@
 ---
-tags: [ai, machine-learning, natural-language-processing, deep-learning, foundation-models]
+tags:
+  - ai
+  - machine-learning
+  - natural-language-processing
+  - deep-learning
+  - foundation-models
 created: 2024-07-30
-reviewed: false
+reviewed: true
 source_origin: "[[../sources/arxiv-2412.20138v7-tradingagents.md|arXiv:2412.20138v7 - TradingAgents: Multi-Agents LLM Financial Trading]]"
 ---
 # Large Language Models (LLM)

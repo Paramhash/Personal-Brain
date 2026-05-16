@@ -1,7 +1,12 @@
 ---
-tags: [llm, prompting-techniques, agent-design, reasoning, action]
+tags:
+  - llm
+  - prompting-techniques
+  - agent-design
+  - reasoning
+  - action
 created: 2024-07-30
-reviewed: false
+reviewed: true
 source_origin: "[[../sources/arxiv-2412.20138v7-tradingagents.md|arXiv:2412.20138v7 - TradingAgents: Multi-Agents LLM Financial Trading]]"
 ---
 # ReAct Prompting Framework
