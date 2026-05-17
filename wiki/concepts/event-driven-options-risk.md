@@ -1,8 +1,13 @@
 ---
-tags: ["options", "risk-management", "derivatives", "market-analysis", "trading-strategy"]
+tags:
+  - options
+  - risk-management
+  - derivatives
+  - market-analysis
+  - trading-strategy
 created: 2026-05-16
-reviewed: false
-source_origin: "level1-analysis"
+reviewed: true
+source_origin: level1-analysis
 ---
 # Event-Driven Options Risk
 

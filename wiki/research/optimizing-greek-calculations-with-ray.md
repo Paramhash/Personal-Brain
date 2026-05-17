@@ -1,8 +1,13 @@
 ---
-tags: ["research", "quantitative-finance", "high-performance-computing", "python", "parallel-processing"]
+tags:
+  - research
+  - quantitative-finance
+  - high-performance-computing
+  - python
+  - parallel-processing
 created: 2023-10-27
-reviewed: false
-source_origin: "Data provider that provides real-time Greeks.md"
+reviewed: true
+source_origin: Data provider that provides real-time Greeks.md
 ---
 # Optimizing Greek Calculations with Ray and Multiprocessing
 
