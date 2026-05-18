@@ -112,6 +112,16 @@ The [Detecting Stock Market Regimes](../sources/Detecting%20stock%20market%20reg
 ### 5. Event Calendar Convergence
 [Event-Driven Options Risk](../concepts/event-driven-options-risk.md) defines a News Analyst–maintained event calendar that triggers position review 2 days pre-earnings and blocks new short-vol opens. [Expiration Management](../concepts/expiration-management.md) defines an expiration calendar that triggers 21 DTE roll alerts, pin risk monitoring at 3 PM ET, and assignment risk escalation. Both are time-indexed lists of future position-action requirements. In implementation, these should resolve to a single unified alert queue consumed by the interrupt path of the MAOPM state machine — not two separate monitoring processes.
 
+### 6. Observer Track as Longitudinal Memory Across All Clusters
+The five clusters above each generate data that is ephemeral in the current design: infrastructure metrics, regime classifications, strategy debates, agent recommendations, and performance results all exist only within a single cycle. The [Two-Track Architecture](Current%20Research%20Initiatives.md) introduced in May 2026 addresses this directly: the [Recording Secretary](../concepts/recording-secretary-agent.md) observes all five clusters' outputs via Seam A and persists them in the [Decision Ledger](../concepts/decision-ledger.md). This creates the first longitudinal memory layer spanning all clusters simultaneously:
+- **Cluster 1 (Infrastructure)**: Data provider outages and compute anomalies are logged as `state-transition` and `analyst-report` events.
+- **Cluster 2 (Market Mechanics)**: Each regime classification is a ledger entry, enabling regime-transition history to be queried across cycles.
+- **Cluster 3 (Strategy Selection)**: Every strategy recommendation and its disposition (approved/rejected/overridden) is traceable to the market state that prompted it.
+- **Cluster 4 (Agent Architecture)**: Debate transcripts are append-only entries; agent accountability (which agent recommended the losing trade?) becomes answerable.
+- **Cluster 5 (Performance)**: The Performance Observer links every `performance-summary` entry back to its originating `agent-recommendation` entry via `position_id`, closing the feedback loop that the evaluation cluster currently lacks.
+
+The [Board Directive Protocol](../concepts/board-directive-protocol.md) adds a governance dimension: Board instructions become first-class ledger entries, their enforcement is logged, and their effect on strategy outcomes is queryable. This is the mechanism by which the operator (Board) exercises oversight without disrupting the autonomous agent cycle.
+
 ---
 
 ## Conceptual Map
@@ -139,8 +149,15 @@ EVALUATION                                                    │
 ──────────────                                                ▼
 Options-native metrics                                 Execution Agent → IBKR
 (PoP rate, theta-adj.)                                 (multi-leg combo orders)
-Options-native baselines
-(needed; absent)
+Options-native baselines                                      │
+(needed; absent)                                             ▼
+
+OBSERVER TRACK (Track 2 — persistent, spans all cycles and all clusters above)
+────────────────────────────────────────────────────────────────────────────────
+← ─ ─ ─ ─ ─ ─ ─ ─ ─ Seam A (all events in from Track 1) ─ ─ ─ ─ ─ ─ ─ ─ ─ ─
+Recording Secretary  │  Board Interface       │  Performance Observer
+(Decision Ledger)    │  (Active Directives)   │  (Attribution Log)
+─ ─ ─ ─ ─ ─ ─ ─ ─ ─ Seam B (context block out → ANALYZING start) ─ ─ ─ ─ ─ ─ →
 ```
 
 ---

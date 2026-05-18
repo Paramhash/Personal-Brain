@@ -167,6 +167,40 @@ This note documents the highest-value open research questions for the [MAOPM ini
 
 ---
 
+## Q11: How should the Observer Track be designed to minimize overhead on the Agent State Track?
+
+**Why it matters**: The Observer Track (Recording Secretary, Board Interface, Performance Observer) runs in parallel with every Track 1 cycle. If Seam A event emission introduces latency into the Track 1 critical path — particularly in EXECUTING, where sub-second order routing matters — the audit infrastructure becomes a liability. The design must keep Track 1 fully decoupled from Track 2's write performance.
+
+**Sub-questions**:
+- Should Seam A be synchronous (Track 1 waits for Recording Secretary acknowledgment) or asynchronous (fire-and-forget to an event queue)? The latter eliminates latency coupling but introduces the possibility of missed events on crash.
+- What is the minimum event set Track 2 must receive to reconstruct a full cycle audit? Can analyst reports be omitted from Seam A (stored separately in Track 1) and only the summary events forwarded?
+- How should the Prior Decisions Context Block (Seam B) be pre-computed — eagerly at cycle end or lazily at the next ANALYZING start? Lazy generation risks adding latency to cycle startup.
+- Should the Performance Observer run synchronously at position close or in a nightly batch? The latter avoids any impact on live trading cycles.
+- What is the maximum acceptable size for the Seam B context block before it materially consumes LLM context window budget in the ANALYZING phase?
+
+**Relevant vault concepts**: [Recording Secretary Agent](../concepts/recording-secretary-agent.md), [Decision Ledger](../concepts/decision-ledger.md), [Structured Communication Protocol](../concepts/structured-communication-protocol.md), [Multi-Agent Systems](../concepts/multi-agent-systems.md)
+
+**Relevant research**: [Current Research Initiatives](Current%20Research%20Initiatives.md) — Two-Track Architecture section
+
+---
+
+## Q12: What is the correct state persistence model for MAOPM across process restarts?
+
+**Why it matters**: The current MAOPM design specifies Track 1 as in-memory per cycle. Track 2's Decision Ledger is the authoritative persistent state. But "persistent state" for a live options portfolio is multi-layered: the ledger records decisions, but the Portfolio Manager also needs current position Greeks, open order status, and margin availability on restart — data that lives in the broker API (IB TWS), not the ledger. The rehydration sequence on restart is unspecified and could leave Track 1 agents with stale or incomplete state.
+
+**Sub-questions**:
+- What is the complete set of state that Track 1 needs at ANALYZING start after a process restart? (Candidate list: open positions + current Greeks from IB TWS; Active Directives from Decision Ledger; last regime classification from Decision Ledger; unresolved Greek breach events from Decision Ledger; last N cycle summaries from Decision Ledger.)
+- Should MAOPM maintain a separate "portfolio snapshot" store (updated after every EXECUTING phase) distinct from the Decision Ledger, or can the portfolio state be fully reconstructed from the ledger's `fill` and `expiry-alert` entries?
+- What is the restart sequence? Proposed order: (1) load Active Directives from ledger, (2) query IB TWS for live position state, (3) query IB TWS for current Greeks, (4) load last regime classification from ledger, (5) generate Seam B context block, (6) enter ANALYZING. Is this the correct order and are there dependencies?
+- How should MAOPM handle the case where IB TWS is unavailable on restart (e.g., outside market hours)? Should it enter a suspended state until market open or proceed with stale Greeks from the ledger?
+- Does the Decision Ledger's SQLite recommendation (from [Decision Ledger](../concepts/decision-ledger.md)) support the concurrent read pattern needed during rehydration without locking?
+
+**Relevant vault concepts**: [Decision Ledger](../concepts/decision-ledger.md), [Recording Secretary Agent](../concepts/recording-secretary-agent.md), [Board Directive Protocol](../concepts/board-directive-protocol.md), [Portfolio Greeks Management](../concepts/portfolio-greeks-management.md)
+
+**Relevant entity**: [Interactive Brokers API](../entities/interactive-brokers-api.md)
+
+---
+
 ## Prioritization
 
 | Question | Priority | Tractable Now? | Effort | Phase |
@@ -179,6 +213,8 @@ This note documents the highest-value open research questions for the [MAOPM ini
 | Q9 — Horizon spread in MAOPM architecture | High | Yes — Lai paper ingested | Medium | 2 |
 | Q4 — Backtesting approach + historical GEX blocker | High | Partial (GEX data availability TBD) | High | 4 |
 | Q10 — TradingGPT layered memory → DTE tiers | Medium | Partial (source stub incomplete) | Medium | 2–3 |
+| Q11 — Observer Track overhead and Seam A/B design | **High** | Yes | Medium | **0** |
+| Q12 — State persistence and restart rehydration | **High** | Yes | Medium | **0** |
 | Q6 — Portfolio scope | Medium | Yes (decision, not research) | Low | 1 |
 | Q8 — Performance baseline vs. options-native strategies | Low | Partial | High | 4 |
 

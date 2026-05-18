@@ -69,6 +69,43 @@ Risk Management can interrupt and revert to ANALYZING on any Greek threshold bre
 
 ---
 
+### Two-Track Architecture
+
+MAOPM runs on two parallel, structurally separate tracks:
+
+```
+╔══════════════════════════════════════════════════════════════════╗
+║              TRACK 1: AGENT STATE TRACK (per-cycle, in-memory)  ║
+║                                                                  ║
+║  ANALYZING → DEBATING → REVIEWING → APPROVED → EXECUTING →      ║
+║  MONITORING   (← Risk interrupt path)                           ║
+║                                                                  ║
+║  Analysts │ Researchers │ Portfolio Manager │ Risk Team │ Exec   ║
+╚══════════════╤═══════════════════════════════╤═══════════════════╝
+               │ Seam A: events + documents    │ Seam B: context
+               ▼                               ▲
+╔══════════════════════════════════════════════════════════════════╗
+║           TRACK 2: OBSERVER TRACK (persistent, across cycles)   ║
+║                                                                  ║
+║  Recording Secretary  │  Board Interface  │  Performance Obs.   ║
+║  (Decision Ledger)    │  (Active Directives)│ (Attribution Log) ║
+╚══════════════════════════════════════════════════════════════════╝
+```
+
+**Seam A** (Track 1 → Track 2): Every state transition and structured document emitted by Track 1 is forwarded to the Recording Secretary for ledger append.
+
+**Seam B** (Track 2 → Track 1): At the start of each ANALYZING phase, Track 1 receives a Prior Decisions Context Block containing: (a) last 5 approved proposals with outcomes, (b) Active Directives List, (c) last regime classification, (d) any unresolved Greek breach events, (e) latest Performance Observer summary.
+
+| Track 2 Sub-agent | Role | Storage |
+|---|---|---|
+| [Recording Secretary](../concepts/recording-secretary-agent.md) | Appends all Track 1 events to the Decision Ledger; generates Seam B context block | Append-only ledger |
+| [Board Interface](../concepts/board-directive-protocol.md) | Accepts Board directives; manages Active Directives List; handles Board interrupt path | Active directives store |
+| Performance Observer | Post-trade attribution: links realized P&L, win rate, IV premium capture to originating agent recommendation | Attribution log |
+
+Track 1 is **ephemeral per cycle** (in-memory). Track 2 is the **persistence layer** for the whole system — the Decision Ledger is the authoritative state on process restart.
+
+---
+
 ### Agent Roles (Summary)
 
 | Agent | Specialty | Key Output |
@@ -125,16 +162,20 @@ No GPU required — fully API-based, model-agnostic (mirrors TradingAgents desig
 
 | Milestone | Scope | Status |
 |---|---|---|
+| M0 — Observer Track | Decision Ledger (SQLite); Recording Secretary service; Board Directive Protocol; Seam A/B interfaces | Not started |
 | M1 — Foundation | ThetaData + Polygon + IB TWS pipeline; Greeks Analyst + Vol Analyst; portfolio state | Not started |
 | M2 — Strategy Generation | GEX/Regime Analyst; debate loop; Portfolio Manager | Not started |
 | M3 — Risk & Execution | Risk Team (3 perspectives); Execution Agent; Greek alert system | Not started |
-| M4 — Full Loop | Closed-loop paper trading; backtesting; performance vs. baselines | Not started |
+| M4 — Full Loop | Closed-loop paper trading; backtesting; performance vs. baselines; Performance Observer attribution | Not started |
 
 ---
 
 ### Knowledge Gaps Being Addressed
 
 The following concept files are being created to support this initiative:
+- [[../concepts/recording-secretary-agent.md|Recording Secretary Agent]] — Observer Track agent; Decision Ledger maintenance; Seam A/B interfaces
+- [[../concepts/decision-ledger.md|Decision Ledger]] — Append-only audit trail; entry schema; query patterns; storage options
+- [[../concepts/board-directive-protocol.md|Board Directive Protocol]] — Directive structure; hard-block vs. advisory; Board interrupt path; enforcement points
 - [[../concepts/implied-volatility.md|Implied Volatility]] — IV rank, IV percentile, vol crush/expansion
 - [[../concepts/volatility-surface-dynamics.md|Volatility Surface Dynamics]] — skew, term structure (extends [[../concepts/volatility-surfaces.md]])
 - [[../concepts/options-strategies.md|Options Strategies]] — single-leg and multi-leg strategy taxonomy
@@ -160,5 +201,8 @@ The following concept files are being created to support this initiative:
 - [[gex-scanner-logic-flow.md]] — GEX Z-score computation logic reused directly by the GEX/Regime Analyst
 - [[optimizing-greek-calculations-with-ray.md]] — Compute architecture for real-time Greek calculation at scale
 - [[research-agenda-options-maopm.md]] — Open research questions for this initiative
+- [[../concepts/recording-secretary-agent.md]] — Observer Track agent spec
+- [[../concepts/decision-ledger.md]] — Decision Ledger schema
+- [[../concepts/board-directive-protocol.md]] — Board Directive Protocol
 
 ---
