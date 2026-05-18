@@ -1,8 +1,13 @@
 ---
-tags: ["research-agenda", "multi-agent-systems", "options-trading", "llm", "portfolio-management"]
+tags:
+  - research-agenda
+  - multi-agent-systems
+  - options-trading
+  - llm
+  - portfolio-management
 created: 2026-05-16
-reviewed: true
-source_origin: "level1-analysis"
+reviewed: false
+source_origin: level1-analysis
 ---
 # Research Agenda: Multi-Agent LLM Options Portfolio Manager (MAOPM)
 

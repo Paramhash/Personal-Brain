@@ -1,8 +1,13 @@
 ---
-tags: ["finance", "quantitative_finance", "options", "market_regimes", "research_paper"]
+tags:
+  - finance
+  - quantitative_finance
+  - options
+  - market_regimes
+  - research_paper
 created: 2023-10-27
-reviewed: false
-source_origin: "Assumed research paper or article, specific URL/DOI would go here if provided in raw payload."
+reviewed: true
+source_origin: Assumed research paper or article, specific URL/DOI would go here if provided in raw payload.
 ---
 # Detecting Stock Market Regimes from Option Prices
 

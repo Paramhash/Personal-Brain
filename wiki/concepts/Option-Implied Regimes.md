@@ -1,8 +1,13 @@
 ---
-tags: ["finance", "options", "market_regimes", "implied_volatility", "quantitative_finance"]
+tags:
+  - finance
+  - options
+  - market_regimes
+  - implied_volatility
+  - quantitative_finance
 created: 2023-10-27
-reviewed: false
-source_origin: "../sources/Detecting stock market regimes from option prices.md"
+reviewed: true
+source_origin: ../sources/Detecting stock market regimes from option prices.md
 ---
 # Option-Implied Regimes
 
