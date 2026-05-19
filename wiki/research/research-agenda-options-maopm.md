@@ -46,11 +46,13 @@ This note documents the highest-value open research questions for the [MAOPM ini
 
 **Why it matters**: The [TradingAgents framework](../entities/tradingagents-framework.md) found that structured documents outperform pure natural language for preserving information across agent handoffs (the "telephone effect"). Options data is highly numerical and structured — strikes, expirations, Greeks, PoP. Passing these as free text will degrade precision.
 
+**Status**: Answered. All four sub-questions resolved as of 2026-05-19.
+
 **Sub-questions**:
-- What JSON schema should the Greek exposure report, vol surface summary, and GEX regime report follow?
-- Which information should be passed as structured data vs. narrative summary vs. both?
-- How should the structured data representation handle multi-leg positions (e.g., iron condor: 4 legs, 4 sets of Greeks, net Greeks, max loss, PoP)?
-- What is the minimum sufficient context an LLM needs to reason effectively about an options portfolio state?
+- ✅ What JSON schema should the Greek exposure report, vol surface summary, and GEX regime report follow? → [Greek Exposure Report Schema](../entities/greek-exposure-report-json-schema.md), [Vol Surface Summary Schema](../entities/vol-surface-summary-json-schema.md), [GEX Regime Report Schema](../entities/gex-regime-report-json-schema.md)
+- ✅ Which information should be passed as structured data vs. narrative summary vs. both? → Deterministic data (Greeks, strikes, IV, regime enums) → structured fields. Qualitative interpretation → single explicitly-labelled `*_narrative` field per report. See [LLM Agent Data Handoffs](../concepts/llm-agent-data-handoffs-structured-communication.md).
+- ✅ How should the structured data representation handle multi-leg positions? → `Position` definition in the Greek Exposure Report schema: `strategy_type` enum + `legs[]` array (max 4) with per-leg Greeks and `risk_metrics` block (max_loss, max_profit, pop, breakeven_prices, bpr, current_pl).
+- ✅ What is the minimum sufficient context an LLM needs to reason effectively about an options portfolio state? → GEX regime block + vol regime block + portfolio_totals + active_breaches + active_directives + last 3 cycle summaries. ~2,000–3,000 tokens for a 5–10 position portfolio. See [LLM Agent Data Handoffs](../concepts/llm-agent-data-handoffs-structured-communication.md).
 
 **Relevant vault concepts**: [Structured Communication Protocol](../concepts/structured-communication-protocol.md), [Multi-Agent Systems](../concepts/multi-agent-systems.md), [Options Risk Metrics](../concepts/options-risk-metrics.md)
 
@@ -210,7 +212,7 @@ This note documents the highest-value open research questions for the [MAOPM ini
 
 | Question | Priority | Tractable Now? | Effort | Phase |
 |---|---|---|---|---|
-| Q3 — Communication schemas | Critical | Yes | Medium | 1 |
+| ~~Q3 — Communication schemas~~ | ~~Critical~~ **Resolved** | ~~Yes~~ Done | ~~Medium~~ | 1 |
 | Q2 — Dynamic Greek limits + Regime Div. Ratio scaler | High | Yes | Medium | 2 |
 | Q1 — LLM vs. rules-based split | High | Yes | Low–Medium | 1–2 |
 | Q7 — Management fast-path vs. initiation | **High** *(elevated)* | Yes | Medium | **2** *(moved up)* |
