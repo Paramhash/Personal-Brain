@@ -35,13 +35,13 @@ Concepts that appear by reference in ≥2 vault files but have no dedicated conc
 ---
 
 ### Gap 1.3 — `option-implied-erp-horizon-spread.md`
-**Referenced in**: [Detecting Stock Market Regimes from Option Prices](../sources/Detecting%20stock%20market%20regimes%20from%20option%20prices.md) (source contains full paper); [Option-Implied Regimes](../concepts/Option-Implied-Regimes.md) (cites option-implied metrics but does not name the horizon spread); [Stock Market Regimes](../concepts/Stock%20Market%20Regimes.md) (regime detection methods); [Regime Detection](../concepts/regime-detection.md) (market-implied methods listed)
+**Referenced in**: [Detecting Stock Market Regimes from Option Prices (Lai, 2022)](../sources/detecting_stock_market_regimes_lai_2022.md); [Option-Implied Regimes](../concepts/Option-Implied-Regimes.md) (cites option-implied metrics but does not name the horizon spread); [Stock Market Regimes](../concepts/Stock%20Market%20Regimes.md) (regime detection methods); [Regime Detection](../concepts/regime-detection.md) (market-implied methods listed)
 
 **What is missing**: A dedicated concept note extracting Lai (2022)'s horizon spread metric: $HS_t = \text{ERP}_{180d,t} - \text{ERP}_{30d,t}$, estimated nonparametrically from put and call prices. Key facts to capture: (1) turns negative during crises (short-term risk premium exceeds long-term); (2) detected COVID-19 regime shift in Dec 2019, three months before GARCH or return-based models; (3) achieves 4.6% indecisive-zone probability vs. 34% for volatility-based detection.
 
 **Why it matters for MAOPM**: The Vol Analyst role currently specifies IVR/IVP monitoring and vol surface shape. Horizon spread is strictly superior as a leading macro regime indicator. Without a concept note, it cannot be formally linked into the agent design or the Long-Vol/Short-Vol debate inputs. This is the single highest-value paper in the vault and it is currently orphaned from the agent architecture.
 
-**Orphan note**: The source stub [Detecting stock market regimes from option prices](../sources/Detecting%20stock%20market%20regimes%20from%20option%20prices.md) does not link to the full paper in `raw/assets/Detecting stock market regimes from option prices.md`. The complete paper (including methodology, HMM implementation, and quantitative results) is physically in the vault but disconnected from the wiki graph.
+**Status**: The duplicate source stub has been removed. Canonical source is now [Detecting Stock Market Regimes from Option Prices (Lai, 2022)](../sources/detecting_stock_market_regimes_lai_2022.md). The raw asset at `raw/assets/Detecting stock market regimes from option prices.md` remains available.
 
 ---
 
@@ -118,9 +118,9 @@ Concepts that appear by reference in ≥2 vault files but have no dedicated conc
 ### Gap 3.2 — Lai (2022) paper orphaned from wiki graph
 **Full paper**: `raw/assets/Detecting stock market regimes from option prices.md` — complete, high-quality content (HMM methodology, quantitative results, COVID detection evidence).
 
-**Wiki stub**: `wiki/sources/Detecting stock market regimes from option prices.md` — does not contain a link to the raw asset and does not reference [option-implied-erp-horizon-spread.md](#gap-13--option-implied-erp-horizon-spreadmd) (which doesn't exist yet).
+**Canonical wiki source**: [Detecting Stock Market Regimes from Option Prices (Lai, 2022)](../sources/detecting_stock_market_regimes_lai_2022.md) — duplicate stub removed; this is now the single source-of-truth in the wiki.
 
-**Fix required**: (1) Upgrade the source stub to a full source note referencing the paper's key findings; (2) create the horizon spread concept note (Gap 1.3); (3) link from [Option-Implied Regimes](../concepts/Option-Implied-Regimes.md) and [Regime Detection](../concepts/regime-detection.md).
+**Remaining fix required**: (1) Create the horizon spread concept note (Gap 1.3); (2) link from [Option-Implied Regimes](../concepts/Option-Implied-Regimes.md) and [Regime Detection](../concepts/regime-detection.md).
 
 ---
 

@@ -1,8 +1,13 @@
 ---
-tags: ["board-directive", "observer-track", "maopm", "governance", "human-in-the-loop"]
+tags:
+  - board-directive
+  - observer-track
+  - maopm
+  - governance
+  - human-in-the-loop
 created: 2026-05-19
-reviewed: false
-source_origin: "maopm-design"
+reviewed: true
+source_origin: maopm-design
 ---
 # Board Directive Protocol
 

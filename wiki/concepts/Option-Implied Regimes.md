@@ -7,7 +7,7 @@ tags:
   - quantitative_finance
 created: 2023-10-27
 reviewed: true
-source_origin: ../sources/Detecting stock market regimes from option prices.md
+source_origin: ../sources/detecting_stock_market_regimes_lai_2022.md
 ---
 # Option-Implied Regimes
 
@@ -43,7 +43,7 @@ Identifying option-implied regimes can significantly enhance:
 *   **Portfolio Construction:** Dynamic adjustment of asset allocations and hedging strategies.
 *   **Trading Strategies:** Development of strategies that adapt to the market's forward-looking risk profile.
 
-This approach is detailed in works such as [[../sources/Detecting stock market regimes from option prices.md]].
+This approach is detailed in works such as [[../sources/detecting_stock_market_regimes_lai_2022.md|Detecting Stock Market Regimes from Option Prices (Lai, 2022)]].
 
 ## Related Concepts
 

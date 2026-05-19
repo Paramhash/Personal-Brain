@@ -167,7 +167,7 @@ This note documents the highest-value open research questions for the [MAOPM ini
 
 **Relevant vault concepts**: [Option-Implied Regimes](../concepts/Option-Implied-Regimes.md), [Regime Detection](../concepts/regime-detection.md), [Volatility Surface Dynamics](../concepts/volatility-surface-dynamics.md), [Gamma Exposure (GEX)](../concepts/gamma-exposure-gex.md), [Regime Divergence Ratio](../concepts/regime-divergence-ratio.md)
 
-**Relevant source**: [Detecting Stock Market Regimes from Option Prices](../sources/Detecting%20stock%20market%20regimes%20from%20option%20prices.md)
+**Relevant source**: [Detecting Stock Market Regimes from Option Prices (Lai, 2022)](../sources/detecting_stock_market_regimes_lai_2022.md)
 
 **Relevant gap**: [option-implied-erp-horizon-spread.md](gap-analysis-2026-05-17.md) concept note needed (Gap 1.3); Lai source stub needs upgrade (Gap 3.2)
 

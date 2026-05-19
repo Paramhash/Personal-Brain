@@ -2,7 +2,7 @@
 tags: ["finance", "market_analysis", "macroeconomics", "volatility", "risk_management"]
 created: 2023-10-27
 reviewed: false
-source_origin: "../sources/Detecting stock market regimes from option prices.md"
+source_origin: "../sources/detecting_stock_market_regimes_lai_2022.md"
 ---
 # Stock Market Regimes
 
@@ -41,7 +41,7 @@ Regimes can be detected using various quantitative methods, including:
 *   **Statistical Models:** Hidden Markov Models (HMMs), GARCH models, regime-switching models.
 *   **Machine Learning:** Clustering algorithms, neural networks, support vector machines.
 *   **Fundamental Indicators:** Economic data, earnings reports, interest rates.
-*   **Market-Implied Data:** Information derived from derivatives markets, such as option prices. For an example of this approach, see: [[../sources/Detecting stock market regimes from option prices.md]] and [[../concepts/Option-Implied Regimes.md]].
+*   **Market-Implied Data:** Information derived from derivatives markets, such as option prices. For an example of this approach, see: [[../sources/detecting_stock_market_regimes_lai_2022.md|Detecting Stock Market Regimes from Option Prices (Lai, 2022)]] and [[../concepts/Option-Implied Regimes.md]].
 
 ## Related Concepts
 
