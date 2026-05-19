@@ -6,7 +6,7 @@ source_origin: "level1-analysis"
 ---
 # Portfolio Greeks Management
 
-Portfolio Greeks Management is the practice of monitoring and actively controlling the aggregate sensitivity of an options portfolio to changes in underlying price (Delta), price curvature (Gamma), implied volatility (Vega), and time decay (Theta). It is the operational core of the Greeks Analyst and Risk Management Team agents in the [MAOPM system](../research/Current%20Research%20Initiatives.md).
+Portfolio Greeks Management is the practice of monitoring and actively controlling the aggregate sensitivity of an options portfolio to changes in underlying price (Delta), price curvature (Gamma), implied volatility (Vega), and time decay (Theta). It is the operational core of the Greeks Analyst and Risk Management Team agents in the [MAOPM system](../research/current%20research%20initiatives.md).
 
 ## Portfolio-Level Greeks
 

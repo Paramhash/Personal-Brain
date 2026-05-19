@@ -11,7 +11,7 @@ source_origin: level1-analysis
 ---
 # Event-Driven Options Risk
 
-Event-driven options risk arises from scheduled or unscheduled binary events that cause discontinuous, non-normal price and volatility changes in options portfolios. Managing this risk is the primary responsibility of the News/Catalyst Analyst in the [MAOPM system](../research/Current%20Research%20Initiatives.md), with the Risk Management Team enforcing hard position limits around event windows.
+Event-driven options risk arises from scheduled or unscheduled binary events that cause discontinuous, non-normal price and volatility changes in options portfolios. Managing this risk is the primary responsibility of the News/Catalyst Analyst in the [MAOPM system](../research/current%20research%20initiatives.md), with the Risk Management Team enforcing hard position limits around event windows.
 
 ## Categories of Binary Events
 

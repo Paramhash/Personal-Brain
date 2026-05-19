@@ -6,7 +6,7 @@ source_origin: "level1-analysis"
 ---
 # Gap Analysis: Personal Brain Vault — 2026-05-17
 
-> Surgical identification of specific named gaps in the vault as of this date. For each gap: what is missing, where it is implicitly referenced, and why it matters for the [MAOPM initiative](Current%20Research%20Initiatives.md). This supersedes [gap-analysis-2026-05-16](gap-analysis-2026-05-16.md), which reflects a pre-Lai-paper vault state.
+> Surgical identification of specific named gaps in the vault as of this date. For each gap: what is missing, where it is implicitly referenced, and why it matters for the [MAOPM initiative](current%20research%20initiatives.md). This supersedes [gap-analysis-2026-05-16](gap-analysis-2026-05-16.md), which reflects a pre-Lai-paper vault state.
 
 ---
 
@@ -46,7 +46,7 @@ Concepts that appear by reference in ≥2 vault files but have no dedicated conc
 ---
 
 ### Gap 1.4 — `options-backtesting-methodology.md`
-**Referenced in**: [Research Agenda Q4](research-agenda-options-maopm.md) (asks how to backtest with realistic fills); [Current Research Initiatives](Current%20Research%20Initiatives.md) ("backtesting with realistic bid/ask" listed in scope); [Financial Trading Evaluation Metrics](../concepts/financial-trading-evaluation-metrics.md) (metrics defined for equities only)
+**Referenced in**: [Research Agenda Q4](research-agenda-options-maopm.md) (asks how to backtest with realistic fills); [current research initiatives](current%20research%20initiatives.md) ("backtesting with realistic bid/ask" listed in scope); [Financial Trading Evaluation Metrics](../concepts/financial-trading-evaluation-metrics.md) (metrics defined for equities only)
 
 **What is missing**: Options-specific backtesting challenges — path-dependency (options expire; equity close-price backtesting has no analog), IV surface reconstruction for historical dates, bid/ask spread simulation (mid? natural? improvement?), pin risk and assignment simulation at expiration, slippage modeling for multi-leg orders. Also missing: historical GEX data availability — ThetaData provides historical per-contract Greeks; 30-day rolling GEX Z-scores therefore require minimum 30 trading days of burn-in per symbol. This is a concrete data availability constraint that does not appear anywhere in the vault.
 
@@ -64,7 +64,7 @@ Concepts that appear by reference in ≥2 vault files but have no dedicated conc
 ---
 
 ### Gap 1.6 — `llm-model-routing.md`
-**Referenced in**: [TradingAgents Framework](../entities/tradingagents-framework.md) (gpt-4o-mini for retrieval, o1-preview for deep reasoning); [Current Research Initiatives](Current%20Research%20Initiatives.md) (gpt-4o-mini quick tasks, o1/o3 deep reasoning, specialist models for sentiment); [Agent Role Specialization](../concepts/agent-role-specialization-in-llm-systems.md) (specialized roles implied to use different LLMs)
+**Referenced in**: [TradingAgents Framework](../entities/tradingagents-framework.md) (gpt-4o-mini for retrieval, o1-preview for deep reasoning); [current research initiatives](current%20research%20initiatives.md) (gpt-4o-mini quick tasks, o1/o3 deep reasoning, specialist models for sentiment); [Agent Role Specialization](../concepts/agent-role-specialization-in-llm-systems.md) (specialized roles implied to use different LLMs)
 
 **What is missing**: A systematic framework mapping task type → LLM class. The implicit rule is: structured data retrieval / report generation → smaller/faster model; dialectical debate / multi-step reasoning with uncertainty → larger/slower reasoning model. This tradeoff needs to be explicit: latency, cost, and quality interact differently per task. For MAOPM specifically — does the Greek exposure report generation need o1, or is gpt-4o-mini sufficient? Does the Long-Vol/Short-Vol debate need o3, or does gpt-4o achieve comparable argument quality?
 
@@ -73,7 +73,7 @@ Concepts that appear by reference in ≥2 vault files but have no dedicated conc
 ---
 
 ### Gap 1.7 — `agent-state-synchronization.md`
-**Referenced in**: [TradingAgents Framework](../entities/tradingagents-framework.md) ("global agent state" mentioned but not detailed); [Structured Communication Protocol](../concepts/structured-communication-protocol.md) (structured documents passed between agents); [Current Research Initiatives](Current%20Research%20Initiatives.md) (structured JSON schemas specified but storage mechanism not named)
+**Referenced in**: [TradingAgents Framework](../entities/tradingagents-framework.md) ("global agent state" mentioned but not detailed); [Structured Communication Protocol](../concepts/structured-communication-protocol.md) (structured documents passed between agents); [current research initiatives](current%20research%20initiatives.md) (structured JSON schemas specified but storage mechanism not named)
 
 **What is missing**: The mechanics of shared state in multi-agent systems — in-memory dict, message broker (Redis/RabbitMQ), structured document store, or per-agent context passing. In TradingAgents, the global state appears to be an in-memory dictionary. For MAOPM, which runs on a continuous monitoring loop with an interrupt path, in-memory state fails on process restart. Options portfolio state (open positions, current Greeks, last vol regime classification) must be persistent.
 

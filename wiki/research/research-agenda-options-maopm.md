@@ -11,7 +11,7 @@ source_origin: level1-analysis
 ---
 # Research Agenda: Multi-Agent LLM Options Portfolio Manager (MAOPM)
 
-This note documents the highest-value open research questions for the [MAOPM initiative](Current%20Research%20Initiatives.md). Each question is tractable now given existing vault knowledge and available tools, and each represents a meaningful knowledge gain if answered.
+This note documents the highest-value open research questions for the [MAOPM initiative](current%20research%20initiatives.md). Each question is tractable now given existing vault knowledge and available tools, and each represents a meaningful knowledge gain if answered.
 
 ---
 
@@ -207,7 +207,7 @@ This note documents the highest-value open research questions for the [MAOPM ini
 
 **Relevant vault concepts**: [Recording Secretary Agent](../concepts/recording-secretary-agent.md), [Decision Ledger](../concepts/decision-ledger.md), [Structured Communication Protocol](../concepts/structured-communication-protocol.md), [Multi-Agent Systems](../concepts/multi-agent-systems.md)
 
-**Relevant research**: [Current Research Initiatives](Current%20Research%20Initiatives.md) — Two-Track Architecture section
+**Relevant research**: [current research initiatives](current%20research%20initiatives.md) — Two-Track Architecture section
 
 ---
 

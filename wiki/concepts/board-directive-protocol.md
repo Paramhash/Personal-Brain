@@ -6,7 +6,7 @@ source_origin: "maopm-design"
 ---
 # Board Directive Protocol
 
-The **Board Directive Protocol** defines how the operator (the Board — i.e., the human principal) issues binding instructions to the [MAOPM](../research/Current%20Research%20Initiatives.md) system that persist across cycles, override agent recommendations, and are enforced at the [Portfolio Manager](../concepts/fund-manager-agent.md) and [Risk Team](../concepts/risk-management-team-agent.md) level. It is the mechanism by which the Board exercises governance without disrupting the Agent State Track mid-cycle.
+The **Board Directive Protocol** defines how the operator (the Board — i.e., the human principal) issues binding instructions to the [MAOPM](../research/current%20research%20initiatives.md) system that persist across cycles, override agent recommendations, and are enforced at the [Portfolio Manager](../concepts/fund-manager-agent.md) and [Risk Team](../concepts/risk-management-team-agent.md) level. It is the mechanism by which the Board exercises governance without disrupting the Agent State Track mid-cycle.
 
 ## Motivation
 

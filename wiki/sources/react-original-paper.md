@@ -39,7 +39,7 @@ The loop continues until the task is complete or a terminal condition is reached
 
 ## Relationship to TradingAgents / MAOPM
 
-The [ReAct Prompting Framework](../concepts/react-prompting-framework.md) is the foundational reasoning pattern used by all agents in the [TradingAgents framework](../entities/tradingagents-framework.md) and is carried forward directly into [MAOPM](../research/Current%20Research%20Initiatives.md):
+The [ReAct Prompting Framework](../concepts/react-prompting-framework.md) is the foundational reasoning pattern used by all agents in the [TradingAgents framework](../entities/tradingagents-framework.md) and is carried forward directly into [MAOPM](../research/current%20research%20initiatives.md):
 
 - **Analysts** use ReAct to retrieve market data, compute metrics, and iteratively refine reports
 - **Researchers** use ReAct to search for supporting evidence, challenge assumptions, and update debate positions

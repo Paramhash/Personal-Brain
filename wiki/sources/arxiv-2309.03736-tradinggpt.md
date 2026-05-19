@@ -30,7 +30,7 @@ TradingGPT introduces a multi-agent framework for financial trading that employs
 
 ## Relevance to MAOPM
 
-The layered memory concept from TradingGPT is directly relevant to the [MAOPM initiative](../research/Current%20Research%20Initiatives.md): options portfolio management requires tracking positions across multiple time horizons (intraday delta hedges, 21–45 DTE positions, LEAPS). A layered memory architecture may be necessary for the Portfolio Manager agent to maintain context across these different temporal scales.
+The layered memory concept from TradingGPT is directly relevant to the [MAOPM initiative](../research/current%20research%20initiatives.md): options portfolio management requires tracking positions across multiple time horizons (intraday delta hedges, 21–45 DTE positions, LEAPS). A layered memory architecture may be necessary for the Portfolio Manager agent to maintain context across these different temporal scales.
 
 See also [FinMem](../concepts/llms-in-finance.md) for another implementation of layered memorization referenced in the same context.
 

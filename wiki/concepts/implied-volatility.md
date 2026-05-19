@@ -49,7 +49,7 @@ IVR = (Current IV − 52-week Low IV) / (52-week High IV − 52-week Low IV) × 
 
 ## IV in the MAOPM System
 
-The [Volatility Analyst](../research/Current%20Research%20Initiatives.md) agent monitors IV rank and percentile per symbol to classify the current volatility regime and feed into the strategy debate between the Long-Vol and Short-Vol Researchers. See also [Options Strategies](../concepts/options-strategies.md) for how IV level maps to strategy selection, and [Event-Driven Options Risk](../concepts/event-driven-options-risk.md) for IV crush dynamics.
+The [Volatility Analyst](../research/current%20research%20initiatives.md) agent monitors IV rank and percentile per symbol to classify the current volatility regime and feed into the strategy debate between the Long-Vol and Short-Vol Researchers. See also [Options Strategies](../concepts/options-strategies.md) for how IV level maps to strategy selection, and [Event-Driven Options Risk](../concepts/event-driven-options-risk.md) for IV crush dynamics.
 
 ## Related Concepts
 

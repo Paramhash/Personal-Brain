@@ -12,7 +12,7 @@ source_origin: "level1-analysis"
 
 ## The Central Thesis
 
-Options markets are unusual: they encode *forward-looking* crowd expectations in a structured, arbitrage-constrained form. This gives options data — implied volatility, skew, term structure, gamma exposure — a regime-detection advantage over historical price or return series. The vault's core bet is that **LLM agents specialized to read this encoded signal, debate under uncertainty, and enforce Greek discipline can outperform static rule-based options systems** on risk-adjusted returns. The [TradingAgents framework](../entities/tradingagents-framework.md) provides the organizational blueprint; the [MAOPM initiative](Current%20Research%20Initiatives.md) extends it to the structurally richer domain of options portfolios.
+Options markets are unusual: they encode *forward-looking* crowd expectations in a structured, arbitrage-constrained form. This gives options data — implied volatility, skew, term structure, gamma exposure — a regime-detection advantage over historical price or return series. The vault's core bet is that **LLM agents specialized to read this encoded signal, debate under uncertainty, and enforce Greek discipline can outperform static rule-based options systems** on risk-adjusted returns. The [TradingAgents framework](../entities/tradingagents-framework.md) provides the organizational blueprint; the [MAOPM initiative](current%20research%20initiatives.md) extends it to the structurally richer domain of options portfolios.
 
 ---
 
@@ -48,7 +48,7 @@ The vault contains two distinct mechanisms for reading market state — both der
 - Horizon spread (Wan Ni Lai, 2022): $HS = \text{ERP}_{180d} - \text{ERP}_{30d}$; turns negative during crises when short-term risk premium exceeds long-term; detected the COVID-19 regime shift in December 2019 — three months before historical returns or GARCH volatility signaled it. Source: [Detecting stock market regimes from option prices](../sources/Detecting%20stock%20market%20regimes%20from%20option%20prices.md).
 - Option-implied metrics are *forward-looking*: they capture what the market prices as likely, not what has already happened.
 
-**The gap between these two families is the vault's most important unresolved structural issue.** Neither the [Current Research Initiatives](Current%20Research%20Initiatives.md) document nor any agent role note specifies how Signal Family A (GEX/microstructure) and Signal Family B (vol surface/option-implied macro) are fused before reaching the Strategy Research Team debate. They are documented in separate concept clusters with no bridge note.
+**The gap between these two families is the vault's most important unresolved structural issue.** Neither the [current research initiatives](current%20research%20initiatives.md) document nor any agent role note specifies how Signal Family A (GEX/microstructure) and Signal Family B (vol surface/option-implied macro) are fused before reaching the Strategy Research Team debate. They are documented in separate concept clusters with no bridge note.
 
 ---
 
@@ -113,7 +113,7 @@ The [Detecting Stock Market Regimes](../sources/Detecting%20stock%20market%20reg
 [Event-Driven Options Risk](../concepts/event-driven-options-risk.md) defines a News Analyst–maintained event calendar that triggers position review 2 days pre-earnings and blocks new short-vol opens. [Expiration Management](../concepts/expiration-management.md) defines an expiration calendar that triggers 21 DTE roll alerts, pin risk monitoring at 3 PM ET, and assignment risk escalation. Both are time-indexed lists of future position-action requirements. In implementation, these should resolve to a single unified alert queue consumed by the interrupt path of the MAOPM state machine — not two separate monitoring processes.
 
 ### 6. Observer Track as Longitudinal Memory Across All Clusters
-The five clusters above each generate data that is ephemeral in the current design: infrastructure metrics, regime classifications, strategy debates, agent recommendations, and performance results all exist only within a single cycle. The [Two-Track Architecture](Current%20Research%20Initiatives.md) introduced in May 2026 addresses this directly: the [Recording Secretary](../concepts/recording-secretary-agent.md) observes all five clusters' outputs via Seam A and persists them in the [Decision Ledger](../concepts/decision-ledger.md). This creates the first longitudinal memory layer spanning all clusters simultaneously:
+The five clusters above each generate data that is ephemeral in the current design: infrastructure metrics, regime classifications, strategy debates, agent recommendations, and performance results all exist only within a single cycle. The [Two-Track Architecture](current%20research%20initiatives.md) introduced in May 2026 addresses this directly: the [Recording Secretary](../concepts/recording-secretary-agent.md) observes all five clusters' outputs via Seam A and persists them in the [Decision Ledger](../concepts/decision-ledger.md). This creates the first longitudinal memory layer spanning all clusters simultaneously:
 - **Cluster 1 (Infrastructure)**: Data provider outages and compute anomalies are logged as `state-transition` and `analyst-report` events.
 - **Cluster 2 (Market Mechanics)**: Each regime classification is a ledger entry, enabling regime-transition history to be queried across cycles.
 - **Cluster 3 (Strategy Selection)**: Every strategy recommendation and its disposition (approved/rejected/overridden) is traceable to the market state that prompted it.
@@ -162,4 +162,4 @@ Recording Secretary  │  Board Interface       │  Performance Observer
 
 ---
 
-*This note should be read alongside [Current Research Initiatives](Current%20Research%20Initiatives.md) for the operational roadmap and [research-agenda-options-maopm](research-agenda-options-maopm.md) for open questions.*
+*This note should be read alongside [current research initiatives](current%20research%20initiatives.md) for the operational roadmap and [research-agenda-options-maopm](research-agenda-options-maopm.md) for open questions.*

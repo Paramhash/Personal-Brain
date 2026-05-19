@@ -22,7 +22,7 @@ Full details: [arXiv:2309.03736](../sources/arxiv-2309.03736-tradinggpt.md)
 
 Referenced in [TradingAgents (arXiv:2412.20138v7)](../sources/arxiv-2412.20138v7-tradingagents.md) as a "reasoning-driven" LLM trading agent, in contrast to news-driven and reinforcement learning-driven approaches.
 
-The layered memory concept is relevant to the [MAOPM initiative](../research/Current%20Research%20Initiatives.md), which must manage options positions across multiple time horizons (intraday hedges, 21–45 DTE positions, LEAPS).
+The layered memory concept is relevant to the [MAOPM initiative](../research/current%20research%20initiatives.md), which must manage options positions across multiple time horizons (intraday hedges, 21–45 DTE positions, LEAPS).
 
 ## Related Concepts
 

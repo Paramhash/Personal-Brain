@@ -6,7 +6,7 @@ source_origin: "level1-analysis"
 ---
 # Options Strategies
 
-Options strategies are structured positions combining one or more options legs (and optionally the underlying) to express a specific market view with a defined risk/reward profile. Strategy selection is the primary output of the [Strategy Research Team](../research/Current%20Research%20Initiatives.md) debate in the MAOPM system.
+Options strategies are structured positions combining one or more options legs (and optionally the underlying) to express a specific market view with a defined risk/reward profile. Strategy selection is the primary output of the [Strategy Research Team](../research/current%20research%20initiatives.md) debate in the MAOPM system.
 
 ## Strategy Taxonomy
 
@@ -79,7 +79,7 @@ This is the core decision rule the Long-Vol and Short-Vol Researchers debate aro
 
 ## Use in MAOPM
 
-Strategy selection is not static — it is determined each cycle by the [Long-Vol Researcher and Short-Vol Researcher](../research/Current%20Research%20Initiatives.md) debate, informed by [implied volatility](../concepts/implied-volatility.md), [surface dynamics](../concepts/volatility-surface-dynamics.md), [GEX/regime](../concepts/gamma-exposure-gex.md), and [event risk](../concepts/event-driven-options-risk.md). The Portfolio Manager then checks the selected strategy against portfolio-level [Greek targets](../concepts/portfolio-greeks-management.md) before approval.
+Strategy selection is not static — it is determined each cycle by the [Long-Vol Researcher and Short-Vol Researcher](../research/current%20research%20initiatives.md) debate, informed by [implied volatility](../concepts/implied-volatility.md), [surface dynamics](../concepts/volatility-surface-dynamics.md), [GEX/regime](../concepts/gamma-exposure-gex.md), and [event risk](../concepts/event-driven-options-risk.md). The Portfolio Manager then checks the selected strategy against portfolio-level [Greek targets](../concepts/portfolio-greeks-management.md) before approval.
 
 ## Related Concepts
 

@@ -6,7 +6,7 @@ source_origin: "level1-analysis"
 ---
 # Options Risk Metrics
 
-Options Risk Metrics are the quantitative measures used to evaluate and compare the risk/reward profile of individual options positions and the portfolio as a whole. These are the primary decision inputs for the Risk Management Team in the [MAOPM system](../research/Current%20Research%20Initiatives.md).
+Options Risk Metrics are the quantitative measures used to evaluate and compare the risk/reward profile of individual options positions and the portfolio as a whole. These are the primary decision inputs for the Risk Management Team in the [MAOPM system](../research/current%20research%20initiatives.md).
 
 ## Per-Position Metrics
 

@@ -6,7 +6,7 @@ source_origin: "level1-analysis"
 ---
 # Volatility Surface Dynamics
 
-This note extends [Volatility Surfaces](../concepts/volatility-surfaces.md) to cover how the surface *moves* over time and what those movements signal — the domain of the Volatility Analyst agent in the [MAOPM system](../research/Current%20Research%20Initiatives.md).
+This note extends [Volatility Surfaces](../concepts/volatility-surfaces.md) to cover how the surface *moves* over time and what those movements signal — the domain of the Volatility Analyst agent in the [MAOPM system](../research/current%20research%20initiatives.md).
 
 ## Volatility Skew
 
@@ -58,7 +58,7 @@ For the GEX/Regime Analyst, surface shape provides corroborating evidence for [r
 
 ## Use in MAOPM
 
-The Volatility Analyst synthesizes these surface dynamics into a structured report — identifying vol regime (expanding/contracting/stable), skew state (steep/flat), and term structure shape (normal/inverted/humped) — which feeds directly into the debate between the [Long-Vol and Short-Vol Researchers](../research/Current%20Research%20Initiatives.md).
+The Volatility Analyst synthesizes these surface dynamics into a structured report — identifying vol regime (expanding/contracting/stable), skew state (steep/flat), and term structure shape (normal/inverted/humped) — which feeds directly into the debate between the [Long-Vol and Short-Vol Researchers](../research/current%20research%20initiatives.md).
 
 ## Related Concepts
 

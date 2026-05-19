@@ -6,7 +6,7 @@ source_origin: "maopm-design"
 ---
 # Recording Secretary Agent
 
-The **Recording Secretary** is a passive observer agent in the [MAOPM](../research/Current%20Research%20Initiatives.md) [Observer Track](../research/Current%20Research%20Initiatives.md) that maintains an immutable, append-only [Decision Ledger](../concepts/decision-ledger.md) of all system activity. It has no decision-making authority and participates in no debates. Its sole function is to observe every state transition and structured document produced by the Agent State Track and record them in a structured, queryable, human-readable form.
+The **Recording Secretary** is a passive observer agent in the [MAOPM](../research/current%20research%20initiatives.md) [Observer Track](../research/current%20research%20initiatives.md) that maintains an immutable, append-only [Decision Ledger](../concepts/decision-ledger.md) of all system activity. It has no decision-making authority and participates in no debates. Its sole function is to observe every state transition and structured document produced by the Agent State Track and record them in a structured, queryable, human-readable form.
 
 ## Role in the Two-Track Architecture
 

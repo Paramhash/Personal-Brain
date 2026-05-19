@@ -6,7 +6,7 @@ source_origin: "maopm-design"
 ---
 # Decision Ledger
 
-The **Decision Ledger** is the append-only, persistent record of all decisions, recommendations, debates, fills, and Board directives produced by the [MAOPM](../research/Current%20Research%20Initiatives.md) system. It is maintained exclusively by the [Recording Secretary](../concepts/recording-secretary-agent.md) in the Observer Track. It is the system's authoritative state on restart and the primary source for performance attribution.
+The **Decision Ledger** is the append-only, persistent record of all decisions, recommendations, debates, fills, and Board directives produced by the [MAOPM](../research/current%20research%20initiatives.md) system. It is maintained exclusively by the [Recording Secretary](../concepts/recording-secretary-agent.md) in the Observer Track. It is the system's authoritative state on restart and the primary source for performance attribution.
 
 ## Design Principles
 
