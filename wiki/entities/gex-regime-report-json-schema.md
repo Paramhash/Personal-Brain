@@ -46,9 +46,15 @@ This schema defines the structured payload produced by the GEX/Regime Analyst ag
           "type": "number",
           "description": "Average GEX Z-score across all 500 S&P 500 constituents; measures internal gamma health"
         },
+        "index_gex_sign": {
+          "type": "string",
+          "enum": ["positive", "negative"],
+          "description": "Sign of raw Index GEX. Negative = dealers structurally short index gamma; triggers Layer 1 hard cap independently of RDR sigmoid."
+        },
         "regime_divergence_ratio": {
           "type": "number",
-          "description": "Index GEX / sum(component GEX). Coherent band: 0.5–2.0. See Regime Divergence Ratio concept."
+          "minimum": 0,
+          "description": "|Index GEX| / \u03a3|Component GEX|. Always non-negative. Coherent band: 0.5\u20132.0. Raw signed values are NOT used here; sign is tracked separately in index_gex_sign."
         },
         "gamma_flip_level": {
           "type": "number",
@@ -128,17 +134,33 @@ This schema defines the structured payload produced by the GEX/Regime Analyst ag
 The following is computed in code before the LLM receives the report:
 
 ```
+# Step 1: Compute absolute-value RDR to preserve sigmoid validity
+# Raw signed GEX values must NOT be passed into the sigmoid function directly.
+# Index GEX sign is tracked separately and triggers the Layer 1 hard cap.
+index_gex_sign = "negative" if index_gex < 0 else "positive"
+ratio = abs(index_gex) / sum(abs(g) for g in component_gex_values)
+
+# Step 2: Layer 1 binary override — negative Index GEX
+# Dealers structurally short index gamma: hard cap on Γ and ν regardless of ratio.
+if index_gex_sign == "negative":
+    layer1_hard_cap_active = True  # Handled by GEX filter; RDR sigmoid still runs in parallel
+
+# Step 3: RDR sigmoid classification (runs on absolute ratio)
 if ratio > 2.0:
     divergence_regime_classification = "artificial_stability"
     microstructure_bias = "suspend_premium_selling"
-    new_positions_permitted = false
+    new_positions_permitted = False
 elif ratio < 0.5:
+    # Hidden Strength — Dispersion Warning:
+    # Single-stock vol is expanding relative to index. Index options underprice real basket
+    # volatility. Selling index premium (SPX/SPY iron condors) is structurally dangerous
+    # even if index surface appears calm. Suspend index premium-selling.
     divergence_regime_classification = "hidden_strength"
     microstructure_bias = "suspend_premium_selling"
-    new_positions_permitted = false
+    new_positions_permitted = False
 else:  # 0.5 ≤ ratio ≤ 2.0
     divergence_regime_classification = "coherent"
-    new_positions_permitted = true
+    new_positions_permitted = True
     if ratio < 0.9:
         coherent_subregime = "component_led_strength"
         microstructure_bias = "neutral"

@@ -81,6 +81,40 @@ Risk Management Team → enforces hard limits; may veto or resize
 Execution Agent → confirms fill; Greeks Analyst updates portfolio state
 ```
 
+## How Tightening Gamma/Vega Limits Affects Position Sizing and Capital Deployment
+
+Greek limits are portfolio-wide caps on the **net sum across all open positions**, not per-position limits. After all positions net out (e.g., a short put partially cancels a long call hedge), the residual must stay within the limit.
+
+### Vega Limit Tightening
+
+Vega measures P&L change per 1% move in implied volatility. Short-vol strategies (iron condors, CSPs, short strangles) are net short vega — they lose when IV spikes. Tightening the vega limit reduces the allowable short vega position:
+
+**Sizing math**: if one iron condor contributes −$80 vega and the allowable short vega drops from −$3,000 to −$1,500, maximum contract count drops from ~37 to ~18. Premium collected (theta) per cycle falls proportionally. The theta-to-vega ratio does not improve — the portfolio simply earns less.
+
+### Gamma Limit Tightening
+
+Gamma measures how fast delta changes as the underlying moves. A net short gamma book has a concave P&L profile — it profits from stillness, suffers from large moves. Tighter gamma limits do not simply reduce size; they **change which strategy types are viable**:
+
+- Short gamma comes primarily from short options near ATM with short DTE
+- Tighter limits push toward wider spreads (defined-risk structures cap gamma per contract), longer DTE (lower gamma), or fewer contracts
+- This may require shifting *strategy type* — e.g., from short strangles to iron condors, or from 30-DTE to 45-DTE positions
+
+### Capital Deployment Consequence
+
+The binding Greek limit determines how much buying power reduction (BPR) can actually be deployed:
+
+```
+Capital deployed ≤ min(
+    BPR cap (% of net liquidation value),
+    vega limit / vega-per-contract,
+    gamma limit / gamma-per-contract
+)
+```
+
+In a vol-expansion regime, tighter vega limits often become the **binding constraint before the BPR cap is reached** — capital sits idle that would otherwise be deployable. A portfolio at 40% BPR utilization under normal limits may drop to 20% under tightened vega limits, with the remaining 20% unallocated because adding any more short-vol exposure would breach the cap.
+
+The exact scaling function (linear, step-function, or regime-specific presets) is an open question documented in [Q2 of the MAOPM research agenda](../research/research-agenda-options-maopm.md).
+
 ## Related Concepts
 
 - [Options Greeks](../concepts/options-greeks.md) — definitions of Delta, Gamma, Vega, Theta

@@ -1,32 +1,22 @@
+yaml
 ---
-tags: ["data-provider", "options", "greeks", "fintech", "quant-trading"]
+tags: ["data-provider", "financial-data", "options-data", "market-data"]
 created: 2023-10-27
 reviewed: false
-source_origin: "Data provider that provides real-time Greeks.md"
+source_origin: "maopm_horizon_spread_blueprint.md"
 ---
+```
 # ThetaData
 
-ThetaData has emerged as a leading data provider for serious retail quantitative traders, known for its strong price-to-performance ratio in delivering real-time options data.
+**ThetaData** is a financial data provider specializing in options market data. It offers services tailored for quantitative analysis and trading systems, particularly those requiring pre-processed or high-level derivatives data.
 
-## Model
+Key features and characteristics of ThetaData include:
+*   **Data Feed Type:** Primarily offers a Rest API for historical data and specialized binary WebSockets for streaming real-time data.
+*   **Granularity:** Provides nanosecond/microsecond-level contract events.
+*   **Chain Architecture:** Utilizes hierarchical framing, allowing users to structure queries by underlying or root symbol, which can simplify data ingestion for complex option chains.
+*   **Implied Volatility / Greek Engines:** A significant advantage is that ThetaData provides pre-calculated real-time Greeks and implied volatility (IV) surfaces directly within its data tier. This offloads substantial computational burden from the client.
+*   **Compute Overhead for Client:** Relatively low, as the provider handles the compute-heavy step of building the IV surface and calculating real-time Greeks on their servers.
 
-ThetaData provides real-time streaming [Options Greeks](../concepts/options-greeks.md) (Delta, Gamma, Vega, Theta) via a local "Theta Terminal." This terminal handles data compression and delivery, making it efficient for users to consume high volumes of data.
-
-## Key Features & Benefits
-
-*   **Real-time Greeks:** Direct access to per-contract Greek values.
-*   **Developer-Friendly:** Offers an efficient [Python SDK](../entities/python.md), making it easy for developers to integrate into their trading and analysis workflows.
-*   **Cost-Effective:** Positioned as a high-value option for its capabilities.
-*   **Raw Chain Access:** Allows users to pull the raw options chain data, enabling local computation and aggregation of metrics like [Gamma Exposure (GEX)](../concepts/gamma-exposure.md) profiles.
-
-## Cost
-
-Approximately $25/month for the Standard plan and up to $60/month for the Pro plan, offering real-time options data.
-
-## Suitability
-
-ThetaData is particularly well-suited for users with powerful local computing resources, such as an [AMD Ryzen Threadripper 3990X](../entities/amd-ryzen-threadripper-3990x.md). These users can leverage their hardware to process the raw options chain data and perform custom calculations and aggregations, such as generating [GEX Divergence dashboards](../concepts/gamma-exposure.md) using parallel processing tools like [Ray](../entities/ray.md) or [multiprocessing](../entities/multiprocessing.md).
-
-It is a core recommendation for the "DIY" approach to options analytics, as detailed in [Real-time Options Greeks Data Providers](../concepts/real-time-options-greeks-data-providers.md).
+For systems like the [MAOPM architecture for signal fusion](../concepts/maopm-architecture-horizon-spread-gex-fusion.md), ThetaData is recommended when the goal is to minimize immediate infrastructure overhead, allowing the MAOPM data ingestion agent to pull clean, pre-filtered constant-maturity variance profiles directly.
 
 ---

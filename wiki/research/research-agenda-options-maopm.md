@@ -6,7 +6,7 @@ tags:
   - llm
   - portfolio-management
 created: 2026-05-16
-reviewed: false
+reviewed: 2026-05-19
 source_origin: level1-analysis
 ---
 # Research Agenda: Multi-Agent LLM Options Portfolio Manager (MAOPM)
@@ -32,11 +32,13 @@ This note documents the highest-value open research questions for the [MAOPM ini
 
 **Why it matters**: Static Greek limits (fixed delta/vega caps) ignore market context. A ±$500 delta limit in a low-vol, positive-GEX regime is overly conservative; the same limit in a negative-GEX, vol-expansion regime may be dangerously permissive.
 
+**Status**: Substantially answered (~85%). All four sub-questions resolved by `dynamic-portfolio-greek-limits.md`. Open gap: the horizon spread (Q9) has no integration point in the 3-layer trigger hierarchy — it is a macro leading signal that should sit at or adjacent to Layer 2 but is currently absent from the dynamic limits architecture.
+
 **Sub-questions**:
-- What is the optimal function mapping regime state → Greek limit scaling? (Linear? Step-function? Regime-specific presets?)
-- Should the [Regime Divergence Ratio](../concepts/regime-divergence-ratio.md) serve as the primary scaler? Proposed rule: coherent band (0.5–2.0) → standard limits; ratio approaching band edge → tighten vega/gamma limits; outside band → suspend new premium selling, activate divergence-strategy mode. Is this the correct trigger function, or should other regime signals dominate?
-- How frequently should Greek limits be recalibrated — per-cycle, daily, weekly?
-- Should different Greeks have independent regime scaling (e.g., tighten vega limits in vol expansion without changing delta limits)?
+- ✅ What is the optimal function mapping regime state → Greek limit scaling? → Bi-symmetric sigmoid M(x) ∈ [0,1]; linear (sluggish at boundaries) and step-function (cliff effects) explicitly rejected. See [Dynamic Portfolio Greek Limits](../concepts/dynamic-portfolio-greek-limits.md).
+- ✅ Should RDR serve as the primary scaler? → RDR is Layer 3 of a 3-layer hierarchy. Layer 1 (Index GEX sign — binary hard cap on Γ/ν) and Layer 2 (VVIX >3σ tail acceleration — suspend all short-vega) take precedence over the sigmoid. Open gap: horizon spread not yet integrated as a trigger layer.
+- ✅ How frequently should Greek limits be recalibrated? → 3-tier governance: (1) daily batch EOD (RDR, term structure, net GEX recalculated; M(x) coefficients locked), (2) intraday streaming (gamma flip crossing or VVIX >3σ spike — immediate override), (3) per-cycle monthly expiry (baseline L_base capacity recalibration). See [Dynamic Portfolio Greek Limits](../concepts/dynamic-portfolio-greek-limits.md).
+- ✅ Should different Greeks have independent regime scaling? → Yes. Asymmetric rules: Γ/ν contract aggressively (M→0) in negative GEX / RDR >2.0; Δ expands (M>1.0) in the same regime to absorb noise without churn; Θ expands maximally (M→1.0) in coherent + high absolute GEX regime to harvest variance risk premium.
 
 **Relevant vault concepts**: [Portfolio Greeks Management](../concepts/portfolio-greeks-management.md), [Regime Detection](../concepts/regime-detection.md), [Gamma Exposure (GEX)](../concepts/gamma-exposure-gex.md), [Regime Divergence Ratio](../concepts/regime-divergence-ratio.md)
 
@@ -79,8 +81,10 @@ This note documents the highest-value open research questions for the [MAOPM ini
 
 **Why it matters**: The MAOPM Regime Analyst must synthesize two structurally distinct signal families — (A) GEX/microstructure signals (dealer positioning, gamma flip, Regime Divergence Ratio) and (B) option-implied macro signals (IV term structure, vol skew, and the horizon spread metric from [Lai 2022](../sources/Detecting%20stock%20market%20regimes%20from%20option%20prices.md)). Signal Family A is real-time and microstructure-sensitive; Signal Family B is forward-looking and detected the COVID-19 regime shift in December 2019 — three months before GEX or historical-vol methods signaled it. The split between compute (rules-based/code) and interpretation (LLM) is not obvious, and the fusion architecture has not been specified.
 
+**Status**: ~35% answered. Sub-question 1 resolved by Q3 schema design. Sub-questions 2–5 remain open.
+
 **Sub-questions**:
-- Should GEX Z-score computation and horizon spread estimation both be done in code (Python/Ray), with the LLM only interpreting the synthesized output, or can an LLM handle signal integration?
+- ✅ Should GEX Z-score computation and horizon spread estimation both be done in code, with the LLM only interpreting? → Yes — established by Q3 schema design. Both the GEX rules engine (pseudocode in [GEX Regime Report Schema](../entities/gex-regime-report-json-schema.md)) and `horizon_spread` ([Vol Surface Summary Schema](../entities/vol-surface-summary-json-schema.md)) are computed in code; LLMs receive structured JSON outputs and interpret, not compute.
 - How much GEX context (index GEX, internal GEX index, top-5 weighted stock GEX, gamma flip level, Regime Divergence Ratio) is necessary for the LLM to produce reliable regime classifications?
 - Can a deep-reasoning model (o1/o3) improve on FlashAlpha's pre-calculated regime labels, or is FlashAlpha's output sufficient as direct input?
 - How should the GEX/Regime Analyst's output interact with the Volatility Analyst's horizon spread output — are these independent signals to be debated, or should a single fused Regime Analyst hold both?
@@ -98,6 +102,8 @@ This note documents the highest-value open research questions for the [MAOPM ini
 
 **Why it matters**: The system could manage a single underlying (e.g., SPY) or a multi-symbol portfolio. Complexity, data requirements, and Greek netting all scale with the number of underlyings.
 
+**Structural constraint**: The vault's [GEX Divergence Strategies](../concepts/gex-divergence-strategies.md) documents four strategies — Fragility Short, Dispersion Trade, Gamma Flip Mean Reversion, and Term Structure Catch-Up — all of which require per-constituent GEX data (individual stock gamma exposure). A single-SPY MAOPM cannot execute any of these strategies even when the RDR explicitly signals the opportunity (e.g., RDR < 0.5 → dispersion regime). Limiting Phase 1 to SPY-only forecloses the primary GEX-divergence strategy set. This argues for at least a constituent overlay (Mag 7 or S&P 100 subset) alongside the index position from Phase 1 onward.
+
 **Sub-questions**:
 - Should Phase 1 focus on a single liquid ETF (SPY, QQQ) or a basket of 5–10 individual stocks (similar to TradingAgents' AAPL/GOOGL/AMZN/NVDA/META)?
 - How does the multi-symbol case change the Portfolio Manager's Greek management challenge? (Net Greeks across different underlyings require correlation assumptions)
@@ -111,9 +117,11 @@ This note documents the highest-value open research questions for the [MAOPM ini
 
 **Why it matters**: A live options portfolio requires continuous management decisions (roll, close early, adjust strikes) in addition to new position decisions. These are fundamentally different tasks — management is reactive (existing positions approaching risk limits or DTE thresholds); initiation is proactive (deploying capital per strategy signal). The vault's [Expiration Management](../concepts/expiration-management.md) note documents time-critical requirements — 21 DTE forced-close rule, pin risk monitoring at 3:00 PM ET on expiration day, assignment risk escalation when |delta| > 0.70 — that are **incompatible with a standard analysis-cycle cadence**. These are not periodic events; they are triggered events requiring sub-minute response at certain DTE thresholds. A slow LLM debate loop cannot handle them. This pushes a fast-path management agent into Phase 2, not Phase 3 as currently planned.
 
+**Status**: ~50% answered. Sub-questions 1 and 2 resolved by existing schema and concept note design. Sub-questions 3 and 4 remain open.
+
 **Sub-questions**:
-- Should management decisions (rolling, early close) use the same agent debate loop as new positions, or a separate deterministic fast path (rules engine) for time-critical events?
-- What triggers a management review cycle vs. the standard analysis cycle? Specific thresholds: DTE ≤ 21 (roll review), |delta| > 0.20 at DTE < 14 (escalation alert), underlying within 0.5% of short strike at 3:00 PM ET on expiration day (forced close).
+- ✅ Should management decisions use the same debate loop or a separate deterministic fast path? → Separate fast path. The `requires_fast_path` boolean in the [Greek Exposure Report Schema](../entities/greek-exposure-report-json-schema.md) `management_flags` block flags time-critical positions; when set, the rules engine executes directly without an LLM debate loop.
+- ✅ What triggers a management review cycle vs. the standard analysis cycle? → Thresholds established in [Expiration Management](../concepts/expiration-management.md) and formalized as `management_flags` schema fields: `dte_alert` (DTE ≤ 21), `delta_escalation` (|delta| > 0.20 at DTE < 14), `pin_risk_active` → forced close (underlying within 0.5% of short strike at 3:00 PM ET on expiration day).
 - How should the unified alert queue (merging the expiration management calendar and the event-driven options risk calendar) be implemented to avoid duplicate or conflicting alerts on the same position?
 - How should the system prioritize management actions over new position initiation when capital is constrained?
 
@@ -126,6 +134,8 @@ This note documents the highest-value open research questions for the [MAOPM ini
 ## Q8: Can TradingAgents-style performance claims be replicated and exceeded in options?
 
 **Why it matters**: [TradingAgents](../entities/tradingagents-framework.md) demonstrated 23–26.62% cumulative returns vs. 7.78% buy-and-hold over Q1 2024 (Sharpe 5.60–8.21 vs. 2.31–3.53 for baselines). Options strategies have different return and risk characteristics — the comparison baseline must be options-native (mechanical iron condors, systematic covered calls, VIX-regime switching).
+
+**Status**: Not answered. Prerequisite gap identified: all three referenced vault files are equity-centric. `algorithmic-trading-strategies-baselines.md` covers MACD, SMA, Buy & Hold, ZMR, KDJ/RSI only. `financial-trading-evaluation-metrics.md` and `financial-trading-performance-metrics.md` cover CR, AR, Sharpe, MDD only. No options-native baselines (mechanical iron condors, XYLD, Tastytrade-style CSPs) and no options-specific performance metrics (theta-adjusted return, PoP vs. realized profit rate, IV premium capture rate) exist in the vault. These must be documented before Q8 is tractable. Phase 4 deferral is appropriate.
 
 **Sub-questions**:
 - What are the appropriate baseline options strategies for comparison? (Mechanical weekly iron condors on SPY? Tastytrade-style 45-DTE CSPs? Covered call ETFs like XYLD?)
@@ -142,9 +152,11 @@ This note documents the highest-value open research questions for the [MAOPM ini
 
 **Why it matters**: Wan Ni Lai (2022) demonstrates that the horizon spread — the difference between the option-implied equity risk premium at 180-day and 30-day horizons — achieves only 4.6% probability mass in the "indecisive" zone (0.1–0.9 posterior probability) vs. 34% for GARCH volatility and 16% for historical returns. It detected COVID-19 in December 2019 while returns and volatility only signaled in March 2020. This makes it a materially superior leading indicator for macro regime shifts. The GEX Z-score and Regime Divergence Ratio capture dealer microstructure (days-to-weeks horizon). The horizon spread captures macro regime transitions (weeks-to-months horizon). These are complementary, not competing, signals. How they are fused in the MAOPM agent architecture is unspecified.
 
+**Status**: ~25% answered. Sub-question 2 resolved by Vol Surface Summary schema design. Sub-question 1 partially answered (provider and data form established; API specification open). Sub-questions 3, 4, and 5 remain open.
+
 **Sub-questions**:
-- What is the minimum data infrastructure required to compute the horizon spread in near-real-time? (Requires per-strike put/call prices at 30-day and 180-day tenors; is this available from ThetaData or Polygon.io at the required granularity?)
-- Should the horizon spread be computed by the Vol Analyst agent (it is derived from the vol surface / option prices) or by a dedicated Regime Analyst agent (it is a regime signal)?
+- 🟡 What is the minimum data infrastructure required to compute the horizon spread in near-real-time? (Requires per-strike put/call prices at 30-day and 180-day tenors; is this available from ThetaData or Polygon.io at the required granularity?) — **Partially answered**: [ThetaData](../entities/thetadata.md) is the recommended provider; it delivers pre-filtered **constant-maturity variance profiles** directly, which is the correct data form for computing BKM Q-measure variance V_Q(30) and V_Q(180). [Polygon.io](../entities/polygon-io.md) is feasible but delivers raw ticks requiring full client-side IV surface construction and BKM integration — high compute overhead. Open gaps: (a) does ThetaData return constant-maturity profiles interpolated to exactly 30d/180d, or fixed expiry dates requiring client interpolation? (b) update frequency in live markets (per-quote vs. per-minute)? (c) which subscription tier unlocks constant-maturity variance output? (d) is V_Q(T) returned pre-computed or must the client run BKM integration against the chain?
+- ✅ Should the horizon spread be computed by the Vol Analyst or a dedicated Regime Analyst? → Vol Analyst. The [Vol Surface Summary Schema](../entities/vol-surface-summary-json-schema.md) places `horizon_spread` as a code-computed field in the Volatility Analyst's report. It is delivered to downstream agents as a structured field — not a free-text interpretation.
 - How should a horizon spread inversion (HS < 0, signaling short-term risk > long-term) affect the Long-Vol/Short-Vol Researcher debate — does it immediately shift the prior toward long-vol, or is it one input among several?
 - What is the lag structure between horizon spread inversion and GEX regime transition? If horizon spread leads GEX by weeks, can MAOPM position early before GEX confirms?
 - How do you handle the case where horizon spread signals a macro crisis regime while GEX/Regime Divergence Ratio still signals a coherent, stable microstructure regime?
@@ -161,11 +173,13 @@ This note documents the highest-value open research questions for the [MAOPM ini
 
 **Why it matters**: [TradingGPT](../entities/tradinggpt.md) introduced short-term, medium-term, and long-term memory tiers specifically to overcome LLM context-window limits in multi-horizon trading tasks. The MAOPM manages positions across structurally distinct time horizons: 0DTE/intraday (extreme gamma, minute-by-minute delta hedging), 21–45 DTE (premium-selling core, periodic rolling decisions), and 90–180+ DTE LEAPS (structural, monthly reviews). These three horizons map precisely onto TradingGPT's three memory tiers. Without layered memory, a MAOPM agent reviewing a 0DTE hedge decision would need to carry full context about all 45-DTE positions and LEAPS simultaneously — context-window overflow or token cost explosion is the likely failure mode.
 
+**Status**: ~25% answered. Sub-questions 3 and 4 resolved by the Recording Secretary / Decision Ledger architecture. Sub-questions 1, 2, and 5 remain open.
+
 **Sub-questions**:
 - What information belongs in each memory tier for MAOPM? (Short-term: intraday delta hedges, 0DTE alerts, breach events; Medium-term: open 21–45 DTE position Greeks, recent vol regime classifications, last debate outcomes; Long-term: structural regime state, LEAPS positions, performance history, strategy bias parameters)
 - What is the eviction policy for each tier? (Short-term: rolling session window; Medium-term: position close or roll; Long-term: regime transition event)
-- Does layered memory require persistent storage (database) for the medium and long-term tiers, given that MAOPM runs continuously and must survive process restarts?
-- Can layered memory be implemented as a structured document (JSON) rather than a vector embedding store, given that MAOPM's data is numerical and structured rather than textual and semantic?
+- ✅ Does layered memory require persistent storage? → Yes. Established by the Recording Secretary / Decision Ledger design: the Decision Ledger (SQLite, append-only) is the authoritative persistent store for medium and long-term tier content across process restarts. See [Decision Ledger](../concepts/decision-ledger.md).
+- ✅ Can layered memory be implemented as structured JSON rather than a vector embedding store? → Yes. Confirmed by Decision Ledger schema design: MAOPM data is numerical and structured; vector embeddings provide no advantage over structured JSON queries for Greeks, regime enums, and position state. See [Decision Ledger](../concepts/decision-ledger.md).
 - How does the Portfolio Manager agent query cross-tier memory when making a position sizing decision that depends on both current Greeks (medium-term) and structural regime (long-term)?
 
 **Relevant vault concepts**: [Expiration Management](../concepts/expiration-management.md), [Portfolio Greeks Management](../concepts/portfolio-greeks-management.md), [Multi-Agent Systems](../concepts/multi-agent-systems.md), [Zero Days to Expiration](../concepts/zero-days-to-expiration.md)
@@ -177,6 +191,8 @@ This note documents the highest-value open research questions for the [MAOPM ini
 ## Q11: How should the Observer Track be designed to minimize overhead on the Agent State Track?
 
 **Why it matters**: The Observer Track (Recording Secretary, Board Interface, Performance Observer) runs in parallel with every Track 1 cycle. If Seam A event emission introduces latency into the Track 1 critical path — particularly in EXECUTING, where sub-second order routing matters — the audit infrastructure becomes a liability. The design must keep Track 1 fully decoupled from Track 2's write performance.
+
+**Status**: ~30% answered. The Recording Secretary architecture ([Recording Secretary Agent](../concepts/recording-secretary-agent.md)) establishes the Seam A event taxonomy and Seam B default content; all five operational design questions (sync/async, minimum event set, pre-computation timing, Performance Observer scheduling, Seam B budget) remain open.
 
 **Sub-questions**:
 - Should Seam A be synchronous (Track 1 waits for Recording Secretary acknowledgment) or asynchronous (fire-and-forget to an event queue)? The latter eliminates latency coupling but introduces the possibility of missed events on crash.
@@ -195,10 +211,12 @@ This note documents the highest-value open research questions for the [MAOPM ini
 
 **Why it matters**: The current MAOPM design specifies Track 1 as in-memory per cycle. Track 2's Decision Ledger is the authoritative persistent state. But "persistent state" for a live options portfolio is multi-layered: the ledger records decisions, but the Portfolio Manager also needs current position Greeks, open order status, and margin availability on restart — data that lives in the broker API (IB TWS), not the ledger. The rehydration sequence on restart is unspecified and could leave Track 1 agents with stale or incomplete state.
 
+**Status**: ~20% answered. The principle is established — the Decision Ledger is the authoritative rehydration source on restart (see [Recording Secretary Agent](../concepts/recording-secretary-agent.md)). The complete rehydration procedure, restart sequence ordering, IB TWS unavailability handling, and portfolio snapshot question remain open.
+
 **Sub-questions**:
 - What is the complete set of state that Track 1 needs at ANALYZING start after a process restart? (Candidate list: open positions + current Greeks from IB TWS; Active Directives from Decision Ledger; last regime classification from Decision Ledger; unresolved Greek breach events from Decision Ledger; last N cycle summaries from Decision Ledger.)
 - Should MAOPM maintain a separate "portfolio snapshot" store (updated after every EXECUTING phase) distinct from the Decision Ledger, or can the portfolio state be fully reconstructed from the ledger's `fill` and `expiry-alert` entries?
-- What is the restart sequence? Proposed order: (1) load Active Directives from ledger, (2) query IB TWS for live position state, (3) query IB TWS for current Greeks, (4) load last regime classification from ledger, (5) generate Seam B context block, (6) enter ANALYZING. Is this the correct order and are there dependencies?
+- What is the restart sequence? Proposed order: (1) load Active Directives from ledger, (2) query IB TWS for live position state, (3) query IB TWS for current Greeks, (4) load last regime classification from ledger, (5) generate Seam B context block, (6) enter ANALYZING. Is this the correct order and are there dependencies? Note: Step 1 is confirmed — [Board Directive Protocol](../concepts/board-directive-protocol.md) specifies that `persistent` scope directives survive process restarts and are stored in the Decision Ledger with `status: active | expired | revoked`, making them fully reconstructable from the ledger on restart.
 - How should MAOPM handle the case where IB TWS is unavailable on restart (e.g., outside market hours)? Should it enter a suspended state until market open or proceed with stale Greeks from the ledger?
 - Does the Decision Ledger's SQLite recommendation (from [Decision Ledger](../concepts/decision-ledger.md)) support the concurrent read pattern needed during rehydration without locking?
 
@@ -212,17 +230,17 @@ This note documents the highest-value open research questions for the [MAOPM ini
 
 | Question | Priority | Tractable Now? | Effort | Phase |
 |---|---|---|---|---|
-| ~~Q3 — Communication schemas~~ | ~~Critical~~ **Resolved** | ~~Yes~~ Done | ~~Medium~~ | 1 |
-| Q2 — Dynamic Greek limits + Regime Div. Ratio scaler | High | Yes | Medium | 2 |
+| ~~Q3 — Communication schemas~~ | ~~Critical~~ **Resolved** | ~~Yes~~ Done | ~~Medium~~ | ~~1~~ |
+| **Q11 — Observer Track overhead and Seam A/B design** *(30% answered)* | **High** | Yes | Medium | **0** |
+| **Q12 — State persistence and restart rehydration** *(20% answered)* | **High** | Yes | Medium | **0** |
+| Q2 — Dynamic Greek limits + Regime Div. Ratio scaler *(85% answered)* | High | Yes | Medium | 2 |
 | Q1 — LLM vs. rules-based split | High | Yes | Low–Medium | 1–2 |
-| Q7 — Management fast-path vs. initiation | **High** *(elevated)* | Yes | Medium | **2** *(moved up)* |
-| Q5 — Multi-signal regime fusion (GEX + horizon spread) | **High** *(elevated)* | Yes — Lai paper ingested | Medium | 2 |
-| Q9 — Horizon spread in MAOPM architecture | High | Yes — Lai paper ingested | Medium | 2 |
+| Q6 — Portfolio scope *(structural constraint: multi-symbol required for GEX divergence)* | Medium | Yes (decision, not research) | Low | 1 |
+| Q7 — Management fast-path vs. initiation *(50% answered)* | **High** *(elevated)* | Yes | Medium | **2** |
+| Q5 — Multi-signal regime fusion (GEX + horizon spread) *(35% answered)* | **High** *(elevated)* | Yes — Lai paper ingested | Medium | 2 |
+| Q9 — Horizon spread in MAOPM architecture *(15% answered)* | High | Yes — Lai paper ingested | Medium | 2 |
+| Q10 — TradingGPT layered memory → DTE tiers *(25% answered)* | Medium | Partial (source stub incomplete) | Medium | 2–3 |
 | Q4 — Backtesting approach + historical GEX blocker | High | Partial (GEX data availability TBD) | High | 4 |
-| Q10 — TradingGPT layered memory → DTE tiers | Medium | Partial (source stub incomplete) | Medium | 2–3 |
-| Q11 — Observer Track overhead and Seam A/B design | **High** | Yes | Medium | **0** |
-| Q12 — State persistence and restart rehydration | **High** | Yes | Medium | **0** |
-| Q6 — Portfolio scope | Medium | Yes (decision, not research) | Low | 1 |
-| Q8 — Performance baseline vs. options-native strategies | Low | Partial | High | 4 |
+| Q8 — Performance baseline vs. options-native strategies *(vault has no options baselines)* | Low | No — prerequisite gap | High | 4 |
 
 ---
