@@ -136,8 +136,9 @@ Adapted from TradingAgents' hybrid approach:
 
 | Data Type | Provider | Used By |
 |---|---|---|
-| Real-time Greeks, IV, options chain | [ThetaData](../entities/thetadata.md) | Greeks Analyst, Vol Analyst |
-| GEX, regime labels | [FlashAlpha](../entities/flashalpha.md) | GEX/Regime Analyst |
+| Real-time Greeks, IV, options chain | [ThetaData](../entities/thetadata.md) | Greeks Analyst, Vol Analyst, Tool 1 (GEX Engine), Tool 2 (Horizon Spread) |
+| GEX Z-scores, RDR, regime classification | Tool 1 — [GEX Regime Divergence Engine](tooling-requirements-maopm.md) (built on ThetaData + Ray) | GEX/Regime Analyst |
+| Horizon spread (ΔIHS) | Tool 2 — [Horizon Spread Pipeline](tooling-requirements-maopm.md) (built on ThetaData) | Volatility Analyst |
 | Underlying price, volume | [Polygon.io](../entities/polygon-io.md) | Technical Analyst, delta hedge triggers |
 | News, earnings calendar | Financial news APIs | News/Catalyst Analyst |
 | Live positions, P&L, margin | [Interactive Brokers API](../entities/interactive-brokers-api.md) | Portfolio Manager, Risk Team, Execution Agent |
