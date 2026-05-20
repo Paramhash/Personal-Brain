@@ -6,7 +6,7 @@ source_origin: "session-2026-05-19"
 ---
 # MAOPM Tooling Requirements
 
-Three custom computational tools must be built before the MAOPM agent loop can receive the structured signals it requires. An [existing dxFeed/Tastytrade data engine](../entities/tastytrade-dxfeed-data-engine.md) provides partial live-data implementations of Tool 1 and Tool 2. All other signal sources are either vendor subscriptions or off-the-shelf libraries.
+Four custom computational tools are defined for MAOPM. Build order is determined by dependency structure and evidence quality — Tool 1 (constituent GEX/RDR) is deferred pending empirical validation. An [existing dxFeed/Tastytrade data engine](../entities/tastytrade-dxfeed-data-engine.md) provides partial live-data implementations of Tool 1 and Tool 2. All other signal sources are either vendor subscriptions or off-the-shelf libraries.
 
 ---
 
@@ -43,6 +43,8 @@ Three custom computational tools must be built before the MAOPM agent loop can r
 **Existing partial implementation**: The [dxFeed Data Engine](../entities/tastytrade-dxfeed-data-engine.md) (`data_engine.py`) provides real-time per-contract `gamma` and `oi` via Tastytrade's OpenAPI websocket — sufficient to compute raw index GEX and `gamma_flip_level` for SPX/SPY. **Does not cover**: constituent-level GEX (500-stock bulk fetch is architecturally infeasible with a streaming websocket), GEX Z-scores (no historical data), or RDR. ThetaData remains required for the constituent chain data and 30-day rolling normalization window.
 
 **Relevant vault docs**: [GEX Scanner Logic Flow](gex-scanner-logic-flow.md), [Optimizing Greek Calculations with Ray](optimizing-greek-calculations-with-ray.md), [GEX Regime Report Schema](../entities/gex-regime-report-json-schema.md), [Dynamic Portfolio Greek Limits](../concepts/dynamic-portfolio-greek-limits.md), [Regime Divergence Ratio](../concepts/regime-divergence-ratio.md), [dxFeed Data Engine](../entities/tastytrade-dxfeed-data-engine.md)
+
+> ⚠️ **Status: Deferred to Phase 2** — Constituent GEX / RDR has no published predictive track record; only contemporaneous practitioner evidence exists for index-level GEX. The 500-stock bulk fetch, Ray parallelization, and ThetaData STANDARD tier subscription are deferred until empirical validation justifies the build cost. Index-level GEX (gamma flip, GEX sign, gamma wall) remains in scope via the existing dxFeed engine at no additional build cost.
 
 ---
 
@@ -89,8 +91,6 @@ Once implemented, constant-maturity interpolation and ERP differential complete 
 
 ---
 
----
-
 ## Tool 3: HMM Latent Regime Engine
 
 **Purpose**: Fuse the outputs of Tool 1 (GEX Z-score) and Tool 2 (ΔIHS) with realized vol and return features into a single Viterbi-decoded latent market regime state. Replaces the hard RDR-threshold → sigmoid lookup for the Layer 3 Greek limit scaler with a continuous, probability-weighted signal $M(x) = P(S_t = \text{dealer\_stabilized} | O_{1:t}) \times M_{\max}$.
@@ -104,7 +104,7 @@ Once implemented, constant-maturity interpolation and ERP differential complete 
 | `daily_log_return` | Closing price history | Polygon.io or ThetaData |
 | `intraday_parkinson_vol` | Intraday high/low: `(ln H − ln L)² / 4 ln 2` | Intraday OHLC data |
 | `vrp_trend` | IV² − HV² direction | `vendor_iv` / `solved_iv` + historical HV |
-| `gex_z_score` | Tool 1 output | 30-day rolling GEX history |
+| `near_expiry_state` | Near-Expiry HMM (Tool 4): 0=`pinning`, 1=`mean_reverting`, 2=`gamma_squeeze` | Tool 4 output |
 | `iv_hv_skew` | IV skew − HV skew | `vol_surface.py` + historical HV |
 | `horizon_spread_delta` | ΔIHS = ERP₁₈₀ − ERP₃₀ | Tool 2 output |
 
@@ -117,13 +117,74 @@ Once implemented, constant-maturity interpolation and ERP differential complete 
 - Intraday: forward-pass only using that morning's fitted parameters
 - Monthly: AIC/BIC K-selection on prior 6-month holdout
 
-**Minimum data requirement**: 60 trading days before first valid signal (30 for GEX Z-score rolling window + 30 for HMM estimation). Compounds the constituent GEX historical data dependency from Tool 1.
+**Minimum data requirement**: 30 trading days before first valid signal (Baum-Welch estimation minimum). Tool 4 (Near-Expiry HMM) must be live and accumulating `near_expiry_state` observations before Tool 3 training can begin. No dependency on Tool 1.
 
-**Existing partial implementation**: None. `hmmlearn` is available as a dependency ([hmmlearn entity](../entities/hmmlearn.md)); the feature matrix assembly requires Tool 1 and Tool 2 to be operational first. Tool 3 is therefore a **Phase 1 dependency** on Tool 1 completion and **Phase 0.5** for Tool 2 (BKM module completion enables `horizon_spread_delta`).
+**Existing partial implementation**: None. `hmmlearn` is available as a dependency ([hmmlearn entity](../entities/hmmlearn.md)). Tool 3 is a **Phase 1 dependency** on Tool 4 (Near-Expiry HMM provides `near_expiry_state`) and Tool 2 (BKM module provides `horizon_spread_delta`). No dependency on Tool 1.
 
-**Parallelization**: Baum-Welch on 252 days × 6 features is fast (seconds on a single core). No Ray distribution needed for the HMM itself. Ray parallelization in Tool 1 produces the `gex_z_score` input; Tool 3 consumes it.
+**Parallelization**: Baum-Welch on 252 days × 6 features is fast (seconds on a single core). No Ray distribution needed for Tool 3 itself.
 
 **Relevant vault docs**: [HMM Approaches in Options Pricing and Agent Architecture](hmm-estimates-of-probability-from-option-prices.md), [HMM in Finance — Latent Regime Engine](../concepts/hidden-markov-model-hmm-in-finance.md), [GEX Regime Report Schema](../entities/gex-regime-report-json-schema.md), [Dynamic Portfolio Greek Limits](../concepts/dynamic-portfolio-greek-limits.md), [hmmlearn](../entities/hmmlearn.md)
+
+---
+
+## Tool 4: Near-Expiry HMM (7DTE → 1DTE)
+
+**Purpose**: Classify the intraday microstructure regime during the final week of each expiration cycle for SPX/SPY. Runs independently of Tool 1, 2, and 3. Serves two roles simultaneously: (1) standalone MVP signal for DTE selection and position management, and (2) upstream training feature (`near_expiry_state`) fed into Tool 3's macro HMM feature vector.
+
+**Why custom**: No vendor provides a latent-state classifier keyed specifically to the 7DTE→1DTE gamma-dominated microstructure. Requires DTE-aligned per-expiration training sequences and VIX-stratified models not available in off-the-shelf HMM libraries without custom data assembly.
+
+**Output schema** (`near_expiry_hmm_state` block in GEX Regime Report):
+
+```json
+"near_expiry_hmm_state": {
+  "state_label": "pinning | mean_reverting | gamma_squeeze",
+  "state_index": 0,
+  "posterior_probs": [0.72, 0.18, 0.10],
+  "vix_tier": "A",
+  "dte_remaining": 2,
+  "as_of": "2026-05-20T14:35:00Z"
+}
+```
+
+**States**:
+
+| State | Index | Microstructure Interpretation |
+|---|---|---|
+| `pinning` | 0 | Spot gravitating toward high-OI strike; dealer hedging suppresses realized vol |
+| `mean_reverting` | 1 | Intraday mean reversion; GEX positive; no dominant pin |
+| `gamma_squeeze` | 2 | Spot escaping gamma wall; realized vol expanding; dealer delta-hedge creates feedback loop |
+
+**Feature vector** (7 dimensions):
+
+| Feature | Source | Notes |
+|---|---|---|
+| `gex_concentration_at_expiry` | dxFeed (live chain) | GEX mass within 1% of spot from target expiry only |
+| `spot_to_gamma_wall_distance` | dxFeed (live chain) | \|spot − gamma wall strike\| / spot |
+| `atm_gamma_velocity` | dxFeed (live chain) | dΓ/dt of ATM strike; see [ATM Gamma Velocity](../concepts/atm-gamma-velocity.md) |
+| `oi_concentration_ratio` | dxFeed (live chain) | Max-strike OI / total chain OI for target expiry |
+| `realized_vol_intraday` | ThetaData VALUE (1-min bars) | Parkinson estimator on rolling 30-min OHLC |
+| `atm_iv_dte_slope` | dxFeed (live chain) | dIV/dDTE at ATM; see [ATM IV DTE Slope](../concepts/atm-iv-dte-slope.md) |
+| `call_put_volume_ratio` | dxFeed (live chain) | Rolling 30-min call volume / put volume; see [Call-Put Volume Ratio](../concepts/call-put-volume-ratio.md) |
+
+**Training spec**:
+- `hmmlearn.GaussianHMM`, $K = 3$ states
+- Training sequences: DTE-aligned per-expiration slices (7DTE open → 1DTE close), each treated as one observation sequence
+- **VIX stratification**: Tier A (VIX < 20), Tier B (VIX ≥ 20) — separate model parameters per tier; tier selected at inference time
+- Baum-Welch EM on rolling 252-day (≈ 52 expiration cycles) history
+- Nightly refit; intraday forward-pass only
+- Minimum data: 30 trading days (≈ 6 expiration cycles) per VIX tier
+
+**Data sources**: ThetaData VALUE (1-min OHLC for `realized_vol_intraday`) + dxFeed live options chain (all other features). No ThetaData STANDARD required. No dependency on Tool 1, 2, or 3.
+
+**Update cadence**: Feature vector computed every 5 minutes during 7DTE→1DTE windows. Forward-pass inference → updated `near_expiry_hmm_state` block in GEX Regime Report.
+
+**Dual role**:
+- **Inner gate** (standalone MVP): DTE selection rule — enter short-gamma only when `state_label == "pinning"`; exit or tighten stops when `state_label == "gamma_squeeze"`. Actionable without Tool 3.
+- **Tool 3 input feature**: `near_expiry_state` (integer index 0/1/2) replaces `gex_z_score` in Tool 3's feature vector. Eliminates Tool 3's dependency on deferred Tool 1.
+
+**Build prompt**: Implementation specification at `plan-nearExpiryHmm7dteTo1dte.prompt.md` (Claude Code prompt).
+
+**Relevant vault docs**: [HMM in Finance — Latent Regime Engine](../concepts/hidden-markov-model-hmm-in-finance.md), [HMM Approaches in Options Pricing and Agent Architecture](hmm-estimates-of-probability-from-option-prices.md), [GEX Regime Report Schema](../entities/gex-regime-report-json-schema.md), [dxFeed Data Engine](../entities/tastytrade-dxfeed-data-engine.md), [ThetaData](../entities/thetadata.md), [ATM Gamma Velocity](../concepts/atm-gamma-velocity.md), [ATM IV DTE Slope](../concepts/atm-iv-dte-slope.md), [Call-Put Volume Ratio](../concepts/call-put-volume-ratio.md)
 
 ---
 
@@ -135,8 +196,8 @@ Once implemented, constant-maturity interpolation and ERP differential complete 
 | Underlying price, volume | Subscription | [Polygon.io](../entities/polygon-io.md) | Technical Analyst, delta hedge triggers, Tool 3 log returns | Varies |
 | News, earnings calendar | Subscription | Financial news APIs | News/Catalyst Analyst | Varies |
 | Live positions, P&L, margin | Broker API | [Interactive Brokers TWS API](../entities/interactive-brokers-api.md) | Portfolio Manager, Risk Team, Execution Agent | Included with account |
-| HMM training library | Open source | [hmmlearn](../entities/hmmlearn.md) | Tool 3 | Free |
-| Distributed compute | Open source | [Ray](../entities/ray.md) | Tool 1 (GEX parallelization) | Free |
+| HMM training library | Open source | [hmmlearn](../entities/hmmlearn.md) | Tool 3, Tool 4 | Free |
+| Distributed compute | Open source | [Ray](../entities/ray.md) | Tool 1 (GEX parallelization — deferred) | Free |
 | Hardware | Owned | [AMD Threadripper 3990X](../entities/amd-ryzen-threadripper-3990x.md) | All local compute | Owned |
 
 > **FlashAlpha removed**: Since Tool 1 computes GEX Z-scores, the Internal GEX Index, and the RDR from raw ThetaData options chain data, regime classification is a trivial rules-based output of the same pipeline — no black-box vendor labels needed. FlashAlpha’s only remaining value is cross-validation during Tool 1 development (one-time, not a permanent dependency).
@@ -145,18 +206,17 @@ Once implemented, constant-maturity interpolation and ERP differential complete 
 
 ## Build Sequencing
 
-All three tools are **Phase 0 prerequisites** — the MAOPM agent loop cannot produce reliable structured signals without them. Build order:
+Build order is determined by dependency structure and evidence quality. Steps 1 and 2 are independent and can proceed in parallel.
 
-1. **Tool 2 first** (BKM module): The [dxFeed Data Engine](../entities/tastytrade-dxfeed-data-engine.md) already provides all data inputs; only the BKM integration function is missing. Shortest path to a working signal.
-2. **Tool 1**: Constituent GEX requires ThetaData access and Ray parallelization. The GEX Regime Divergence Engine is higher priority than Tool 3 because:
-- The 3-layer dynamic Greek limit trigger hierarchy depends on the RDR (Layer 3)
-- It feeds all four GEX divergence strategies (Dispersion, Fragility Short, Gamma Flip Mean Reversion, Term Structure Catch-Up)
-- Regime classification is a rules-based output of the same pipeline at no additional cost — no interim vendor substitute required
+| Step | Tool | Prerequisite Data / Tools | Unlocks |
+|---|---|---|---|
+| 1 | **Tool 4** — Near-Expiry HMM (7DTE→1DTE) | ThetaData VALUE + dxFeed (both already available) | MVP inner-gate signal; `near_expiry_state` observation stream for Tool 3 |
+| 2 | **Tool 2** — Horizon Spread / BKM module | dxFeed Data Engine (exists); only BKM integration function missing | `horizon_spread_delta` for Tool 3 |
+| 3 | **Tool 3** — Macro HMM Latent Regime Engine | Tool 4 (`near_expiry_state`) + Tool 2 (`horizon_spread_delta`) both live | Greek limit scaler M(x); outer risk gate for full agent loop |
+| 4 | **Tool 1** — Constituent GEX / RDR Scanner | ThetaData STANDARD + Ray parallelization + empirical validation | Deferred to Phase 2 |
 
-The Horizon Spread Pipeline is independent and can be developed in parallel once ThetaData access is established.
-
-**Open research questions blocking full specification**:
+**Open research questions**:
 - Q9 Sub-Qs 3–5: How horizon spread conflicts with GEX signals are resolved — affects how Tool 2 output is weighted in the agent debate
-- Q6: Portfolio scope (SPY-only vs. constituent basket) — affects the constituent universe fed into Tool 1
+- Q6: Portfolio scope (SPY-only vs. constituent basket) — affects the constituent universe eventually fed into Tool 1
 
 **Relevant research agenda questions**: [Q6](research-agenda-options-maopm.md#q6), [Q9](research-agenda-options-maopm.md#q9)
