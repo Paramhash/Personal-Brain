@@ -1,17 +1,28 @@
-yaml
 ---
-tags: ["GEX", "gamma-exposure", "microstructure", "option-greeks", "market-indicators"]
+tags: ["options trading", "market microstructure", "gamma", "gex", "derivatives"]
 created: 2023-10-27
 reviewed: false
-source_origin: "maopm_horizon_spread_blueprint.md"
+source_origin: "combine hmm, gex profile, iv-hv skew to form structural triad used by advanced systematic options traders .md"
 ---
-```
 # Gamma Exposure (GEX)
 
-**Gamma Exposure (GEX)** is a high-frequency microstructure indicator that quantifies the sensitivity of market makers' delta hedging requirements to changes in the underlying asset's price. It reflects the aggregate gamma position of market participants, particularly dealers, and can be used to predict immediate localized price acceleration or pinning effects.
+Gamma Exposure (GEX) is a key market indicator used in options trading to quantify the potential impact of dealer hedging activities on the underlying asset's price. It represents the total dollar amount of gamma across all outstanding options contracts, indicating how much dealers need to buy or sell the underlying asset for every dollar move in its price to maintain a delta-neutral position.
 
-A high positive GEX suggests that market makers are collectively long gamma, meaning they will buy into falling prices and sell into rising prices to maintain a delta-neutral position. This tends to dampen volatility and "pin" prices. Conversely, a negative GEX indicates market makers are short gamma, leading them to sell into falling prices and buy into rising prices, which can exacerbate price movements and increase volatility.
+## Calculation Module
 
-In the context of a [Multi-Agent Option Pricing & Market-Making (MAOPM)](../concepts/multi-agent-option-pricing-market-making-maopm.md) architecture, [GEX](../concepts/maopm-architecture-horizon-spread-gex-fusion.md) Z-scores are utilized by Microstructure Execution Agents to map local dealer positioning and manage intra-day liquidity provisioning, order-book profiling, and inventory rebalancing. It complements macro signals like the [Option-Implied Horizon Spread](../concepts/option-implied-horizon-spread.md) by providing real-time insights into immediate market dynamics.
+For every option contract in the chain at a given timestamp $t$:
 
----
+1.  **Calculate Gamma ($\Gamma$):** This can be derived using the [[../entities/black-scholes-model.md|Black-Scholes model]] or extracted directly from the options data feed.
+2.  **Calculate Total Dollar Gamma Exposure:**
+    *   For Call Options:
+        $$\text{GEX}_{\text{Call}} = \text{Open Interest} \times \Gamma \times \text{Spot Price}^2 \times 100$$
+    *   For Put Options:
+        $$\text{GEX}_{\text{Put}} = \text{Open Interest} \times \Gamma \times \text{Spot Price}^2 \times (-100)$$
+
+## Output and Interpretation
+
+The output of the GEX calculation module includes:
+*   **Aggregated Net GEX:** The sum of GEX across the entire options chain.
+*   **Localized GEX Concentrations:** Identification of specific strike levels where significant gamma exposure exists. These concentrations can indicate "structural overhead walls" (resistance) or "downside trapdoors" (support) where price action might be influenced by dealer hedging.
+
+In a [[../concepts/systematic-options-trading-pipeline-1dte-7dte.md|systematic options trading pipeline]], GEX is a crucial component of the "structural triad," providing insights into potential market turning points or acceleration zones.

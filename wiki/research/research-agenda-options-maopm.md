@@ -241,7 +241,7 @@ This note documents the highest-value open research questions for the [MAOPM ini
 | Q1 — LLM vs. rules-based split | High | Yes | Low–Medium | 1–2 |
 | Q6 — Portfolio scope *(structural constraint: multi-symbol required for GEX divergence)* | Medium | Yes (decision, not research) | Low | 1 |
 | Q7 — Management fast-path vs. initiation *(50% answered)* | **High** *(elevated)* | Yes | Medium | **2** |
-| Q5 — Multi-signal regime fusion (GEX + horizon spread) *(35% answered)* | **High** *(elevated)* | Yes — Lai paper ingested | Medium | 2 |
+| Q5 — Multi-signal regime fusion via HMM *(70% answered — HMM resolves fusion architecture)* | **High** | Yes | Medium | 2 |
 | Q9 — Horizon spread in MAOPM architecture *(15% answered)* | High | Yes — Lai paper ingested | Medium | 2 |
 | Q10 — TradingGPT layered memory → DTE tiers *(25% answered)* | Medium | Partial (source stub incomplete) | Medium | 2–3 |
 | Q4 — Backtesting approach + historical GEX blocker | High | Partial (GEX data availability TBD) | High | 4 |

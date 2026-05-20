@@ -124,6 +124,47 @@ This schema defines the structured payload produced by the GEX/Regime Analyst ag
           "description": "NARRATIVE FIELD — GEX/Regime Analyst's qualitative interpretation of the regime. Downstream agents must not extract numbers from this field."
         }
       }
+    },
+
+    "hmm_state": {
+      "type": "object",
+      "description": "Output of the Multivariate Gaussian HMM Latent Regime Engine. Computed nightly in batch; updated intraday using existing model parameters (no refit). Supplements the rules-based regime block — rules retain hard-cap authority (Layer 1 / Layer 2); HMM posterior drives the Layer 3 sigmoid scaler M(x).",
+      "required": ["state_label", "state_semantics", "posterior_probs", "transition_row", "regime_persistence_expected_bars", "model_fit_date"],
+      "properties": {
+        "state_label": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "Viterbi-decoded current hidden state index S_t."
+        },
+        "state_semantics": {
+          "type": "string",
+          "enum": ["dealer_stabilized", "transitional", "gamma_accelerating"],
+          "description": "Canonical post-fit label assigned by inspecting emission mean mu_k: lowest realized vol + positive GEX Z-score = dealer_stabilized; highest vol + negative GEX Z-score = gamma_accelerating."
+        },
+        "posterior_probs": {
+          "type": "array",
+          "description": "P(S_t = k | O_1:t) for each state k, computed by forward algorithm. Sums to 1.0. Used as continuous Greek-limit scaler: M(x) = P(dealer_stabilized) * M_max.",
+          "items": { "type": "number", "minimum": 0, "maximum": 1 },
+          "minItems": 3,
+          "maxItems": 3
+        },
+        "transition_row": {
+          "type": "array",
+          "description": "A[state_label, :] — transition probabilities from current state to each next state. Enables early position management: if P(current -> gamma_accelerating) > 0.15, tighten limits proactively.",
+          "items": { "type": "number", "minimum": 0, "maximum": 1 },
+          "minItems": 3,
+          "maxItems": 3
+        },
+        "regime_persistence_expected_bars": {
+          "type": "number",
+          "description": "Expected remaining duration in current state: E[T] = 1 / (1 - A[state_label, state_label]). In trading bars (daily)."
+        },
+        "model_fit_date": {
+          "type": "string",
+          "format": "date",
+          "description": "Date of most recent nightly Baum-Welch refit. Intraday observations use the fitted model from this date without refitting."
+        }
+      }
     }
   }
 }
@@ -172,6 +213,15 @@ else:  # 0.5 ≤ ratio ≤ 2.0
         microstructure_bias = "strong_short_vol"
 
 gamma_environment = "mean_reverting" if above_gamma_flip else "accelerating"
+
+# Step 4: HMM Layer 3 continuous scaler (supplements rules; does not override hard caps)
+# Nightly refit (Baum-Welch on rolling 252-day window) produces A, mu_k, Sigma_k.
+# Intraday: forward-pass on today's X_t = [log_return, parkinson_vol, vrp_trend, gex_z_score, iv_hv_skew, horizon_spread_delta]
+state_label = viterbi_decode(X_t)                      # S_t ∈ {0, 1, 2}
+posterior_probs = forward_algorithm(X_t)               # P(S_t = k | O_1:t)
+# state_semantics assigned by post-fit canonical labeling (ascending realized vol of mu_k)
+# Greek limit scaler: M(x) = P(dealer_stabilized) * M_max (replaces hard RDR threshold → sigmoid lookup)
+# Early management trigger: if transition_row[state_label][gamma_accelerating] > 0.15 → proactive limit tightening
 ```
 
 This classification is the LLM's prior. It may argue for deviation from `microstructure_bias` in the strategy debate, but must explicitly justify the override.
@@ -184,3 +234,5 @@ This classification is the LLM's prior. It may argue for deviation from `microst
 - [Gamma Exposure (GEX)](../concepts/gamma-exposure-gex.md)
 - [Regime Divergence Ratio](../concepts/regime-divergence-ratio.md)
 - [Regime Detection](../concepts/regime-detection.md)
+- [HMM in Finance — Latent Regime Engine](../concepts/hidden-markov-model-hmm-in-finance.md)
+- [HMM Approaches in Options Pricing and Agent Architecture](../research/hmm-estimates-of-probability-from-option-prices.md)

@@ -1,45 +1,43 @@
 ---
-tags: ["API", "Endpoints", "Financial Data"]
+tags: ["api", "rest", "web-services", "integration", "programming"]
 created: 2023-10-27
 reviewed: false
-source_origin: "openapiv3.yaml"
+source_origin: "market-sessions.md"
 ---
 # API Endpoints
 
-The [Theta Data v3](../entities/theta-data-v3.md) API is structured around various endpoints, each designed to provide specific types of financial market data. These endpoints are categorized by the asset class they serve (Stocks, Options, Indices, Calendar, Interest Rates) and further by the type of data they deliver (List, Snapshot, History, At-Time).
+API endpoints are specific URLs that represent distinct functions or resources within a web service. They define the entry points for client applications to interact with the API, typically using HTTP methods (GET, POST, PUT, DELETE) to perform operations.
 
-## Endpoint Categories:
+The [[../concepts/market-sessions.md|Tastyworks Market Sessions API]] provides a structured set of endpoints for retrieving market session information. These endpoints are organized to allow for general queries, as well as specific queries tailored to equities and futures markets.
 
-*   **[Stock Data Endpoints](../concepts/stock-data.md)**:
-    *   List: `stock/list/symbols`, `stock/list/dates/{request_type}`
-    *   Snapshot: `stock/snapshot/ohlc`, `stock/snapshot/trade`, `stock/snapshot/quote`, `stock/snapshot/market_value`
-    *   History: `stock/history/eod`, `stock/history/ohlc`, `stock/history/trade`, `stock/history/quote`, `stock/history/trade_quote`
-    *   At-Time: `stock/at_time/trade`, `stock/at_time/quote`
+## General Endpoints
+*   `GET /market-time/sessions`: Retrieve session timings for a date range.
+*   `GET /market-time/sessions/current`: Retrieve current session timings for multiple [[../concepts/instrument-collections.md|instrument collections]].
 
-*   **[Option Data Endpoints](../concepts/option-data.md)**:
-    *   List: `option/list/symbols`, `option/list/dates/{request_type}`, `option/list/expirations`, `option/list/strikes`, `option/list/contracts/{request_type}`
-    *   Snapshot: `option/snapshot/ohlc`, `option/snapshot/trade`, `option/snapshot/quote`, `option/snapshot/open_interest`, `option/snapshot/market_value`, `option/snapshot/greeks/implied_volatility`, `option/snapshot/greeks/all`, `option/snapshot/greeks/first_order`, `option/snapshot/greeks/second_order`, `option/snapshot/greeks/third_order`
-    *   History: `option/history/eod`, `option/history/ohlc`, `option/history/trade`, `option/history/quote`, `option/history/trade_quote`, `option/history/open_interest`, `option/history/greeks/eod`, `option/history/greeks/all`, `option/history/greeks/first_order`, `option/history/greeks/second_order`, `option/history/greeks/third_order`, `option/history/trade_greeks/all`, `option/history/trade_greeks/first_order`, `option/history/trade_greeks/second_order`, `option/history/trade_greeks/third_order`, `option/history/greeks/implied_volatility`, `option/history/trade_greeks/implied_volatility`
-    *   At-Time: `option/at_time/trade`, `option/at_time/quote`
+## Equities Endpoints
+These endpoints focus specifically on the `Equity` instrument collection, covering markets like [[../entities/nyse.md|NYSE]] and [[../entities/nasdaq.md|NASDAQ]].
+*   `GET /market-time/equities/sessions/current`: Get the current equities market session.
+*   `GET /market-time/equities/sessions/next`: Get the next equities trading session.
+*   `GET /market-time/equities/sessions/previous`: Get the most recent past equities trading session.
+*   `GET /market-time/equities/holidays`: Get the equity market [[../concepts/trading-holidays.md|holiday calendar]].
 
-*   **[Index Data Endpoints](../concepts/index-data.md)**:
-    *   List: `index/list/symbols`, `index/list/dates`
-    *   Snapshot: `index/snapshot/ohlc`, `index/snapshot/price`, `index/snapshot/market_value`
-    *   History: `index/history/eod`, `index/history/ohlc`, `index/history/price`
-    *   At-Time: `index/at_time/price`
+## Futures Endpoints
+These endpoints are designed for futures markets, supporting specific exchanges like [[../entities/cme-group.md|CME]] and [[../entities/cboe-futures-exchange.md|CFE]].
+*   `GET /market-time/futures/sessions/current`: Get current sessions for all futures exchanges.
+*   `GET /market-time/futures/sessions/current/{instrument_collection}`: Get current session for a specific futures exchange.
+*   `GET /market-time/futures/sessions/next/{instrument_collection}`: Get next futures trading session for a specific exchange.
+*   `GET /market-time/futures/sessions/previous/{instrument_collection}`: Get previous futures trading session for a specific exchange.
+*   `GET /market-time/futures/holidays/{instrument_collection}`: Get the [[../concepts/trading-holidays.md|holiday calendar]] for a specific futures exchange.
 
-*   **[Market Calendar Endpoints](../concepts/market-calendar.md)**:
-    *   `calendar/today`, `calendar/on_date`, `calendar/year_holidays`
+## Common Parameters
+Many endpoints utilize query parameters such as `to-date`, `from-date`, `instrument-collection`, and `date` to filter or specify the requested data. Path parameters like `{instrument_collection}` are used for exchange-specific queries.
 
-*   **[Interest Rates Endpoints](../concepts/interest-rates.md)**:
-    *   History: `interest_rate/history/eod`
+## Responses
+Responses typically return [[../concepts/data-models.md|data models]] like [[../concepts/simplesession-data-model.md|SimpleSession]], [[../concepts/currentsession-data-model.md|CurrentSession]], [[../concepts/nextsession-data-model.md|NextSession]], [[../concepts/previoussession-data-model.md|PreviousSession]], or [[../concepts/marketcalendar-data-model.md|MarketCalendar]], depending on the endpoint.
 
-Each endpoint is designed to be intuitive, with clear summaries, descriptions, and code samples to aid integration. Parameters are consistently defined and reused across relevant endpoints.
-
-## Common Concepts:
-*   [API Parameters](../concepts/api-parameters.md)
-*   [Data Formats](../concepts/data-formats.md)
-*   [Time Intervals](../concepts/time-intervals.md)
-*   [Subscription Tiers](../concepts/subscription-tiers.md)
-
----
+## Related Notes
+*   [[../concepts/market-sessions.md|Market Sessions]]
+*   [[../concepts/data-models.md|Data Models]]
+*   [[../concepts/instrument-collections.md|Instrument Collections]]
+*   [[../concepts/trading-holidays.md|Trading Holidays]]
+*   [[../sources/tastyworks-market-sessions-api-docs.md|Tastyworks Market Sessions API Documentation]]

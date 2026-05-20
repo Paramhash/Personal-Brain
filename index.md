@@ -23,9 +23,11 @@ LIMIT 10
 - [[wiki/research/gex-scanner-logic-flow|GEX Scanner Logic Flow]]
 - [[wiki/research/optimizing-greek-calculations-with-ray|Optimizing Greek Calculations with Ray]]
 - [[wiki/research/strategies-by-regime-review-2026-05-19|Strategies by Regime Review (2026-05-19)]]
+- [[wiki/research/hmm-estimates-of-probability-from-option-prices|HMM Approaches: Options Pricing & Agent Architecture]]
 
 ### Synthesis & Gap Analysis
 - [[wiki/research/synthesis-2026-05-17|Synthesis 2026-05-17]]
+- [[wiki/research/gap-analysis-2026-05-20|Gap Analysis 2026-05-20]]
 - [[wiki/research/gap-analysis-2026-05-17|Gap Analysis 2026-05-17]]
 - [[wiki/research/gap-analysis-2026-05-16|Gap Analysis 2026-05-16]]
 
@@ -44,6 +46,7 @@ LIMIT 10
 - [[wiki/concepts/Option-Implied Regimes|Option-Implied Regimes]]
 - [[wiki/concepts/option-implied-horizon-spread|Option-Implied Horizon Spread (ΔIHS)]]
 - [[wiki/concepts/vvix|VVIX — Volatility of Volatility Index]]
+- [[wiki/concepts/hidden-markov-model-hmm-in-finance|HMM Latent Regime Engine]]
 
 ### Strategy Concepts
 - [[wiki/concepts/dispersion-trade-strategy|Dispersion Trade Strategy]]
@@ -60,8 +63,9 @@ LIMIT 10
 
 ## Infrastructure & Data
 
-- [[wiki/entities/thetadata|ThetaData]] — options chain, Greeks, IV (Tool 1 & 2 source)
-- [[wiki/entities/polygon-io|Polygon.io]] — underlying price & volume
+- [[wiki/entities/tastytrade-dxfeed-data-engine|Tastytrade / dxFeed Data Engine]] — real-time chain snapshots, BSM IV solver, OTM-blend surface (Tool 1 & 2 live data layer)
+- [[wiki/entities/thetadata|ThetaData]] — historical options chain, constituent GEX, IV (Tool 1 & 2 history layer; required for HMM training)
+- [[wiki/entities/polygon-io|Polygon.io]] — underlying price & volume; Tool 3 log returns
 - [[wiki/entities/ray|Ray]] — distributed compute (Tool 1 parallelization)
 - [[wiki/entities/interactive-brokers-api|Interactive Brokers TWS API]] — positions, P&L, execution
 - [[wiki/entities/amd-ryzen-threadripper-3990x|AMD Threadripper 3990X]] — local compute hardware
