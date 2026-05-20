@@ -1,22 +1,13 @@
-yaml
 ---
-tags: ["data-provider", "financial-data", "options-data", "market-data"]
+tags: [entity, data-provider, market-data, historical-data]
 created: 2023-10-27
 reviewed: false
-source_origin: "maopm_horizon_spread_blueprint.md"
+source_origin: "Near-Expiry HMM for SPX 7DTE-1DTE Options Dynamics.md"
 ---
-```
 # Polygon.io
 
-**Polygon.io** is a financial data provider offering real-time and historical market data, including options, equities, and forex. It is known for providing raw, granular tick-level data feeds.
+Polygon.io is a financial data platform that provides real-time and historical market data for stocks, options, forex, and crypto. It offers APIs for developers to access a wide range of financial information.
 
-Key features and characteristics of Polygon.io include:
-*   **Data Feed Type:** Delivers tick-level trades and quotes primarily via WebSockets for real-time streaming.
-*   **Granularity:** Provides millisecond-level tick data, offering a very fine-grained view of market activity.
-*   **Chain Architecture:** Emits individual tick events per contract identifier in flat message streams, requiring the client to reconstruct order book and chain context.
-*   **Implied Volatility / Greek Engines:** Provides raw data. Users are responsible for calculating implied volatility surfaces, performing interpolation, and computing Greeks locally.
-*   **Compute Overhead for Client:** High, as the client must construct the entire order book and IV surface from raw ticks manually.
-
-For systems like the [MAOPM architecture for signal fusion](../concepts/maopm-architecture-horizon-spread-gex-fusion.md), Polygon.io is recommended for users who desire a pure, un-opinionated, ultra-low-latency raw firehose and have the dedicated compute infrastructure (e.g., a 64-core cluster with an in-memory database) to build their own custom SABR or local volatility surface models from raw ticks.
+In the context of the [[../concepts/near-expiry-hmm-options-dynamics.md|Near-Expiry HMM for SPX/SPY Options Dynamics]], Polygon.io is mentioned as an alternative or supplementary source for [[../entities/vix-index.md|VIX]] data, which is used for stratifying the HMM models into different volatility tiers. While [[../entities/thetadata.md|ThetaData]] is the primary source for historical options data, Polygon.io could be used to fetch VIX data if needed.
 
 ---

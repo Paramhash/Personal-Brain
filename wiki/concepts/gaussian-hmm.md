@@ -1,15 +1,18 @@
 ---
-tags: ["hmm", "machine-learning", "statistics", "time-series"]
+tags: [hidden-markov-model, machine-learning, statistics, quantitative-finance]
 created: 2023-10-27
 reviewed: false
-source_origin: "how to obtain HMM estimates of probability from option prices.md"
+source_origin: "Near-Expiry HMM for SPX 7DTE-1DTE Options Dynamics.md"
 ---
-# Gaussian Hidden Markov Model (Gaussian HMM)
+# Gaussian Hidden Markov Model (GaussianHMM)
 
-A Gaussian Hidden Markov Model (Gaussian HMM) is a specific type of [Hidden Markov Model (HMM)](../concepts/hidden-markov-model.md) where the observable emissions from each hidden state are assumed to follow a Gaussian (normal) distribution. This makes it suitable for modeling continuous, real-valued data.
+A [[../concepts/hidden-markov-model.md|Hidden Markov Model (HMM)]] where the emission probabilities (the probability of observing a particular feature vector given a hidden state) are modeled by a Gaussian distribution. This means that for each hidden state, the observed features are assumed to follow a multivariate Gaussian distribution with a specific mean vector (μ) and covariance matrix (Σ).
 
-In a Gaussian HMM:
-*   The hidden states transition according to a [transition matrix](../concepts/transition-matrix.md).
-*   For each hidden state, the observations are generated from a multivariate Gaussian distribution, characterized by a mean vector and a covariance matrix.
+In the context of the [[../concepts/near-expiry-hmm-options-dynamics.md|Near-Expiry HMM for SPX/SPY Options Dynamics]], the `hmmlearn` library's `GaussianHMM` is used. It is configured with:
+*   `n_components=3`: Indicating three distinct hidden market regimes.
+*   `covariance_type="full"`: Allowing each state to have its own full, unconstrained covariance matrix, capturing complex correlations between features within that state.
+*   `n_iter=200`: The maximum number of iterations for the [[../concepts/baum-welch-algorithm.md|Baum-Welch algorithm]] during training.
 
-This model is particularly useful in quantitative finance when the observable features are continuous numerical values, such as the metrics extracted from the [Implied Volatility Surface (IVS)](../concepts/implied-volatility-surface.md) (e.g., [ATM Volatility](../concepts/atm-volatility.md), [Skew (Options)](../concepts/options-skew.md), and [Smile Curvature](../concepts/smile-curvature.md)). As described in [obtaining HMM estimates from option prices](../concepts/how-to-obtain-hmm-estimates-from-option-prices.md), these features can be fed into a Gaussian HMM to identify underlying market regimes or "mood shifts" of option market makers. The [hmmlearn](../entities/hmmlearn.md) library in Python provides an implementation for Gaussian HMMs.
+The choice of `GaussianHMM` is suitable when the observable features are continuous and can be reasonably approximated by a Gaussian distribution within each latent state.
+
+---
