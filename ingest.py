@@ -43,28 +43,30 @@ def log_ingestion(file_name: str, output_paths: list[str], success: bool):
 def process_file(file_path: Path):
     print(f"Ingesting: {file_path.name}")
 
-    try:
-        raw_content = file_path.read_text(encoding="utf-8")
-    except Exception as e:
-        print(f"Error reading {file_path.name}: {e}")
-        log_ingestion(file_path.name, [], success=False)
-        return
-
-    prompt = f"""
+    prompt_text = f"""
 Analyze and ingest the following raw payload file: '{file_path.name}'.
 Follow all directory formatting, architectural linking, and metadata rules defined in your system spec.
 
 Return ONLY the completed markdown files. If you generate multiple notes, separate them with:
 === FILE: path/to/filename.md ===
-
-RAW PAYLOAD CONTENT:
-{raw_content}
 """
 
     try:
+        if file_path.suffix.lower() == ".pdf":
+            uploaded = client.files.upload(file=file_path)
+            contents = [uploaded, prompt_text]
+        else:
+            try:
+                raw_content = file_path.read_text(encoding="utf-8")
+            except Exception as e:
+                print(f"Error reading {file_path.name}: {e}")
+                log_ingestion(file_path.name, [], success=False)
+                return
+            contents = prompt_text + f"\n\nRAW PAYLOAD CONTENT:\n{raw_content}"
+
         response = client.models.generate_content(
             model="gemini-2.5-flash",
-            contents=prompt,
+            contents=contents,
             config=types.GenerateContentConfig(
                 system_instruction=load_system_spec(),
                 temperature=0.2,
