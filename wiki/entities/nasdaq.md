@@ -1,16 +1,29 @@
 ---
-tags: ["exchange", "equities", "us-market", "stock-exchange"]
-created: 2023-10-27
+domain: "derivatives"
+tags: [stock-index, market-data, financial-market]
+created: 2024-07-30
 reviewed: false
-source_origin: "market-sessions.md"
+source_origin: "090770552.pdf"
 ---
 # NASDAQ
 
-NASDAQ (National Association of Securities Dealers Automated Quotations) is an American stock exchange based in New York City. It is the second-largest stock exchange in the world by market capitalization, known for listing many technology and growth companies.
+## Type
+Stock Market Index
 
-Market sessions for NASDAQ-listed instruments are covered by the `Equity` [[../concepts/instrument-collections.md|instrument collection]] within the [[../concepts/market-sessions.md|Tastyworks Market Sessions API]].
+## Definition
+The NASDAQ (National Association of Securities Dealers Automated Quotations) Composite Index is a stock market index of all of the common stocks and similar securities listed on the NASDAQ stock market. It is known for its heavy weighting towards technology and growth companies.
 
-## Related Notes
-*   [[../concepts/market-sessions.md|Market Sessions]]
-*   [[../concepts/instrument-collections.md|Instrument Collections]]
-*   [[../entities/nyse.md|NYSE]]
+## Context from Source
+In "Trend Following Trading under a Regime Switching Model" by Dai, Zhang, and Zhu (2010), the historical data of the [[NASDAQ]] Composite Index (specifically from 1991-2008) was used as real-world market data for numerical experiments.
+- **Testing Strategy Performance**: The authors tested their proposed [[Trend Following Trading]] strategy against the buy-and-hold strategy using NASDAQ data to evaluate its practical effectiveness and robustness.
+- **Comparison**: Results showed that the trend following strategy significantly outperformed the buy-and-hold strategy on NASDAQ data, even with transaction costs.
+- **Parameter Estimation**: Statistics of bull and bear markets for NASDAQ were used to determine parameters for the [[Regime Switching Model (Financial)]].
+
+## Related Concepts
+- [[Trend Following Trading]]
+- [[Regime Switching Model (Financial)]]
+- [[Buy and Hold Strategy]]
+
+## Related Sources
+- [[dai-zhang-zhu-2010-trend-following-trading]]
+---
