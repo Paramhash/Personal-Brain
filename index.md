@@ -3,11 +3,67 @@
 ## Learning Inbox (Awaiting Human Review)
 
 ```dataview
-TABLE tags AS "Category", created AS "Ingested Date"
-FROM "wiki"
+TABLE domain AS "Domain", tags AS "Category", created AS "Ingested Date"
+FROM "wiki" AND -"wiki/dlmm"
 WHERE reviewed = false
 SORT created DESC
 LIMIT 10
+```
+
+### Unreviewed notes by domain
+
+```dataview
+TABLE length(rows) AS "Unreviewed"
+FROM "wiki" AND -"wiki/dlmm"
+WHERE reviewed = false
+GROUP BY default(domain, "(none)") AS Domain
+SORT length(rows) DESC
+```
+
+---
+
+## Active Project: DLMM hedge bot and CL learning
+
+> Concentrated liquidity, market making and market timing, tied to `dlmm-hedge-bot`. The `wiki/dlmm/` notes are
+> read-only mirrors of the bot's documents (`python bridges/dlmm_bridge.py --apply` refreshes them).
+
+- [[00-cl-mm-timing-moc|Curriculum map of content]] · [[seed-sources|Seed sources]] · [[adr-index|All bot ADRs]]
+- [[blueprint-ev-policy|EV policy (the decision rule)]] · [[adr-052-ev-gate-prices-range-dependent-lvr-and-hedge-cost|ADR-052 — range-dependent LVR and hedge drag]]
+
+### Curriculum progress
+
+```dataview
+TABLE module AS "#", status AS "Status", length(prerequisites) AS "Prereqs"
+FROM "wiki/curriculum"
+WHERE module
+SORT module ASC
+```
+
+### Latest bot report and digests
+
+```dataview
+LIST
+FROM "wiki/dlmm/reports"
+SORT file.name DESC
+LIMIT 3
+```
+
+```dataview
+LIST
+FROM "wiki/research"
+WHERE startswith(file.name, "bot-digest")
+SORT file.name DESC
+LIMIT 3
+```
+
+### Bot documents changed in the last 7 days
+
+```dataview
+TABLE bot_commit AS "Commit", exported_at AS "Exported"
+FROM "wiki/dlmm"
+WHERE exported_at AND date(exported_at) >= date(today) - dur(7 days)
+SORT exported_at DESC
+LIMIT 15
 ```
 
 ---
