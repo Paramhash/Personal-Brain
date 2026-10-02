@@ -303,6 +303,28 @@ def existing_notes_listing(wiki_dir: Path, limit: int = 2000) -> str:
     return "\n".join(rows)
 
 
+_WIKILINK = re.compile(r"\[\[([^\]|#]+)((?:#[^\]|]*)?)((?:\|[^\]]*)?)\]\]")
+
+
+def normalize_links(body: str, index: dict[str, list[Path]]) -> str:
+    """Rewrite [[folder/x.md|label]] and [[../concepts/x|label]] to [[x|label]] when note x exists in the vault.
+
+    The model is asked for bare slugs but sometimes adds folders or '.md'; a folder that does not match the vault's
+    layout can leave the link unresolved. Links to notes that do not exist yet are left as written.
+    """
+
+    def sub(m: re.Match) -> str:
+        target, anchor, label = m.group(1).strip(), m.group(2), m.group(3)
+        name = target.replace("\\", "/").split("/")[-1]
+        name = name[:-3] if name.lower().endswith(".md") else name
+        hits = index.get(slugify(name))
+        if not hits or ("/" not in target and not target.lower().endswith(".md") and target == hits[0].stem):
+            return m.group(0)
+        return f"[[{hits[0].stem}{anchor}{label}]]"
+
+    return _WIKILINK.sub(sub, body)
+
+
 def atomic_write(path: Path, text: str) -> None:
     """Write via a temporary file in the same folder, then os.replace, so a sync tool never sees half a note."""
     path.parent.mkdir(parents=True, exist_ok=True)
@@ -325,7 +347,8 @@ def commit_blocks(blocks: list[NoteBlock], source_name: str, dry_run: bool, toda
         if wiki_dir != WIKI_DIR:  # tests run against a temporary vault
             target = wiki_dir / target.relative_to(WIKI_DIR)
         content = strip_fences(block.content)
-        new_fm, _ = split_frontmatter(content)
+        new_fm, new_body = split_frontmatter(content)
+        content = (render_frontmatter(new_fm) if new_fm else "") + normalize_links(new_body, index)
         existing = resolve_existing(index, target, _as_list(new_fm.get("aliases")))
         rel = lambda p: p.relative_to(wiki_dir.parent).as_posix()  # noqa: E731
         if existing is not None:
@@ -345,6 +368,9 @@ def commit_blocks(blocks: list[NoteBlock], source_name: str, dry_run: bool, toda
             continue
         fm, body = split_frontmatter(content)
         fm, warnings = validate_frontmatter(fm, source_name, today)
+        if str(fm.get("created")) != today:  # `created` is the ingestion date; the model sometimes invents one
+            warnings.append(f"created {fm.get('created')} -> {today}")
+            fm["created"] = today
         fm["ingest_hashes"] = [body_hash(body.strip())]
         text = render_frontmatter(fm) + body.lstrip("\n")
         if not dry_run:

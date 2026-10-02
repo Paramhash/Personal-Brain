@@ -1,12 +1,13 @@
 # Vault lint report — 2026-10-02
 
-Read-only. 751 notes under `wiki/`.
+Read-only. 845 notes under `wiki/`.
 
 ## Domains
 
 | domain | notes |
 |---|---:|
 | (missing) | 663 |
+| cl-market-making | 94 |
 | fine-art | 57 |
 | derivatives | 26 |
 | meta | 5 |
@@ -36,7 +37,7 @@ These make `[[name]]` links ambiguous.
 - `react-prompting-framework`: `wiki/concepts/react-prompting-framework.md`, `wiki/entities/react-prompting-framework.md`
 - `tastytrade-sdks`: `wiki/concepts/tastytrade-sdks.md`, `wiki/entities/tastytrade-sdks.md`
 
-## Broken links (1242 in 271 notes)
+## Broken links (1243 in 272 notes)
 
 - `wiki/concepts/aic_bic_information_criteria.md`: `../concepts/model_selection.md`, `../concepts/maximum_likelihood_estimation.md`
 - `wiki/concepts/api-authentication.md`: `Market Data API (Tastyworks)`, `Market Data API (Tastyworks)`
@@ -52,6 +53,7 @@ These make `[[name]]` links ambiguous.
 - `wiki/concepts/cyberarts.md`: `Excavating Amnesia: A Media Archaeology of Early Internet Art from Singapore`, `tsunamii.net`, `Cyberarts: Intersections of Art and Technology (2001)`, `Digital Culture`, `Technology History`, `Art History`
 - `wiki/concepts/data-feeds.md`: `../concepts/subscription-tiers.md`, `../concepts/trade-conditions.md`, `../concepts/quote-conditions.md`
 - `wiki/concepts/data-models.md`: `../concepts/utc-timestamps.md`, `../concepts/extended-hours-trading.md`, `../concepts/currentsession-data-model.md`, `../concepts/nextsession-data-model.md`, `../concepts/previoussession-data-model.md`, `../concepts/marketcalendar-data-model.md`, `../concepts/utc-timestamps.md`, `../concepts/extended-hours-trading.md`
+- `wiki/concepts/decision-gate-cl-bot.md`: `market-making-strategy`
 - `wiki/concepts/decision-ledger.md`: `../research/current%20research%20initiatives.md`
 - `wiki/concepts/double-obstacle-problem-finance.md`: `Dynamic Programming (Finance)`, `Variational Inequality (Mathematics)`, `Free Boundary Problem`, `Transaction Costs (Finance)`, `Optimal Trend Following Strategy under Regime Switching`
 - `wiki/concepts/dynamic-portfolio-greek-limits.md`: `../concepts/risk-trigger-hierarchy.md`, `../concepts/dealer-gamma-exposure-gex.md`, `../concepts/volatility-of-volatility-vvix.md`, `../concepts/greek-asymmetric-scaling.md`, `../concepts/portfolio-greek-limits-governance.md`, `../concepts/risk-trigger-hierarchy.md`, `../concepts/risk-trigger-hierarchy.md`, `../concepts/risk-trigger-hierarchy.md` … +7
@@ -310,9 +312,15 @@ These make `[[name]]` links ambiguous.
 - `wiki/sources/veal-2017-michelle-antoinette-reworlding-art-history-review.md`: `cultural-identity-as-process`, `corporeography`
 - `wiki/sources/yamin-mitchell-excavating-amnesia-2023.md`: `Strategic Amnesia of Digital Culture`, `Ocarina (1994)`, `alpha 3.4 (2002)`, `tsunamii.net`, `Ocarina (1994)`, `Black Box (Galloway's concept)`, `tsunamii.net`, `alpha 3.4 (2002)` … +14
 
-## Orphans — no links in or out (2)
+## Orphans — no links in or out (8)
 
 - `wiki/concepts/Master Concept Map.md`
+- `wiki/dlmm/blueprints/blueprint-execution-router.md`
+- `wiki/dlmm/blueprints/blueprint-observability-contract.md`
+- `wiki/dlmm/blueprints/blueprint-protocol-contract.md`
+- `wiki/dlmm/blueprints/blueprint-risk-guardrails.md`
+- `wiki/dlmm/blueprints/blueprint-state-machine.md`
+- `wiki/dlmm/blueprints/blueprint-state-store.md`
 - `wiki/entities/gex-divergence-dashboard.md`
 
 ## Suggested domains for 663 unclassified notes (proposal only, not applied)

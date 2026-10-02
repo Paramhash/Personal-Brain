@@ -48,7 +48,9 @@ The prompt includes an **EXISTING NOTES** index (`folder/slug | aliases | domain
   `realized-volatility`).
 
 ## Links
-- Use wikilinks only: `[[slug|label]]` or `[[slug]]`, where `slug` is the file name without `.md`.
+- Use wikilinks only: `[[slug|label]]` or `[[slug]]`, where `slug` is the file name without `.md`. No folders and
+  no `.md` inside a link: `[[m07-inventory-and-market-making-theory|inventory]]`, not
+  `[[curriculum/m07-inventory-and-market-making-theory.md|inventory]]`.
 - Every note links to **at least two existing notes** from the index, plus the source note.
 - Concept and entity notes link to the source note they came from.
 
@@ -59,7 +61,7 @@ The prompt includes an **EXISTING NOTES** index (`folder/slug | aliases | domain
 domain: ""          # one of: derivatives | cl-market-making | fine-art | meta
 tags: []            # specific sub-topics, lowercase-hyphen
 aliases: []         # other names for this note's subject
-created: YYYY-MM-DD
+created: YYYY-MM-DD   # today's date (the ingestion date), not the source's publication date
 reviewed: false
 source_origin: ""   # the raw file's name
 ---

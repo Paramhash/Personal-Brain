@@ -188,3 +188,25 @@ def test_is_ignorable():
     for name in (".hidden.md", "~syncthing~x.md.tmp", "paper.sync-conflict-20261002-1.md", "x.part", "y.tmp"):
         assert ingest.is_ignorable(Path(name))
     assert not ingest.is_ignorable(Path("paper.pdf"))
+
+
+# ---------------------------------------------------------------- link normalisation and created date
+
+
+def test_normalize_links_strips_folders_for_existing_notes(vault):
+    index = ingest.build_slug_index(vault)
+    body = ("See [[curriculum/gamma-exposure-gex|GEX]], [[../concepts/gamma-exposure-gex.md]], "
+            "[[gamma-exposure-gex#walls|walls]], and [[future/not-yet-a-note|later]].")
+    out = ingest.normalize_links(body, index)
+    assert "[[gamma-exposure-gex|GEX]]" in out
+    assert "[[gamma-exposure-gex]]" in out
+    assert "[[gamma-exposure-gex#walls|walls]]" in out
+    assert "[[future/not-yet-a-note|later]]" in out  # unknown targets are left alone
+
+
+def test_commit_forces_created_to_today(vault):
+    block = ingest.NoteBlock("wiki/concepts/x-note.md", note("domain: meta\ncreated: 2023-10-27", "Body [[concepts/gamma-exposure-gex|g]].\n"))
+    results = ingest.commit_blocks([block], "s.md", dry_run=False, today=TODAY, wiki_dir=vault)
+    fm, body = ingest.split_frontmatter((vault / "concepts" / "x-note.md").read_text(encoding="utf-8"))
+    assert str(fm["created"]) == TODAY and "created 2023-10-27" in results[0].detail
+    assert "[[gamma-exposure-gex|g]]" in body
