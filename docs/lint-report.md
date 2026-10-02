@@ -1,15 +1,15 @@
 # Vault lint report — 2026-10-02
 
-Read-only. 845 notes under `wiki/`.
+Read-only. 935 notes under `wiki/`.
 
 ## Domains
 
 | domain | notes |
 |---|---:|
 | (missing) | 663 |
-| cl-market-making | 94 |
+| cl-market-making | 182 |
 | fine-art | 57 |
-| derivatives | 26 |
+| derivatives | 28 |
 | meta | 5 |
 
 ## Slug collisions (10)
@@ -37,17 +37,36 @@ These make `[[name]]` links ambiguous.
 - `react-prompting-framework`: `wiki/concepts/react-prompting-framework.md`, `wiki/entities/react-prompting-framework.md`
 - `tastytrade-sdks`: `wiki/concepts/tastytrade-sdks.md`, `wiki/entities/tastytrade-sdks.md`
 
-## Broken links (1243 in 272 notes)
+## Broken links (1472 in 340 notes)
 
+- `wiki/concepts/active-bin-out-of-range.md`: `pool-price`, `pool-price`, `spot-price`, `cl-market-making`, `pool-price`, `spot-price`, `spot-price`
 - `wiki/concepts/aic_bic_information_criteria.md`: `../concepts/model_selection.md`, `../concepts/maximum_likelihood_estimation.md`
+- `wiki/concepts/alpha-like-component-lp-returns.md`: `liquidity-provider`, `liquidity-provider`
 - `wiki/concepts/api-authentication.md`: `Market Data API (Tastyworks)`, `Market Data API (Tastyworks)`
 - `wiki/concepts/api-endpoints.md`: `../concepts/currentsession-data-model.md`, `../concepts/nextsession-data-model.md`, `../concepts/previoussession-data-model.md`, `../concepts/marketcalendar-data-model.md`
 - `wiki/concepts/api-naming-conventions.md`: `Market Data API (Tastyworks)`, `Market Data API (Tastyworks)`, `Market Data API (Tastyworks)`
 - `wiki/concepts/api-parameters.md`: `../concepts/symbols.md`, `../concepts/strike-prices.md`, `../concepts/time-intervals.md`
 - `wiki/concepts/api-rate-limits.md`: `Market Data API (Tastyworks)`, `Market Data API (Tastyworks)`
+- `wiki/concepts/beta-like-component-lp-returns.md`: `liquidity-provider`, `centralized-exchange`, `market-risk`, `liquidity-provider`
 - `wiki/concepts/black-box-galloway.md`: `Black Box (Galloway's concept)`, `Excavating Amnesia: A Media Archaeology of Early Internet Art from Singapore`, `Black Box (Galloway's concept)`, `Ocarina (1994)`, `Ocarina (1994)`, `Douglas Engelbart`, `Digital Culture`, `Technology History` … +1
 - `wiki/concepts/board-directive-protocol.md`: `../research/current%20research%20initiatives.md`
+- `wiki/concepts/boundary-threat-exit.md`: `volatility`, `volatility`
+- `wiki/concepts/buffered-policy-envelope.md`: `volatility`
+- `wiki/concepts/burst-factor.md`: `cl-market-making`, `cl-market-making`
+- `wiki/concepts/call-wall-oscillation.md`: `hysteresis`, `hysteresis`, `cl-market-making`, `hysteresis`, `hedge-churn`, `hysteresis`
+- `wiki/concepts/call-wall.md`: `derivatives`, `cl-market-making`, `hysteresis`, `cl-market-making`, `spot-price`, `spot-price`, `spot-price`, `spot-price`
+- `wiki/concepts/capital-allocation-liquidity-shape.md`: `bin-based-cl-dlmm`, `fee-economics`
+- `wiki/concepts/cl-entry-strategy.md`: `expected-fees-cl`
+- `wiki/concepts/cl-exit-strategy.md`: `lvr-and-impermanent-loss`
+- `wiki/concepts/cl-hedge-target.md`: `inventory-risk`, `hedging-lp-exposure`, `perpetuals-and-funding`
+- `wiki/concepts/cl-payoff-function.md`: `hedge-policy`, `concentrated-liquidity`, `fee-economics`, `hedge-policy`
+- `wiki/concepts/cl-position-monitoring.md`: `volatility`, `gex-regime`, `lvr-and-impermanent-loss`, `volatility`, `lvr-and-impermanent-loss`
+- `wiki/concepts/cl-position.md`: `concentrated-liquidity`, `cl-market-making`, `lvr-and-impermanent-loss`, `fee-economics`
+- `wiki/concepts/cl-provider-strategy.md`: `hedge-policy`, `concentrated-liquidity`, `concentrated-liquidity`, `hedge-policy`
+- `wiki/concepts/cl-rebalancing-condition.md`: `hedging-lp-exposure`
+- `wiki/concepts/competing-range-placement.md`: `fee-economics`
 - `wiki/concepts/conditional_value_at_risk.md`: `../concepts/value_at_risk.md`, `../concepts/portfolio_optimization.md`, `../concepts/risk_management.md`, `../concepts/portfolio_insurance.md`
+- `wiki/concepts/constant-function-market-maker.md`: `bonding-function`, `bonding-function`, `centralized-exchange`, `liquidity-provider`, `bonding-function`, `bonding-function`
 - `wiki/concepts/contemporary-art-singapore.md`: `Contemporary Art in Singapore`, `Excavating Amnesia: A Media Archaeology of Early Internet Art from Singapore`, `Contemporary Art in Singapore`, `Contemporary Art in Singapore`, `Contemporary Art in Singapore`, `tsunamii.net`, `Strategic Amnesia of Digital Culture`, `Digital Culture` … +3
 - `wiki/concepts/contemporary-southeast-asian-art-after-1990.md`: `cultural-identity-as-process`, `corporeography`, `postcolonial-art-history`, `globalization-in-art`
 - `wiki/concepts/cyberarts.md`: `Excavating Amnesia: A Media Archaeology of Early Internet Art from Singapore`, `tsunamii.net`, `Cyberarts: Intersections of Art and Technology (2001)`, `Digital Culture`, `Technology History`, `Art History`
@@ -55,26 +74,39 @@ These make `[[name]]` links ambiguous.
 - `wiki/concepts/data-models.md`: `../concepts/utc-timestamps.md`, `../concepts/extended-hours-trading.md`, `../concepts/currentsession-data-model.md`, `../concepts/nextsession-data-model.md`, `../concepts/previoussession-data-model.md`, `../concepts/marketcalendar-data-model.md`, `../concepts/utc-timestamps.md`, `../concepts/extended-hours-trading.md`
 - `wiki/concepts/decision-gate-cl-bot.md`: `market-making-strategy`
 - `wiki/concepts/decision-ledger.md`: `../research/current%20research%20initiatives.md`
+- `wiki/concepts/deploy-width-sigma-multiple.md`: `cl-market-making`, `spot-price`
+- `wiki/concepts/dlmm-bins.md`: `concentrated-liquidity`, `meteora`, `cl-market-making`
+- `wiki/concepts/dlmm-simulator.md`: `cl-market-making`
 - `wiki/concepts/double-obstacle-problem-finance.md`: `Dynamic Programming (Finance)`, `Variational Inequality (Mathematics)`, `Free Boundary Problem`, `Transaction Costs (Finance)`, `Optimal Trend Following Strategy under Regime Switching`
 - `wiki/concepts/dynamic-portfolio-greek-limits.md`: `../concepts/risk-trigger-hierarchy.md`, `../concepts/dealer-gamma-exposure-gex.md`, `../concepts/volatility-of-volatility-vvix.md`, `../concepts/greek-asymmetric-scaling.md`, `../concepts/portfolio-greek-limits-governance.md`, `../concepts/risk-trigger-hierarchy.md`, `../concepts/risk-trigger-hierarchy.md`, `../concepts/risk-trigger-hierarchy.md` … +7
+- `wiki/concepts/economic-hurdle-rate-cl.md`: `lvr-and-impermanent-loss`, `lvr-and-impermanent-loss`, `fee-economics`
 - `wiki/concepts/equity-risk-premium.md`: `option-implied-volatility`
 - `wiki/concepts/equity_risk_premium.md`: `../concepts/options.md`, `../concepts/asset_pricing.md`, `../concepts/asset_allocation.md`, `../concepts/asset_pricing.md`, `../concepts/asset_pricing.md`, `../concepts/options.md`
+- `wiki/concepts/ev-gate-calibration.md`: `cl-market-making`, `volatility-forecasting`, `cl-market-making`, `cl-market-making`
+- `wiki/concepts/ev-gate.md`: `cl-market-making`, `transaction-costs`, `cl-market-making`, `volatility-forecasting`, `cl-market-making`, `risk-guardrails`, `dlmm-hedge-bot`, `cl-market-making` … +2
 - `wiki/concepts/event-driven-options-risk.md`: `../research/current%20research%20initiatives.md`
 - `wiki/concepts/exchanges.md`: `../concepts/stock-history-trade-endpoint.md`, `../concepts/stock-history-quote-endpoint.md`, `../concepts/trade-conditions.md`, `../concepts/quote-conditions.md`
 - `wiki/concepts/expirations.md`: `../concepts/option-snapshot-ohlc-endpoint.md`, `../concepts/strike-prices.md`
 - `wiki/concepts/fast-fourier-transform-option-pricing.md`: `Markov-Modulated Jump-Diffusion (MMJD)`, `Markov-Switching Stochastic Volatility (MS-SV)`
+- `wiki/concepts/fee-amount-per-token-stored.md`: `fee-economics`
+- `wiki/concepts/fee-yield.md`: `cl-market-making`
 - `wiki/concepts/financial-trading-evaluation-metrics.md`: `../entities/tradingagents.md`, `../entities/tradingagents.md`, `../entities/tradingagents.md`
 - `wiki/concepts/financial-trading-firm-structure.md`: `../entities/tradingagents.md`, `../entities/tradingagents.md`
 - `wiki/concepts/fund-manager-agent.md`: `../entities/tradingagents.md`, `../entities/tradingagents.md`
 - `wiki/concepts/fundamental-analyst-agent.md`: `../entities/tradingagents.md`, `../entities/tradingagents.md`, `../concepts/tradingagents-analyst-team.md`
 - `wiki/concepts/gamma-exposure-gex.md`: `../research/gex_sign_determination.md`
 - `wiki/concepts/gap-risk.md`: `Markov-Modulated Geometric Brownian Motion (MMGBM)`, `Markov-Modulated Jump-Diffusion (MMJD)`
+- `wiki/concepts/gex-intelligence.md`: `spot-price`, `cl-market-making`, `spot-price`, `spot-price`
 - `wiki/concepts/GLP-1_Receptor_Agonists.md`: `../concepts/Secular_Growth_Engine.md`, `../concepts/Sub-Sector_Cannibalization.md`
+- `wiki/concepts/hedge-churn-artifact.md`: `hedge-churn`, `cl-market-making`, `hedge-churn`, `hedge-churn`, `hedge-churn`, `transaction-costs`, `transaction-costs`
+- `wiki/concepts/hedge-drag.md`: `cl-market-making`, `lp-hedging`, `transaction-costs`, `lp-hedging`, `transaction-costs`, `cl-market-making`, `cl-market-making`
 - `wiki/concepts/hidden-markov-model-hmm-in-finance.md`: `../sources/Detecting stock market regimes from option prices.md`
 - `wiki/concepts/hidden-markov-models-in-option-pricing.md`: `Markov-Modulated Geometric Brownian Motion (MMGBM)`, `Markov-Modulated Jump-Diffusion (MMJD)`, `Markov-Switching Stochastic Volatility (MS-SV)`, `Fast Fourier Transform (FFT) in Option Pricing`
 - `wiki/concepts/hidden_markov_model.md`: `../concepts/excess_kurtosis.md`, `../concepts/options.md`, `../concepts/markov_process.md`
+- `wiki/concepts/hodl-benchmark.md`: `cl-market-making`, `cl-market-making`
 - `wiki/concepts/horizon-spread-option-implied-erp.md`: `hidden-markov-models`, `option-implied-volatility`, `hidden-markov-models`
 - `wiki/concepts/horizon_spread_financial.md`: `../concepts/options.md`, `../concepts/asset_pricing.md`, `../concepts/options.md`
+- `wiki/concepts/impermanent-loss.md`: `liquidity-provider`, `market-risk`, `liquidity-provider`, `market-risk`
 - `wiki/concepts/index-at-time-price-endpoint.md`: `../../concepts/symbols.md`
 - `wiki/concepts/index-data.md`: `../concepts/symbols.md`, `../concepts/time-intervals.md`, `../concepts/time-intervals.md`, `../concepts/time-intervals.md`, `../concepts/subscription-tiers.md`
 - `wiki/concepts/index-history-eod-endpoint.md`: `../../concepts/symbols.md`, `../concepts/trade-conditions.md`, `../concepts/quote-conditions.md`
@@ -92,20 +124,31 @@ These make `[[name]]` links ambiguous.
 - `wiki/concepts/interest-rates.md`: `../concepts/symbols.md`
 - `wiki/concepts/internet-art.md`: `Excavating Amnesia: A Media Archaeology of Early Internet Art from Singapore`, `Ocarina (1994)`, `alpha 3.4 (2002)`, `tsunamii.net`, `tsunamii.net`, `Ocarina (1994)`, `alpha 3.4 (2002)`, `Strategic Amnesia of Digital Culture` … +1
 - `wiki/concepts/it2000-masterplan.md`: `Excavating Amnesia: A Media Archaeology of Early Internet Art from Singapore`, `Ocarina (1994)`, `tsunamii.net`, `Strategic Amnesia of Digital Culture`, `Technology History`, `Digital Culture`
+- `wiki/concepts/iterative-best-response.md`: `concentrated-liquidity`, `research-simulator`, `research-simulator`
+- `wiki/concepts/liquidity-concentration.md`: `cl-market-making`, `concentrated-liquidity`
 - `wiki/concepts/llms-in-finance.md`: `../entities/tradingagents.md`, `../entities/tradingagents.md`, `../entities/tradingagents.md`
 - `wiki/concepts/local_cache_layer.md`: `../entities/apache_arrow_shared_memory.md`, `../entities/polars.md`
+- `wiki/concepts/loss-versus-holding.md`: `liquidity-provider`, `market-risk`, `liquidity-provider`
+- `wiki/concepts/loss-versus-rebalancing.md`: `liquidity-provider`, `centralized-exchange`, `market-risk`, `bonding-function`, `liquidity-provider`, `meteora`, `fee-economics`
+- `wiki/concepts/marginal-liquidity-amm.md`: `bonding-function`, `bonding-function`, `bonding-function`
+- `wiki/concepts/market-boundaries-cl.md`: `volatility`
 - `wiki/concepts/market-data-instrument-types.md`: `Market Data API (Tastyworks)`, `Market Data API (Tastyworks)`
+- `wiki/concepts/market-regime-transition.md`: `volatility`, `lvr-and-impermanent-loss`, `volatility`
 - `wiki/concepts/market-sessions.md`: `../concepts/extended-hours-trading.md`, `../concepts/utc-timestamps.md`, `../concepts/currentsession-data-model.md`, `../concepts/nextsession-data-model.md`, `../concepts/previoussession-data-model.md`, `../concepts/marketcalendar-data-model.md`, `../concepts/utc-timestamps.md`, `../concepts/extended-hours-trading.md`
 - `wiki/concepts/market-state.md`: `../concepts/currentsession-data-model.md`, `../concepts/extended-hours-trading.md`, `../concepts/currentsession-data-model.md`, `../concepts/extended-hours-trading.md`
 - `wiki/concepts/marketdata-object.md`: `Market Data API (Tastyworks)`, `Market Data API (Tastyworks)`
+- `wiki/concepts/markouts.md`: `liquidity-provider`, `centralized-exchange`, `liquidity-provider`, `centralized-exchange`
 - `wiki/concepts/markov-modulated-geometric-brownian-motion.md`: `Hidden Markov Models (HMMs) in Option Pricing`
 - `wiki/concepts/markov-modulated-jump-diffusion.md`: `Hidden Markov Models (HMMs) in Option Pricing`, `Markov-Modulated Geometric Brownian Motion (MMGBM)`
 - `wiki/concepts/markov-switching-stochastic-volatility.md`: `Hidden Markov Models (HMMs) in Option Pricing`
 - `wiki/concepts/media-archaeology.md`: `Excavating Amnesia: A Media Archaeology of Early Internet Art from Singapore`, `Strategic Amnesia of Digital Culture`, `Ocarina (1994)`, `alpha 3.4 (2002)`, `tsunamii.net`, `tsunamii.net`, `Ocarina (1994)`, `alpha 3.4 (2002)` … +4
 - `wiki/concepts/medtronic-stock-performance-conditions.md`: `../entities/pulselect-system.md`, `../entities/hugo-robotic-surgery-system.md`, `../entities/scientia-vascular.md`, `../entities/cathworks.md`
 - `wiki/concepts/modernism-in-art.md`: `Excavating Amnesia: A Media Archaeology of Early Internet Art from Singapore`, `Ocarina (1994)`, `tsunamii.net`, `alpha 3.4 (2002)`, `Ocarina (1994)`, `tsunamii.net`, `alpha 3.4 (2002)`, `Contemporary Art in Singapore` … +1
+- `wiki/concepts/nash-equilibrium-cl-strategies.md`: `concentrated-liquidity`, `game-theory`
+- `wiki/concepts/negative-economics-exit.md`: `lvr-and-impermanent-loss`, `lvr-and-impermanent-loss`, `fee-economics`
 - `wiki/concepts/new-media-art.md`: `Excavating Amnesia: A Media Archaeology of Early Internet Art from Singapore`, `Ocarina (1994)`, `alpha 3.4 (2002)`, `tsunamii.net`, `tsunamii.net`, `Ocarina (1994)`, `alpha 3.4 (2002)`, `Cyberarts: Intersections of Art and Technology (2001)` … +5
 - `wiki/concepts/news-analyst-agent.md`: `../entities/tradingagents.md`, `../entities/tradingagents.md`, `../concepts/tradingagents-analyst-team.md`
+- `wiki/concepts/noise-traders-amm.md`: `liquidity-provider`, `liquidity-provider`, `centralized-exchange`, `liquidity-provider`, `liquidity-provider`, `centralized-exchange`
 - `wiki/concepts/optimal-stopping-time-finance.md`: `Transaction Costs (Finance)`, `Dynamic Programming (Finance)`, `Transaction Costs (Finance)`, `Optimal Trend Following Strategy under Regime Switching`
 - `wiki/concepts/option-at-time-quote-endpoint.md`: `../../concepts/symbols.md`, `../../concepts/strike-prices.md`, `../concepts/quote-conditions.md`
 - `wiki/concepts/option-at-time-trade-endpoint.md`: `../../concepts/symbols.md`, `../../concepts/strike-prices.md`, `../../concepts/api-parameters.parameters.md`, `../concepts/trade-conditions.md`
@@ -146,22 +189,36 @@ These make `[[name]]` links ambiguous.
 - `wiki/concepts/order-attributes.md`: `./instrument-types.md`, `./instrument-types.md`, `./instrument-types.md`, `./instrument-types.md`, `./instrument-types.md`, `./instrument-types.md`, `./instrument-types.md`, `./instrument-types.md` … +4
 - `wiki/concepts/order-submission.md`: `./leg-attributes.md`, `./order-types.md`, `./price-and-price-effect.md`, `./time-in-force.md`, `./value-and-value-effect.md`, `./order-leg-action.md`, `./instrument-types.md`, `./order-quantity.md` … +5
 - `wiki/concepts/parallel-data-pipelines.md`: `../sources/gemini-1779189680884.md`
+- `wiki/concepts/pool-price-sigma.md`: `deribit`, `cl-market-making`, `deribit`
+- `wiki/concepts/pool-value-function.md`: `centralized-exchange`, `bonding-function`, `bonding-function`, `liquidity-provider`
 - `wiki/concepts/portfolio-greeks-management.md`: `../research/current%20research%20initiatives.md`
 - `wiki/concepts/process_based_parallelism.md`: `../entities/python_global_interpreter_lock_gil.md`, `../entities/amd_threadripper_3990x.md`
+- `wiki/concepts/protocol-fee.md`: `fee-economics`
+- `wiki/concepts/put-wall.md`: `spot-price`, `cl-market-making`, `spot-price`, `spot-price`, `spot-price`, `spot-price`
 - `wiki/concepts/quote-data.md`: `Market Data API (Tastyworks)`, `Market Data API (Tastyworks)`
+- `wiki/concepts/range-planning.md`: `cl-market-making`, `volatility-forecasting`
 - `wiki/concepts/react-prompting-framework.md`: `../entities/tradingagents.md`, `../entities/tradingagents.md`
+- `wiki/concepts/rebalancing-arbitrage.md`: `centralized-exchange`, `bonding-function`, `liquidity-provider`, `liquidity-provider`, `centralized-exchange`, `liquidity-provider`
+- `wiki/concepts/rebalancing-strategy.md`: `centralized-exchange`, `liquidity-provider`, `centralized-exchange`, `liquidity-provider`
 - `wiki/concepts/recording-secretary-agent.md`: `../research/current%20research%20initiatives.md`, `../research/current%20research%20initiatives.md`
+- `wiki/concepts/regime-deterioration-exit.md`: `volatility`, `lvr-and-impermanent-loss`, `volatility`, `lvr-and-impermanent-loss`
 - `wiki/concepts/regime-switching-model-financial.md`: `Markov Chain`, `Markov Chain`, `Bull Market`, `Bear Market`, `Optimal Trend Following Strategy under Regime Switching`
 - `wiki/concepts/regime_switching_models.md`: `../concepts/markov_process.md`, `../concepts/excess_kurtosis.md`, `../concepts/time_varying_correlations.md`, `../concepts/asset_pricing.md`, `../concepts/asset_allocation.md`, `../concepts/excess_kurtosis.md`, `../concepts/time_varying_correlations.md`
 - `wiki/concepts/researcher-agent.md`: `../entities/tradingagents.md`, `../entities/tradingagents.md`, `../concepts/tradingagents-analyst-team.md`
 - `wiki/concepts/rest-api.md`: `Market Data API (Tastyworks)`, `Market Data API (Tastyworks)`
 - `wiki/concepts/reworlding-art-history.md`: `postcolonial-art-history`, `globalization-in-art`, `cultural-identity-as-process`
 - `wiki/concepts/risk-management-team-agent.md`: `../entities/tradingagents.md`, `../entities/tradingagents.md`
+- `wiki/concepts/risk-premium.md`: `lvr-and-impermanent-loss`
 - `wiki/concepts/risk_neutral_variance.md`: `../concepts/options.md`, `../concepts/options.md`, `../concepts/stochastic_discount_factor.md`
 - `wiki/concepts/root_mean_square_forecast_error.md`: `../concepts/forecasting.md`, `../concepts/mean_squared_error.md`
 - `wiki/concepts/sentiment-analyst-agent.md`: `../entities/tradingagents.md`, `../entities/tradingagents.md`, `../concepts/tradingagents-analyst-team.md`
+- `wiki/concepts/sigma-derived-deployed-window.md`: `volatility`
+- `wiki/concepts/sigma-forecast-error.md`: `cl-market-making`, `volatility-forecasting`, `cl-market-making`, `concentrated-liquidity`, `deribit`
+- `wiki/concepts/simulated-base-inventory.md`: `hedge-churn`, `cl-market-making`, `hedge-churn`, `hedge-churn`, `hedge-churn`
 - `wiki/concepts/singapore-one.md`: `Excavating Amnesia: A Media Archaeology of Early Internet Art from Singapore`, `tsunamii.net`, `Technology History`, `Digital Culture`, `tsunamii.net`
+- `wiki/concepts/slippage.md`: `volatility`, `volatility`
 - `wiki/concepts/smart-nation.md`: `Excavating Amnesia: A Media Archaeology of Early Internet Art from Singapore`, `Strategic Amnesia of Digital Culture`, `Digital Culture`, `Technology History`, `Strategic Amnesia of Digital Culture`
+- `wiki/concepts/solana-rent.md`: `cl-market-making`, `cl-market-making`, `cl-market-making`
 - `wiki/concepts/stochastic_volatility_models.md`: `../concepts/heston_model.md`, `../concepts/sabr_model.md`
 - `wiki/concepts/stock-market-regimes.md`: `hidden-markov-models`, `hidden-markov-models`, `option-implied-volatility`, `../concepts/excess_kurtosis.md`, `../concepts/time_varying_correlations.md`, `../concepts/asset_pricing.md`, `../concepts/asset_allocation.md`, `../concepts/options.md` … +2
 - `wiki/concepts/strategic-amnesia-digital-culture.md`: `Strategic Amnesia of Digital Culture`, `Excavating Amnesia: A Media Archaeology of Early Internet Art from Singapore`, `tsunamii.net`, `tsunamii.net`, `Digital Culture`, `Art History`, `Technology History`, `Strategic Amnesia of Digital Culture`
@@ -218,14 +275,18 @@ These make `[[name]]` links ambiguous.
 - `wiki/concepts/trading-halts.md`: `Market Data API (Tastyworks)`, `Market Data API (Tastyworks)`
 - `wiki/concepts/trading-holidays.md`: `../concepts/marketcalendar-data-model.md`, `../concepts/marketcalendar-data-model.md`
 - `wiki/concepts/traditional-trading-strategies.md`: `../entities/tradingagents.md`, `../entities/tradingagents.md`, `../entities/tradingagents.md`
+- `wiki/concepts/transaction-latency.md`: `execution-risk`
 - `wiki/concepts/trend-following-trading.md`: `Transaction Costs (Finance)`, `Dow Jones Industrial Average (DJIA)`, `Bull Market`, `Bear Market`, `Transaction Costs (Finance)`, `Buy and Hold Strategy`, `Optimal Trend Following Strategy under Regime Switching`
 - `wiki/concepts/vectorized_greek_calculation.md`: `../entities/numpy.md`, `../entities/numba.md`, `../entities/numpy.md`
 - `wiki/concepts/volatility-clustering.md`: `Markov-Modulated Geometric Brownian Motion (MMGBM)`, `Hidden Markov Models (HMMs) in Option Pricing`
 - `wiki/concepts/volatility-smile.md`: `Markov-Modulated Jump-Diffusion (MMJD)`, `Markov-Switching Stochastic Volatility (MS-SV)`
 - `wiki/concepts/volatility-surface-dynamics.md`: `../research/current%20research%20initiatives.md`, `../research/current%20research%20initiatives.md`
 - `wiki/concepts/volatility_risk_premium.md`: `../concepts/portfolio_insurance.md`, `../concepts/risk_management.md`
+- `wiki/concepts/wall-envelope.md`: `cl-market-making`, `spot-price`
+- `wiki/concepts/warehouse-manager-cl-inventory-strategy.md`: `expected-fees-cl`, `gex-regime`, `lvr`, `lvr`, `cl-market-making`
 - `wiki/concepts/websocket-api.md`: `Market Data API (Tastyworks)`, `Market Data API (Tastyworks)`
 - `wiki/concepts/wonham-filter.md`: `Markov Chain`, `Markov Chain`, `Stochastic Differential Equation (SDE)`, `Markov Chain`, `Stochastic Differential Equation (SDE)`, `Optimal Trend Following Strategy under Regime Switching`
+- `wiki/concepts/zero-gamma-level.md`: `volatility`
 - `wiki/entities/alex-mitchell.md`: `Excavating Amnesia: A Media Archaeology of Early Internet Art from Singapore`, `tsunamii.net`, `tsunamii.net`, `Digital Culture`
 - `wiki/entities/alexander-r-galloway.md`: `Excavating Amnesia: A Media Archaeology of Early Internet Art from Singapore`, `Black Box (Galloway's concept)`, `Ocarina (1994)`, `tsunamii.net`, `tsunamii.net`, `Ocarina (1994)`, `Digital Culture`, `Black Box (Galloway's concept)`
 - `wiki/entities/alpha-3-4-tsunamiinet.md`: `alpha 3.4 (2002)`, `tsunamii.net`, `Internet Protocol (IP)`, `Excavating Amnesia: A Media Archaeology of Early Internet Art from Singapore`, `alpha 3.4 (2002)`, `tsunamii.net`, `Strategic Amnesia of Digital Culture`, `Contemporary Art in Singapore` … +1
@@ -274,6 +335,8 @@ These make `[[name]]` links ambiguous.
 - `wiki/entities/theta-data-v3.md`: `../concepts/subscription-tiers.md`, `../concepts/stock-data.md`
 - `wiki/entities/tradinggpt.md`: `../research/current%20research%20initiatives.md`
 - `wiki/entities/tsunamiinet.md`: `tsunamii.net`, `alpha 3.4 (2002)`, `tsunamii.net`, `Excavating Amnesia: A Media Archaeology of Early Internet Art from Singapore`, `alpha 3.4 (2002)`, `Strategic Amnesia of Digital Culture`
+- `wiki/entities/uniswap-v2.md`: `liquidity-provider`
+- `wiki/entities/uniswap-v3.md`: `liquidity-provider`, `concentrated-liquidity`, `liquidity-provider`
 - `wiki/entities/utp-cta-feeds.md`: `../../concepts/subscription-tiers.md`, `../../concepts/stock-data.md`
 - `wiki/entities/wan_ni_lai.md`: `../concepts/options.md`
 - `wiki/entities/woon-tien-wei.md`: `tsunamii.net`, `tsunamii.net`, `alpha 3.4 (2002)`, `tsunamii.net`, `Excavating Amnesia: A Media Archaeology of Early Internet Art from Singapore`, `tsunamii.net`, `alpha 3.4 (2002)`, `tsunamii.net`
@@ -302,23 +365,26 @@ These make `[[name]]` links ambiguous.
 - `wiki/sources/campbell_thompson_2008_predicting_excess_returns.md`: `../entities/john_y_campbell.md`, `../entities/samuel_b_thompson.md`, `../concepts/forecasting.md`, `../concepts/out_of_sample_testing.md`
 - `wiki/sources/dai-zhang-zhu-2010-trend-following-trading.md`: `Dynamic Programming (Finance)`, `Transaction Costs (Finance)`, `Dow Jones Industrial Average (DJIA)`
 - `wiki/sources/detecting-stock-market-regimes-from-option-prices-lai-2022.md`: `hidden-markov-models`, `option-implied-volatility`
+- `wiki/sources/dlmm-2026-call-wall-oscillates.md`: `hedge-churn`, `hysteresis`, `hedge-churn`, `hedge-churn`, `hysteresis`
+- `wiki/sources/dlmm-2026-nash-equilibrium-cl-provider-strategies.md`: `concentrated-liquidity`, `fee-economics`, `hedge-policy`, `research-simulator`
+- `wiki/sources/dlmm-2026-pool-sigma-forecast.md`: `deribit`, `deribit`
+- `wiki/sources/dlmm-2026-wall-envelope-narrower-than-sigma-width.md`: `deribit`, `spot-price`
 - `wiki/sources/gex_compute_pipeline_blueprint.md`: `../entities/amd_threadripper_3990x.md`, `../entities/python_global_interpreter_lock_gil.md`, `../entities/numpy.md`, `../entities/numba.md`, `../entities/apache_arrow_shared_memory.md`, `../entities/polars.md`, `../research/gex_sign_determination.md`, `../research/rdr_acronym_meaning.md`
 - `wiki/sources/guidolin_pedio_2021_forecasting_commodity_futures.md`: `../entities/massimo_guidolin.md`, `../entities/manuela_pedio.md`, `../concepts/forecasting.md`, `../concepts/stepwise_regression.md`, `../concepts/commodity_futures.md`
 - `wiki/sources/maasar_2016_portfolio_optimisation_using_risky_assets.md`: `../concepts/mean_variance_optimization.md`, `../concepts/portfolio_insurance.md`, `../concepts/portfolio_insurance.md`
 - `wiki/sources/martin_2017_expected_return.md`: `../entities/ian_martin.md`, `../concepts/options.md`, `../concepts/options.md`, `../concepts/options.md`, `../concepts/stochastic_discount_factor.md`, `../concepts/asset_pricing.md`
+- `wiki/sources/milionis-2026-automated-market-making-and-loss-versus-rebalancing.md`: `centralized-exchange`, `centralized-exchange`, `automated-market-maker`, `liquidity-provider`, `centralized-exchange`, `market-risk`
 - `wiki/sources/olorunnimbe_viktor_2022_deep_learning_in_stock_market.md`: `../concepts/quantitative_finance.md`, `../concepts/machine_learning_in_finance.md`
 - `wiki/sources/react-original-paper.md`: `../research/current%20research%20initiatives.md`
 - `wiki/sources/tastyworks-market-data-api-docs.md`: `Market Data API (Tastyworks)`
 - `wiki/sources/veal-2017-michelle-antoinette-reworlding-art-history-review.md`: `cultural-identity-as-process`, `corporeography`
 - `wiki/sources/yamin-mitchell-excavating-amnesia-2023.md`: `Strategic Amnesia of Digital Culture`, `Ocarina (1994)`, `alpha 3.4 (2002)`, `tsunamii.net`, `Ocarina (1994)`, `Black Box (Galloway's concept)`, `tsunamii.net`, `alpha 3.4 (2002)` … +14
 
-## Orphans — no links in or out (8)
+## Orphans — no links in or out (6)
 
 - `wiki/concepts/Master Concept Map.md`
 - `wiki/dlmm/blueprints/blueprint-execution-router.md`
-- `wiki/dlmm/blueprints/blueprint-observability-contract.md`
 - `wiki/dlmm/blueprints/blueprint-protocol-contract.md`
-- `wiki/dlmm/blueprints/blueprint-risk-guardrails.md`
 - `wiki/dlmm/blueprints/blueprint-state-machine.md`
 - `wiki/dlmm/blueprints/blueprint-state-store.md`
 - `wiki/entities/gex-divergence-dashboard.md`
