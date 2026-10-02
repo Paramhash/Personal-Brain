@@ -17,7 +17,7 @@ The primary purpose of setting Greek limits is to:
 ## Dynamic Adjustment
 Traditionally, Greek limits might be static or adjusted manually. However, the [[../concepts/regime-risk-scaling-engine.md|Regime Risk Scaling Engine]] introduces a dynamic approach:
 *   **Baseline Limits**: A set of initial, maximum dollar exposures for each Greek (e.g., max Delta, max Gamma).
-*   **Dynamic Scaling**: These baseline limits are continuously adjusted by the engine based on real-time market conditions, including the [[../concepts/regime-divergence-ratio.md|Regime Divergence Ratio (RDR)]], [[../concepts/gex.md|Gamma Exposure (GEX)]], and [[../concepts/vvix.md|Vol-of-Vol Index (VVIX)]].
+*   **Dynamic Scaling**: These baseline limits are continuously adjusted by the engine based on real-time market conditions, including the [[../concepts/regime-divergence-ratio.md|Regime Divergence Ratio (RDR)]], [[gamma-exposure-gex.md|Gamma Exposure (GEX)]], and [[../concepts/vvix.md|Vol-of-Vol Index (VVIX)]].
 
 ## Asymmetric Scaling
 A key feature of dynamic Greek limits is asymmetric scaling, where different Greeks are adjusted differently depending on the market regime:
@@ -30,5 +30,5 @@ This dynamic and asymmetric approach allows for more nuanced and adaptive risk m
 ## Related Concepts
 *   [[../concepts/options-greeks.md|Options Greeks]]
 *   [[../concepts/regime-risk-scaling-engine.md|Regime Risk Scaling Engine]]
-*   [[../concepts/gex.md|Gamma Exposure (GEX)]]
+*   [[gamma-exposure-gex.md|Gamma Exposure (GEX)]]
 *   [[../concepts/vvix.md|Vol-of-Vol Index (VVIX)]]

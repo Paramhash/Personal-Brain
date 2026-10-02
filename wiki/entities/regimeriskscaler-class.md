@@ -12,7 +12,7 @@ The `RegimeRiskScaler` class is a Python implementation of the [[../concepts/reg
 This class encapsulates the logic for:
 *   Defining structural limits and decay thresholds for risk scaling.
 *   Calculating a continuous non-linear risk multiplier using a [[../concepts/bi-symmetric-sigmoid-decay-function.md|Bi-Symmetric Sigmoid function]].
-*   Processing market metrics ([[../concepts/regime-divergence-ratio.md|Regime Divergence Ratio (RDR)]], [[../concepts/gex.md|Gamma Exposure (GEX)]], [[../concepts/vvix.md|Vol-of-Vol Index (VVIX)]]) to determine the appropriate operational mode and scaled limits.
+*   Processing market metrics ([[../concepts/regime-divergence-ratio.md|Regime Divergence Ratio (RDR)]], [[../concepts/gamma-exposure-gex.md|Gamma Exposure (GEX)]], [[../concepts/vvix.md|Vol-of-Vol Index (VVIX)]]) to determine the appropriate operational mode and scaled limits.
 *   Applying asymmetric scaling rules to different [[../concepts/options-greeks.md|Options Greeks]].
 
 ## Methods
@@ -25,7 +25,7 @@ Initializes the dynamic risk engine with its structural limits and decay thresho
     *   `theta_upper` (float): Upper boundary of the coherent [[../concepts/regime-divergence-ratio.md|RDR]] regime.
     *   `k_lower` (float): Speed of risk reduction approaching the lower boundary in the sigmoid function.
     *   `k_upper` (float): Speed of risk reduction approaching the upper boundary in the sigmoid function.
-    *   `gex_critical` (float): Absolute negative [[../concepts/gex.md|GEX]] capacity (in USD per 1% move) before a hard override is triggered.
+    *   `gex_critical` (float): Absolute negative [[../concepts/gamma-exposure-gex.md|GEX]] capacity (in USD per 1% move) before a hard override is triggered.
     *   `vvix_threshold` (float): Absolute [[../concepts/vvix.md|Vol-of-Vol]] threshold indicating structural market panic.
 
 ### `calculate_rdr_multiplier(self, rdr: float) -> float`
@@ -42,7 +42,7 @@ Processes real-time market metrics against the structural hierarchy to output sc
 *   **Parameters**:
     *   `base_limits` (Dict[str, float]): A dictionary of baseline maximum Greek dollar exposures (e.g., `{'delta': 500000.0, 'gamma': 50000.0}`).
     *   `rdr` (float): Current [[../concepts/regime-divergence-ratio.md|Regime Divergence Ratio]].
-    *   `current_gex` (float): Current aggregate Net Dealer [[../concepts/gex.md|Gamma Exposure]] in USD.
+    *   `current_gex` (float): Current aggregate Net Dealer [[../concepts/gamma-exposure-gex.md|Gamma Exposure]] in USD.
     *   `current_vvix` (float): Current level of [[../concepts/vvix.md|Vol-of-Vol Index]].
 *   **Returns**:
     *   `Dict[str, Any]`: A dictionary containing:
@@ -61,7 +61,7 @@ The `scale_portfolio_limits` method can determine three primary operational mode
 *   [[../concepts/regime-risk-scaling-engine.md|Regime Risk Scaling Engine]]
 *   [[../concepts/bi-symmetric-sigmoid-decay-function.md|Bi-Symmetric Sigmoid Decay Function]]
 *   [[../concepts/regime-divergence-ratio.md|Regime Divergence Ratio (RDR)]]
-*   [[../concepts/gex.md|Gamma Exposure (GEX)]]
+*   [[../concepts/gamma-exposure-gex.md|Gamma Exposure (GEX)]]
 *   [[../concepts/vvix.md|Vol-of-Vol Index (VVIX)]]
 *   [[../concepts/portfolio-greek-limits.md|Portfolio Greek Limits]]
 *   [[../concepts/options-greeks.md|Options Greeks]]

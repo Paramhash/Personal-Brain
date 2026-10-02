@@ -18,7 +18,7 @@ An HMM is characterized by:
 5.  **Emission Probabilities ($f_k(Y_t)$):** The probability distribution of observing a particular data point $Y_t$ given that the system is in a specific hidden state $k$.
 
 ## Application in Finance
-HMMs are widely used in finance to model [[../concepts/stock_market_regimes.md|stock market regimes]] because they can capture the idea that market dynamics (e.g., mean returns, volatility) switch between different unobservable states. For example, [[../sources/detecting_stock_market_regimes_lai_2022.md|Lai (2022)]] applies an HMM to detect shifts between an expansion and a contraction state in equity markets.
+HMMs are widely used in finance to model [[stock-market-regimes.md|stock market regimes]] because they can capture the idea that market dynamics (e.g., mean returns, volatility) switch between different unobservable states. For example, [[../sources/detecting_stock_market_regimes_lai_2022.md|Lai (2022)]] applies an HMM to detect shifts between an expansion and a contraction state in equity markets.
 
 In this context:
 *   **Hidden States:** Typically represent market regimes (e.g., "expansion" and "contraction").
@@ -31,7 +31,7 @@ In this context:
 
 ## Related Concepts
 *   [[../concepts/regime_switching_models.md|Regime Switching Models]]
-*   [[../concepts/stock_market_regimes.md|Stock Market Regimes]]
+*   [[stock-market-regimes.md|Stock Market Regimes]]
 *   [[../concepts/markov_process.md|Markov Process]]
 *   [[../concepts/horizon_spread_financial.md|Horizon Spread (Financial)]]
 *   [[../concepts/garch_model.md|GARCH Model]]

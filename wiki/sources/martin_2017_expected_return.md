@@ -17,7 +17,7 @@ This seminal paper by [[../entities/ian_martin.md|Ian Martin]] demonstrates a me
 The paper establishes that the term $rac{1}{R_{f,t}}var_{t}^{*}R_{T}$ (where $R_{f,t}$ is the risk-free rate and $var_{t}^{*}R_{T}$ is the conditional [[../concepts/risk_neutral_variance.md|risk-neutral variance]] of the market's gross return) provides a sufficiently tight lower bound for the expected [[../concepts/equity_risk_premium.md|equity risk premium]]. This allows for a forward-looking estimation of the [[../concepts/equity_risk_premium.md|equity risk premium]] directly from [[../concepts/options.md|option prices]], which reflect market participants' expectations.
 
 ## Impact
-This methodology has been widely adopted in subsequent research, including [[../sources/detecting_stock_market_regimes_lai_2022.md|Lai (2022)]], to extract [[../concepts/option_implied_equity_risk_premium.md|option-implied equity risk premia]] for various applications, such as detecting [[../concepts/stock_market_regimes.md|stock market regimes]].
+This methodology has been widely adopted in subsequent research, including [[../sources/detecting_stock_market_regimes_lai_2022.md|Lai (2022)]], to extract [[../concepts/option_implied_equity_risk_premium.md|option-implied equity risk premia]] for various applications, such as detecting [[../concepts/stock-market-regimes.md|stock market regimes]].
 
 ## Related Concepts
 *   [[../concepts/equity_risk_premium.md|Equity Risk Premium]]

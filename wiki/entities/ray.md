@@ -19,7 +19,7 @@ Ray is an open-source, unified framework for scaling [Python](../entities/python
 
 Ray is highly beneficial for computationally intensive tasks in quantitative finance, such as:
 *   **Real-time [Options Greeks](../concepts/options-greeks.md) Calculation:** Distributing the calculation of Greeks for a large universe of options contracts across many CPU cores.
-*   **[Gamma Exposure (GEX)](../concepts/gamma-exposure.md) Aggregation:** Parallelizing the aggregation of Gamma across numerous underlying assets.
+*   **[Gamma Exposure (GEX)](../concepts/gamma-exposure-gex.md) Aggregation:** Parallelizing the aggregation of Gamma across numerous underlying assets.
 *   **Backtesting:** Accelerating the backtesting of complex trading strategies over historical data.
 *   **Monte Carlo Simulations:** Running large numbers of simulations in parallel for option pricing or risk analysis.
 *   **Machine Learning in Finance:** Training and deploying machine learning models for market prediction or [Regime Detection](../concepts/regime-detection.md).

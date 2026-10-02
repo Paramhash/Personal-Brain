@@ -20,7 +20,7 @@ Commonly identified regimes include:
 Identifying the current market regime is crucial for:
 *   **Strategy Adaptation:** Different trading strategies perform optimally in different regimes. For example, trend-following strategies thrive in trending markets, while mean-reversion strategies are better suited for ranging markets.
 *   **Risk Management:** Volatility regimes directly impact risk assessment and position sizing.
-*   **Options Trading:** Understanding the current regime can inform decisions related to [Options Greeks](../concepts/options-greeks.md) and [Gamma Exposure (GEX)](../concepts/gamma-exposure.md) dynamics.
+*   **Options Trading:** Understanding the current regime can inform decisions related to [Options Greeks](../concepts/options-greeks.md) and [Gamma Exposure (GEX)](gamma-exposure-gex.md) dynamics.
 
 ## Data Providers
 

@@ -22,7 +22,7 @@ This blueprint aims to achieve complete SPY + 500 component calculations across 
 
 ## Related Concepts & Entities:
 
-*   [[../concepts/gamma_exposure_gex.md]]
+*   [[../concepts/gamma-exposure-gex.md|Gamma Exposure (GEX)]]
 *   [[../research/gex_sign_determination.md]]
 *   [[../research/rdr_acronym_meaning.md]]
 

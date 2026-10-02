@@ -22,7 +22,7 @@ As shown by [[../sources/martin_2017_expected_return.md|Martin (2017)]] and util
 ## Significance
 *   **Forward-Looking Indicator:** Since it's derived from current option prices, [[../concepts/risk_neutral_variance.md|risk-neutral variance]] provides a forward-looking measure of market expectations regarding future volatility.
 *   **Market Sentiment:** Changes in [[../concepts/risk_neutral_variance.md|risk-neutral variance]] (or implied volatility) often reflect shifts in market sentiment and perceived risk.
-*   **Regime Detection:** As a component of the OIERP and subsequently the [[../concepts/horizon_spread_financial.md|horizon spread]], it indirectly contributes to the detection of [[../concepts/stock_market_regimes.md|stock market regimes]].
+*   **Regime Detection:** As a component of the OIERP and subsequently the [[../concepts/horizon_spread_financial.md|horizon spread]], it indirectly contributes to the detection of [[stock-market-regimes.md|stock market regimes]].
 
 ## Related Concepts
 *   [[../concepts/options.md|Options]]

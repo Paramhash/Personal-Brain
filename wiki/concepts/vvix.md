@@ -29,4 +29,4 @@ This aggressive scaling aims to rapidly de-risk the portfolio in anticipation of
 *   [[../concepts/regime-risk-scaling-engine.md|Regime Risk Scaling Engine]]
 *   [[../concepts/portfolio-greek-limits.md|Portfolio Greek Limits]]
 *   [[../concepts/options-greeks.md|Options Greeks]]
-*   [[../concepts/gex.md|Gamma Exposure (GEX)]]
+*   [[gamma-exposure-gex.md|Gamma Exposure (GEX)]]

@@ -21,7 +21,7 @@ Where:
 *   **Crisis Periods (Contraction Regime):** During periods of high imminent risk (e.g., financial crises, pandemics), the short-term required return may exceed the long-term required return, as investors demand higher compensation for immediate uncertainty. In these periods, the [[../concepts/horizon_spread_financial.md|horizon spread]] is expected to turn **negative**.
 
 ## Significance as a Regime Indicator
-The distinct behavior of the [[../concepts/horizon_spread_financial.md|horizon spread]] across different market states makes it a powerful forward-looking indicator for detecting [[../concepts/stock_market_regimes.md|stock market regimes]]. Research shows that using the horizon spread in [[../concepts/hidden_markov_model.md|Hidden Markov Models]] provides:
+The distinct behavior of the [[../concepts/horizon_spread_financial.md|horizon spread]] across different market states makes it a powerful forward-looking indicator for detecting [[stock-market-regimes.md|stock market regimes]]. Research shows that using the horizon spread in [[../concepts/hidden_markov_model.md|Hidden Markov Models]] provides:
 *   **Earlier Detection:** It can signal regime shifts sooner than indicators based on historical returns or conditional volatility.
 *   **Sharper Distinction:** It leads to clearer probabilities of being in a specific regime, reducing the "indecisive gray area" where probabilities are neither close to zero nor one.
 *   **Improved Forecasting:** Models incorporating the horizon spread demonstrate better out-of-sample forecasting performance for the [[../concepts/equity_risk_premium.md|equity risk premium]].
@@ -29,7 +29,7 @@ The distinct behavior of the [[../concepts/horizon_spread_financial.md|horizon s
 ## Related Concepts
 *   [[../concepts/option_implied_equity_risk_premium.md|Option-Implied Equity Risk Premium]]
 *   [[../concepts/equity_risk_premium.md|Equity Risk Premium]]
-*   [[../concepts/stock_market_regimes.md|Stock Market Regimes]]
+*   [[stock-market-regimes.md|Stock Market Regimes]]
 *   [[../concepts/regime_switching_models.md|Regime Switching Models]]
 *   [[../concepts/options.md|Options]]
 *   [[../concepts/hidden_markov_model.md|Hidden Markov Model]]

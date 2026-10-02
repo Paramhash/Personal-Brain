@@ -20,14 +20,14 @@ where $R_{f,t}$ is the risk-free rate, and $var_{t}^{*}R_{T}$ is the conditional
 Option prices integrate market participants' expectations about future volatility and the distribution of asset returns in a timely manner. This makes the OIERP a valuable indicator for assessing current market sentiment and anticipating future market states, as demonstrated by [[../sources/detecting_stock_market_regimes_lai_2022.md|Lai (2022)]].
 
 ## Role in Regime Detection
-The OIERP, particularly when analyzed across different time horizons, provides crucial information for detecting [[../concepts/stock_market_regimes.md|stock market regimes]]. The difference between long-term and short-term OIERP, known as the [[../concepts/horizon_spread_financial.md|horizon spread]], acts as a sensitive indicator of shifts between expansion and contraction phases in the market.
+The OIERP, particularly when analyzed across different time horizons, provides crucial information for detecting [[stock-market-regimes.md|stock market regimes]]. The difference between long-term and short-term OIERP, known as the [[../concepts/horizon_spread_financial.md|horizon spread]], acts as a sensitive indicator of shifts between expansion and contraction phases in the market.
 
 ## Related Concepts
 *   [[../concepts/equity_risk_premium.md|Equity Risk Premium]]
 *   [[../concepts/options.md|Options]]
 *   [[../concepts/risk_neutral_variance.md|Risk-Neutral Variance]]
 *   [[../concepts/horizon_spread_financial.md|Horizon Spread (Financial)]]
-*   [[../concepts/stock_market_regimes.md|Stock Market Regimes]]
+*   [[stock-market-regimes.md|Stock Market Regimes]]
 *   [[../concepts/stochastic_discount_factor.md|Stochastic Discount Factor]]
 
 ---

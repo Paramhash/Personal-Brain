@@ -15,10 +15,10 @@ As of 2020, the index was heavily dominated by three East Asian countries: China
 ## Significance
 *   **Benchmark:** Serves as a key benchmark for investors seeking exposure to emerging market equities.
 *   **Global Indicator:** Provides insights into the economic health and investment sentiment within a broad range of developing economies.
-*   **Research Focus:** Used in academic studies, such as [[../sources/detecting_stock_market_regimes_lai_2022.md|Lai (2022)]], to analyze [[../concepts/stock_market_regimes.md|stock market regimes]] and [[../concepts/equity_risk_premium.md|equity risk premium]] dynamics in emerging markets, often in comparison to developed markets like the US ([[../entities/sp_500_index.md|S&P 500]]). Its composition also allows for analysis of regional specific events, such as the early impact of the Covid-19 pandemic in East Asian markets.
+*   **Research Focus:** Used in academic studies, such as [[../sources/detecting_stock_market_regimes_lai_2022.md|Lai (2022)]], to analyze [[../concepts/stock-market-regimes.md|stock market regimes]] and [[../concepts/equity_risk_premium.md|equity risk premium]] dynamics in emerging markets, often in comparison to developed markets like the US ([[../entities/sp_500_index.md|S&P 500]]). Its composition also allows for analysis of regional specific events, such as the early impact of the Covid-19 pandemic in East Asian markets.
 
 ## Related Concepts
-*   [[../concepts/stock_market_regimes.md|Stock Market Regimes]]
+*   [[../concepts/stock-market-regimes.md|Stock Market Regimes]]
 *   [[../concepts/options.md|Options]]
 *   [[../concepts/equity_risk_premium.md|Equity Risk Premium]]
 *   [[../entities/sp_500_index.md|S&P 500 Index]]

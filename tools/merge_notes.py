@@ -40,8 +40,11 @@ def title_of(body: str) -> str | None:
     return m.group(1).strip() if m else None
 
 
-def rewrite_links(text: str, linker: Path, old: Path, canonical: Path) -> tuple[str, int]:
-    """Repoint links in `text` (a note at `linker`) from `old` to `canonical`. Returns (text, count)."""
+def rewrite_links(text: str, linker: Path, old: Path, canonical: Path, old_label: str) -> tuple[str, int]:
+    """Repoint links in `text` (a note at `linker`) from `old` to `canonical`. Returns (text, count).
+
+    A link with no label gets `old_label` (the merged note's title), so what the reader sees does not change.
+    """
     old_name = old.stem.lower()
     count = 0
 
@@ -63,7 +66,7 @@ def rewrite_links(text: str, linker: Path, old: Path, canonical: Path) -> tuple[
         if not names_old(raw):
             return m.group(0)
         count += 1
-        label = label or f"|{raw.strip()}"
+        label = label or f"|{old_label}"
         return f"[[{new_target(raw.strip())}{anchor}{label}]]"
 
     def md_sub(m: re.Match) -> str:
@@ -109,6 +112,10 @@ def plan_and_apply(canonical: Path, merges: list[Path], apply: bool) -> int:
         can_text = merged_text
         print(f"  merge {rel(m)}  (body {'appended' if changed else 'identical, aliases only'}; aliases + {new_aliases})")
 
+    labels = {}
+    for m in merges:
+        _, m_body = ingest.split_frontmatter(m.read_text(encoding="utf-8"))
+        labels[m] = title_of(m_body) or m.stem
     total_links = 0
     edits: dict[Path, str] = {}
     for note in sorted(ingest.WIKI_DIR.rglob("*.md")):
@@ -117,7 +124,7 @@ def plan_and_apply(canonical: Path, merges: list[Path], apply: bool) -> int:
         text = can_text if note == canonical else note.read_text(encoding="utf-8")
         new = text
         for m in merges:
-            new, n = rewrite_links(new, note, m, canonical)
+            new, n = rewrite_links(new, note, m, canonical, labels[m])
             total_links += n
         if new != text or note == canonical:
             edits[note] = new

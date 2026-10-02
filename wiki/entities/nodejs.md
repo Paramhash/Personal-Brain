@@ -20,7 +20,7 @@ Node.js is an open-source, cross-platform JavaScript runtime environment that ex
 While [Python](../entities/python.md) is often preferred for heavy numerical computation and data science, Node.js can be valuable in quantitative finance for:
 *   **Real-time Data Ingestion:** Efficiently consuming and processing high-volume, low-latency data streams from [WebSockets](../concepts/websockets.md)-based market data providers (e.g., [Polygon.io](../entities/polygon-io.md)).
 *   **API Development:** Building fast and scalable APIs for internal trading systems or dashboards.
-*   **User Interfaces:** Developing real-time web-based dashboards for displaying analytics like [Options Greeks](../concepts/options-greeks.md) or [Gamma Exposure (GEX)](../concepts/gamma-exposure.md).
+*   **User Interfaces:** Developing real-time web-based dashboards for displaying analytics like [Options Greeks](../concepts/options-greeks.md) or [Gamma Exposure (GEX)](../concepts/gamma-exposure-gex.md).
 *   **Brokerage Integrations:** Interacting with broker APIs for order management and execution.
 
 Node.js is mentioned as a technical proficiency that can be leveraged alongside powerful hardware like the [AMD Ryzen Threadripper 3990X](../entities/amd-ryzen-threadripper-3990x.md) when working with [Real-time Options Greeks Data Providers](../concepts/real-time-options-greeks-data-providers.md).

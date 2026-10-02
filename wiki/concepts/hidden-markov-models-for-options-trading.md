@@ -24,7 +24,7 @@ By feeding an HMM readily available daily or intraday inputs—such as log retur
 
 To build an institutional-grade regime filter for short-duration options, it's crucial to incorporate **derivatives-market variables** as observable emissions for the HMM, rather than solely relying on raw price data. These variables capture the structural mechanics driving short-term options pricing:
 
-1.  **[[../concepts/gamma-exposure.md|Gamma Exposure (GEX)]]:**
+1.  **[[gamma-exposure-gex.md|Gamma Exposure (GEX)]]:**
     *   When total market maker GEX is deeply positive, it acts as a stabilizing buffer. Dealers buy dips and sell rallies to maintain delta-neutrality, dampening volatility.
     *   When GEX flips negative, dealers must short into drops and buy into rips to hedge, which can cause violent liquidity vacuums and exacerbate price movements.
     *   An HMM can flag the exact transition into a negative GEX regime before the price chart displays any clear directional signal.

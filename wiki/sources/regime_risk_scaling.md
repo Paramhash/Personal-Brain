@@ -13,7 +13,7 @@ The module integrates absolute filters for critical market metrics such as Gamma
 ## Key Components:
 *   **[[../entities/regimeriskscaler-class.md|RegimeRiskScaler Class]]**: The core implementation of the engine.
 *   **[[../concepts/bi-symmetric-sigmoid-decay-function.md|Bi-Symmetric Sigmoid Decay Function]]**: Used for continuous risk multiplier calculation.
-*   **[[../concepts/gex.md|GEX]] Filters**: Absolute thresholds for aggregate dealer gamma exposure.
+*   **[[../concepts/gamma-exposure-gex.md|GEX]] Filters**: Absolute thresholds for aggregate dealer gamma exposure.
 *   **[[../concepts/vvix.md|VVIX]] Thresholds**: Absolute thresholds for volatility of volatility.
 *   **Asymmetric Greek Scaling**: Rules that adjust different [[../concepts/options-greeks.md|Greeks]] (Delta, Gamma, Vega, Theta) differently based on the detected market regime.
 

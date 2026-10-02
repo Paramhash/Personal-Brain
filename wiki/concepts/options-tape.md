@@ -20,7 +20,7 @@ Accessing the full options tape is crucial for:
 *   **High-Frequency Trading:** Essential for strategies that rely on micro-movements and order flow analysis.
 *   **Liquidity Analysis:** Understanding where liquidity is concentrated and how it's shifting.
 *   **Implied Volatility Calculation:** Deriving accurate implied volatility figures from live market prices.
-*   **[Options Greeks](../concepts/options-greeks.md) Calculation:** Providing the raw data necessary to calculate Greeks and aggregated metrics like [Gamma Exposure (GEX)](../concepts/gamma-exposure.md) locally.
+*   **[Options Greeks](../concepts/options-greeks.md) Calculation:** Providing the raw data necessary to calculate Greeks and aggregated metrics like [Gamma Exposure (GEX)](gamma-exposure-gex.md) locally.
 
 ## Data Providers
 

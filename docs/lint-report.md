@@ -1,30 +1,27 @@
 # Vault lint report — 2026-10-02
 
-Read-only. 757 notes under `wiki/`.
+Read-only. 751 notes under `wiki/`.
 
 ## Domains
 
 | domain | notes |
 |---|---:|
-| (missing) | 669 |
+| (missing) | 663 |
 | fine-art | 57 |
 | derivatives | 26 |
 | meta | 5 |
 
-## Slug collisions (13)
+## Slug collisions (10)
 
 Different file names that slug to the same name — candidates for `tools/merge_notes.py`.
 
 - `api-parameters`: `wiki/concepts/api-parameters.md`, `wiki/concepts/theta-data-v3-api/api-parameters.md`
 - `black-scholes-model`: `wiki/concepts/black-scholes-model.md`, `wiki/entities/black-scholes-model.md`
 - `equity-risk-premium`: `wiki/concepts/equity-risk-premium.md`, `wiki/concepts/equity_risk_premium.md`
-- `gamma-exposure-gex`: `wiki/concepts/gamma-exposure-gex.md`, `wiki/concepts/gamma_exposure_gex.md`
 - `hidden-markov-model`: `wiki/concepts/hidden-markov-model.md`, `wiki/concepts/hidden_markov_model.md`
 - `implied-volatility`: `wiki/concepts/implied-volatility.md`, `wiki/concepts/implied_volatility.md`
 - `oauth2`: `wiki/concepts/oauth2.md`, `wiki/entities/oauth2.md`
 - `react-prompting-framework`: `wiki/concepts/react-prompting-framework.md`, `wiki/entities/react-prompting-framework.md`
-- `realized-volatility`: `wiki/concepts/realized-volatility.md`, `wiki/concepts/realized_volatility.md`
-- `stock-market-regimes`: `wiki/concepts/Stock Market Regimes.md`, `wiki/concepts/stock-market-regimes.md`, `wiki/concepts/stock_market_regimes.md`
 - `tastytrade-sdks`: `wiki/concepts/tastytrade-sdks.md`, `wiki/entities/tastytrade-sdks.md`
 - `volatility-risk-premium`: `wiki/concepts/volatility-risk-premium.md`, `wiki/concepts/volatility_risk_premium.md`
 - `wan-ni-lai`: `wiki/entities/wan-ni-lai.md`, `wiki/entities/wan_ni_lai.md`
@@ -39,7 +36,7 @@ These make `[[name]]` links ambiguous.
 - `react-prompting-framework`: `wiki/concepts/react-prompting-framework.md`, `wiki/entities/react-prompting-framework.md`
 - `tastytrade-sdks`: `wiki/concepts/tastytrade-sdks.md`, `wiki/entities/tastytrade-sdks.md`
 
-## Broken links (1242 in 272 notes)
+## Broken links (1242 in 271 notes)
 
 - `wiki/concepts/aic_bic_information_criteria.md`: `../concepts/model_selection.md`, `../concepts/maximum_likelihood_estimation.md`
 - `wiki/concepts/api-authentication.md`: `Market Data API (Tastyworks)`, `Market Data API (Tastyworks)`
@@ -68,7 +65,7 @@ These make `[[name]]` links ambiguous.
 - `wiki/concepts/financial-trading-firm-structure.md`: `../entities/tradingagents.md`, `../entities/tradingagents.md`
 - `wiki/concepts/fund-manager-agent.md`: `../entities/tradingagents.md`, `../entities/tradingagents.md`
 - `wiki/concepts/fundamental-analyst-agent.md`: `../entities/tradingagents.md`, `../entities/tradingagents.md`, `../concepts/tradingagents-analyst-team.md`
-- `wiki/concepts/gamma_exposure_gex.md`: `../research/gex_sign_determination.md`
+- `wiki/concepts/gamma-exposure-gex.md`: `../research/gex_sign_determination.md`
 - `wiki/concepts/gap-risk.md`: `Markov-Modulated Geometric Brownian Motion (MMGBM)`, `Markov-Modulated Jump-Diffusion (MMJD)`
 - `wiki/concepts/GLP-1_Receptor_Agonists.md`: `../concepts/Secular_Growth_Engine.md`, `../concepts/Sub-Sector_Cannibalization.md`
 - `wiki/concepts/hidden-markov-model-hmm-in-finance.md`: `../sources/Detecting stock market regimes from option prices.md`
@@ -164,8 +161,7 @@ These make `[[name]]` links ambiguous.
 - `wiki/concepts/singapore-one.md`: `Excavating Amnesia: A Media Archaeology of Early Internet Art from Singapore`, `tsunamii.net`, `Technology History`, `Digital Culture`, `tsunamii.net`
 - `wiki/concepts/smart-nation.md`: `Excavating Amnesia: A Media Archaeology of Early Internet Art from Singapore`, `Strategic Amnesia of Digital Culture`, `Digital Culture`, `Technology History`, `Strategic Amnesia of Digital Culture`
 - `wiki/concepts/stochastic_volatility_models.md`: `../concepts/heston_model.md`, `../concepts/sabr_model.md`
-- `wiki/concepts/stock-market-regimes.md`: `hidden-markov-models`, `hidden-markov-models`, `option-implied-volatility`
-- `wiki/concepts/stock_market_regimes.md`: `../concepts/excess_kurtosis.md`, `../concepts/time_varying_correlations.md`, `../concepts/asset_pricing.md`, `../concepts/asset_allocation.md`, `../concepts/options.md`, `../concepts/excess_kurtosis.md`, `../concepts/time_varying_correlations.md`
+- `wiki/concepts/stock-market-regimes.md`: `hidden-markov-models`, `hidden-markov-models`, `option-implied-volatility`, `../concepts/excess_kurtosis.md`, `../concepts/time_varying_correlations.md`, `../concepts/asset_pricing.md`, `../concepts/asset_allocation.md`, `../concepts/options.md` … +2
 - `wiki/concepts/strategic-amnesia-digital-culture.md`: `Strategic Amnesia of Digital Culture`, `Excavating Amnesia: A Media Archaeology of Early Internet Art from Singapore`, `tsunamii.net`, `tsunamii.net`, `Digital Culture`, `Art History`, `Technology History`, `Strategic Amnesia of Digital Culture`
 - `wiki/concepts/structured-communication-protocol.md`: `../entities/tradingagents.md`, `../entities/tradingagents.md`
 - `wiki/concepts/systematic_options_strategies.md`: `../concepts/portfolio_insurance.md`, `../concepts/risk_management.md`
@@ -319,7 +315,7 @@ These make `[[name]]` links ambiguous.
 - `wiki/concepts/Master Concept Map.md`
 - `wiki/entities/gex-divergence-dashboard.md`
 
-## Suggested domains for 669 unclassified notes (proposal only, not applied)
+## Suggested domains for 663 unclassified notes (proposal only, not applied)
 
 | note | suggestion | basis |
 |---|---|---|
@@ -442,17 +438,14 @@ These make `[[name]]` links ambiguous.
 | `wiki/concepts/futures-nested-option-chain-serializer.md` | derivatives | keywords |
 | `wiki/concepts/gamma-exposure-gex-profile.md` | derivatives | keywords |
 | `wiki/concepts/gamma-exposure-gex.md` | derivatives | keywords |
-| `wiki/concepts/gamma-exposure.md` | derivatives | keywords |
 | `wiki/concepts/gamma-flip-mean-reversion-strategy.md` | derivatives | keywords |
 | `wiki/concepts/gamma-flip.md` | derivatives | keywords |
-| `wiki/concepts/gamma_exposure_gex.md` | derivatives | keywords |
 | `wiki/concepts/garch_model.md` | derivatives | keywords |
 | `wiki/concepts/gaussian-hmm.md` | derivatives | keywords |
 | `wiki/concepts/geographic-insulation.md` | ? | no signal |
 | `wiki/concepts/geometric-brownian-motion.md` | ? | no signal |
 | `wiki/concepts/gex-concentration-at-expiry.md` | derivatives | keywords |
 | `wiki/concepts/gex-divergence-strategies.md` | derivatives | keywords |
-| `wiki/concepts/gex.md` | derivatives | keywords |
 | `wiki/concepts/GLP-1_Receptor_Agonists.md` | ? | no signal |
 | `wiki/concepts/glp-1s.md` | ? | no signal |
 | `wiki/concepts/gross-margin.md` | ? | no signal |
@@ -631,7 +624,6 @@ These make `[[name]]` links ambiguous.
 | `wiki/concepts/real-time-options-greeks-data-providers.md` | derivatives | keywords |
 | `wiki/concepts/realized-vol-intraday.md` | derivatives | keywords |
 | `wiki/concepts/realized-volatility.md` | derivatives | keywords |
-| `wiki/concepts/realized_volatility.md` | derivatives | keywords |
 | `wiki/concepts/recording-secretary-agent.md` | derivatives | keywords |
 | `wiki/concepts/refresh-token.md` | ? | no signal |
 | `wiki/concepts/reg-t-margin.md` | ? | no signal |
@@ -667,8 +659,6 @@ These make `[[name]]` links ambiguous.
 | `wiki/concepts/squeezed-wallet-flywheel.md` | ? | no signal |
 | `wiki/concepts/stochastic-rsi.md` | ? | no signal |
 | `wiki/concepts/stochastic_volatility_models.md` | derivatives | keywords |
-| `wiki/concepts/Stock Market Regimes.md` | derivatives | keywords |
-| `wiki/concepts/stock_market_regimes.md` | derivatives | keywords |
 | `wiki/concepts/streaming-market-data.md` | ? | no signal |
 | `wiki/concepts/structural-retail-operators.md` | ? | no signal |
 | `wiki/concepts/structural-triad-systematic-options-trading.md` | derivatives | keywords |
@@ -811,7 +801,7 @@ These make `[[name]]` links ambiguous.
 | `wiki/entities/boston-scientific.md` | fine-art | keywords |
 | `wiki/entities/campbell_r_harvey.md` | ? | no signal |
 | `wiki/entities/cboe-futures-exchange.md` | derivatives | keywords |
-| `wiki/entities/cboe_global_markets.md` | ? | no signal |
+| `wiki/entities/cboe_global_markets.md` | derivatives | neighbours |
 | `wiki/entities/cfe-exchange.md` | derivatives | keywords |
 | `wiki/entities/chainsnapshot-dataclass.md` | derivatives | keywords |
 | `wiki/entities/cme-exchange.md` | derivatives | keywords |

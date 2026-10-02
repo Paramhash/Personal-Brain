@@ -11,7 +11,7 @@ source_origin: Data provider that provides real-time Greeks.md
 ---
 # Optimizing Greek Calculations with Ray and Multiprocessing
 
-This research area explores efficient methods for distributing and accelerating the real-time calculation of [Options Greeks](../concepts/options-greeks.md) and aggregated metrics like [Gamma Exposure (GEX)](../concepts/gamma-exposure.md) across multiple CPU cores and threads. This is particularly relevant for users with high-performance workstations, such as those equipped with an [AMD Ryzen Threadripper 3990X](../entities/amd-ryzen-threadripper-3990x.md), which offers 64 cores and 128 threads.
+This research area explores efficient methods for distributing and accelerating the real-time calculation of [Options Greeks](../concepts/options-greeks.md) and aggregated metrics like [Gamma Exposure (GEX)](../concepts/gamma-exposure-gex.md) across multiple CPU cores and threads. This is particularly relevant for users with high-performance workstations, such as those equipped with an [AMD Ryzen Threadripper 3990X](../entities/amd-ryzen-threadripper-3990x.md), which offers 64 cores and 128 threads.
 
 ## Problem Statement
 
@@ -34,8 +34,8 @@ When subscribing to raw options chain data from providers like [ThetaData](../en
 1.  **Data Ingestion:** Subscribe to real-time options chain data (e.g., via [ThetaData](../entities/thetadata.md)'s [Python SDK](../entities/python.md)).
 2.  **Task Distribution:** Use [Ray](../entities/ray.md) or `multiprocessing.Pool` to distribute individual stock's options chain data to separate worker processes/actors.
 3.  **Greek Calculation:** Each worker calculates [Options Greeks](../concepts/options-greeks.md) for its assigned stock.
-4.  **GEX Aggregation:** Workers might also calculate per-stock [Gamma Exposure (GEX)](../concepts/gamma-exposure.md) or send raw Greeks back to a central process for overall market GEX aggregation.
-5.  **Result Visualization:** Display aggregated results and [GEX Divergence](../concepts/gamma-exposure.md) in a dashboard.
+4.  **GEX Aggregation:** Workers might also calculate per-stock [Gamma Exposure (GEX)](../concepts/gamma-exposure-gex.md) or send raw Greeks back to a central process for overall market GEX aggregation.
+5.  **Result Visualization:** Display aggregated results and [GEX Divergence](../concepts/gamma-exposure-gex.md) in a dashboard.
 
 This research aims to provide a sample [Python](../entities/python.md) structure and best practices for leveraging high-core-count CPUs for advanced options analytics, as highlighted in the discussion of [Real-time Options Greeks Data Providers](../concepts/real-time-options-greeks-data-providers.md).
 

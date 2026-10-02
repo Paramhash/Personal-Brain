@@ -19,7 +19,7 @@ The engine aims to:
 1.  **[[../concepts/regime-divergence-ratio.md|Regime Divergence Ratio (RDR)]]**: A core input that quantifies the current market regime's divergence from a "coherent" state.
 2.  **[[../concepts/bi-symmetric-sigmoid-decay-function.md|Bi-Symmetric Sigmoid Decay Function]]**: This mathematical function takes the RDR as input and computes a continuous non-linear multiplier (between 0.0 and 1.0). This multiplier forms the baseline for scaling Greek limits.
 3.  **Absolute Filters**:
-    *   **[[../concepts/gex.md|Gamma Exposure (GEX)]]**: If aggregate dealer GEX falls below a critical negative threshold (`gex_critical`), it triggers a specific override mode focused on reducing path-dependent risk.
+    *   **[[gamma-exposure-gex.md|Gamma Exposure (GEX)]]**: If aggregate dealer GEX falls below a critical negative threshold (`gex_critical`), it triggers a specific override mode focused on reducing path-dependent risk.
     *   **[[../concepts/vvix.md|Vol-of-Vol Index (VVIX)]]**: If VVIX exceeds a critical threshold (`vvix_threshold`), indicating structural panic, it triggers a severe divergence strategy mode.
 4.  **Asymmetric Greek Scaling Rules**: Depending on the detected market regime and active overrides, the engine applies different scaling factors to individual [[../concepts/options-greeks.md|Greeks]] (Delta, Gamma, Vega, Theta).
     *   **STANDARD_COHERENT**: When RDR is within a stable range and no absolute overrides are active, limits are scaled smoothly by the RDR multiplier. Delta limits might tighten slightly in hyper-stable regimes.
@@ -33,5 +33,5 @@ The engine is implemented by the [[../entities/regimeriskscaler-class.md|RegimeR
 *   [[../concepts/portfolio-greek-limits.md|Portfolio Greek Limits]]
 *   [[../concepts/options-greeks.md|Options Greeks]]
 *   [[../concepts/regime-divergence-ratio.md|Regime Divergence Ratio (RDR)]]
-*   [[../concepts/gex.md|Gamma Exposure (GEX)]]
+*   [[gamma-exposure-gex.md|Gamma Exposure (GEX)]]
 *   [[../concepts/vvix.md|Vol-of-Vol Index (VVIX)]]

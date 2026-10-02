@@ -19,7 +19,7 @@ Python's `multiprocessing` module is a built-in library that allows the creation
 
 The `multiprocessing` module is highly valuable for computationally intensive tasks in quantitative finance, especially when dealing with large datasets or complex calculations:
 *   **[Options Greeks](../concepts/options-greeks.md) Calculation:** Distributing the calculation of Greeks for numerous options contracts or underlying assets simultaneously.
-*   **[Gamma Exposure (GEX)](../concepts/gamma-exposure.md) Aggregation:** Parallelizing the aggregation of Gamma across a broad market.
+*   **[Gamma Exposure (GEX)](../concepts/gamma-exposure-gex.md) Aggregation:** Parallelizing the aggregation of Gamma across a broad market.
 *   **Backtesting:** Speeding up the backtesting of trading strategies by running simulations in parallel.
 *   **Data Preprocessing:** Accelerating the cleaning and transformation of large financial datasets.
 

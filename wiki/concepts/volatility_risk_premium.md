@@ -6,7 +6,7 @@ source_origin: "../research/options_portfolio_research_guide.md"
 ---
 # Volatility Risk Premium (VRP)
 
-The Volatility Risk Premium (VRP) refers to the empirical observation that [[../concepts/implied_volatility.md|implied volatility]] (derived from option prices) consistently tends to be higher than subsequent [[../concepts/realized_volatility.md|realized volatility]] (the actual volatility of the underlying asset over the option's life). This premium represents a compensation that option sellers receive for bearing volatility risk.
+The Volatility Risk Premium (VRP) refers to the empirical observation that [[../concepts/implied_volatility.md|implied volatility]] (derived from option prices) consistently tends to be higher than subsequent [[realized-volatility.md|realized volatility]] (the actual volatility of the underlying asset over the option's life). This premium represents a compensation that option sellers receive for bearing volatility risk.
 
 In essence, the market prices options such that the expected future volatility is higher than what actually materializes on average. This phenomenon is often attributed to:
 *   **Hedging Demand:** Investors (e.g., institutions, portfolio managers) often buy options (especially puts) for [[../concepts/portfolio_insurance.md|portfolio insurance]] or [[../concepts/tail_risk_modeling.md|tail-risk]] protection, driving up option prices and thus implied volatility.
@@ -24,5 +24,5 @@ Accurately modeling and backtesting strategies that harvest VRP requires:
 **See Also:**
 *   [[../research/options_portfolio_research_guide.md|Guide to Options Portfolio Research]]
 *   [[../concepts/implied_volatility.md|Implied Volatility]]
-*   [[../concepts/realized_volatility.md|Realized Volatility]]
+*   [[realized-volatility.md|Realized Volatility]]
 *   [[../concepts/systematic_options_strategies.md|Systematic Options Strategies]]

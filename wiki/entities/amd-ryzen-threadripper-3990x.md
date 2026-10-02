@@ -18,7 +18,7 @@ The AMD Ryzen Threadripper 3990X is a high-end desktop processor known for its e
 
 In the context of quantitative finance and options trading, the 3990X's high core count offers a unique advantage:
 
-*   **Local Computation:** It enables users to perform complex calculations, such as deriving [Options Greeks](../concepts/options-greeks.md) and aggregating [Gamma Exposure (GEX)](../concepts/gamma-exposure.md) profiles, locally rather than relying on pre-calculated data from providers. This can lead to cost savings and greater control over the analytical process.
+*   **Local Computation:** It enables users to perform complex calculations, such as deriving [Options Greeks](../concepts/options-greeks.md) and aggregating [Gamma Exposure (GEX)](../concepts/gamma-exposure-gex.md) profiles, locally rather than relying on pre-calculated data from providers. This can lead to cost savings and greater control over the analytical process.
 *   **Parallel Processing:** Its 128 threads are ideal for parallelizing tasks like processing real-time market data for hundreds of stocks simultaneously, using tools such as [multiprocessing](../entities/multiprocessing.md) or [Ray](../entities/ray.md).
 *   **Data Ingestion:** It can efficiently handle high-bandwidth data streams from providers like [Polygon.io](../entities/polygon-io.md) or [ThetaData](../entities/thetadata.md), allowing for comprehensive real-time analysis.
 

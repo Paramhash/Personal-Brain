@@ -17,7 +17,7 @@ Systematic options strategies are rule-based, quantitative approaches to trading
 
 **Common Types of Systematic Options Strategies:**
 *   **Systematic Option Selling:** Strategies that involve regularly selling options (e.g., covered calls, cash-secured puts, strangles) to collect premium, often targeting the VRP.
-*   **Volatility Arbitrage:** Exploiting discrepancies between [[../concepts/implied_volatility.md|implied volatility]] and [[../concepts/realized_volatility.md|realized volatility]].
+*   **Volatility Arbitrage:** Exploiting discrepancies between [[../concepts/implied_volatility.md|implied volatility]] and [[realized-volatility.md|realized volatility]].
 *   **[[../concepts/portfolio_insurance.md|Portfolio Insurance]] with Puts:** Systematically buying protective puts to limit downside risk.
 *   **[[../concepts/delta_hedging.md|Delta-Neutral Strategies]]:** Constructing positions that are insensitive to small changes in the underlying price, focusing on capturing [[../concepts/option_greeks.md|gamma]] or [[../concepts/option_greeks.md|theta]].
 

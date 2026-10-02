@@ -35,7 +35,7 @@ Traditional applications often rely on observed returns or conditional volatilit
 *   **Markov-Switching [[../concepts/garch_model.md|GARCH]] Models:** Combine regime switching with [[../concepts/garch_model.md|GARCH]] models to capture regime-dependent volatility.
 
 ## Related Concepts
-*   [[../concepts/stock_market_regimes.md|Stock Market Regimes]]
+*   [[stock-market-regimes.md|Stock Market Regimes]]
 *   [[../concepts/hidden_markov_model.md|Hidden Markov Model]]
 *   [[../concepts/garch_model.md|GARCH Model]]
 *   [[../concepts/option_implied_equity_risk_premium.md|Option-Implied Equity Risk Premium]]

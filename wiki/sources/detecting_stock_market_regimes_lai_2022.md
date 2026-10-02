@@ -12,7 +12,7 @@ source_origin: "detecting_stock_market_regimes.md"
 **JEL Codes:** G01, G12
 
 ## Abstract
-This paper investigates the use of forward-looking information extracted from option prices to improve the detection of [[../concepts/stock_market_regimes.md|stock market regimes]]. Traditional [[../concepts/regime_switching_models.md|regime switching models]] often rely on historical observed returns, potentially overlooking valuable investor expectations. Lai demonstrates that "horizon spreads" in [[../concepts/option_implied_equity_risk_premium.md|option-implied equity risk premia]] allow for earlier and sharper detection of regime switches, as well as improved prediction of the [[../concepts/equity_risk_premium.md|equity premium]].
+This paper investigates the use of forward-looking information extracted from option prices to improve the detection of [[../concepts/stock-market-regimes.md|stock market regimes]]. Traditional [[../concepts/regime_switching_models.md|regime switching models]] often rely on historical observed returns, potentially overlooking valuable investor expectations. Lai demonstrates that "horizon spreads" in [[../concepts/option_implied_equity_risk_premium.md|option-implied equity risk premia]] allow for earlier and sharper detection of regime switches, as well as improved prediction of the [[../concepts/equity_risk_premium.md|equity premium]].
 
 The findings are robust across significant market events, including the 2008/2009 global financial crisis and the 2020 Covid-19 pandemic, and hold for both US (S&P 500) and [[../entities/msci_emerging_market_index.md|Emerging Markets]] (MSCI Emerging Market Index).
 
@@ -42,7 +42,7 @@ The findings are robust across significant market events, including the 2008/200
 *   **Sample Period:** January 2006 to August 2020.
 
 ## Related Concepts:
-*   [[../concepts/stock_market_regimes.md|Stock Market Regimes]]
+*   [[../concepts/stock-market-regimes.md|Stock Market Regimes]]
 *   [[../concepts/regime_switching_models.md|Regime Switching Models]]
 *   [[../concepts/option_implied_equity_risk_premium.md|Option-Implied Equity Risk Premium]]
 *   [[../concepts/horizon_spread_financial.md|Horizon Spread (Financial)]]

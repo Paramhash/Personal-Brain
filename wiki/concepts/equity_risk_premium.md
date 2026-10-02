@@ -36,7 +36,7 @@ The ERP can vary with the investment horizon. Classic [[../concepts/asset_pricin
 *   [[../concepts/horizon_spread_financial.md|Horizon Spread (Financial)]]
 *   [[../concepts/risk_free_rate.md|Risk-Free Rate]]
 *   [[../concepts/asset_pricing.md|Asset Pricing]]
-*   [[../concepts/stock_market_regimes.md|Stock Market Regimes]]
+*   [[stock-market-regimes.md|Stock Market Regimes]]
 *   [[../concepts/options.md|Options]]
 
 ---

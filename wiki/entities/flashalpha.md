@@ -10,7 +10,7 @@ FlashAlpha is a data provider specializing in "Exposure Analytics," offering pre
 
 ## Model
 
-FlashAlpha's API delivers processed data such as `net_gex`, `gamma_flip`, and [Regime Detection](../concepts/regime-detection.md) labels directly. This "plug-and-play" approach aims to save users from writing their own aggregation logic for metrics like [Gamma Exposure (GEX)](../concepts/gamma-exposure.md).
+FlashAlpha's API delivers processed data such as `net_gex`, `gamma_flip`, and [Regime Detection](../concepts/regime-detection.md) labels directly. This "plug-and-play" approach aims to save users from writing their own aggregation logic for metrics like [Gamma Exposure (GEX)](../concepts/gamma-exposure-gex.md).
 
 ## Key Features & Benefits
 

@@ -47,6 +47,6 @@ This approach is detailed in works such as [[../sources/detecting_stock_market_r
 
 ## Related Concepts
 
-*   [[../concepts/Stock Market Regimes.md]]
+*   [[stock-market-regimes.md|Stock Market Regimes]]
 *   Implied Volatility
 *   Volatility Skew
