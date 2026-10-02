@@ -24,3 +24,6 @@ build/
 
 # Sensitive / raw data
 raw/
+
+# Bridge run log (the ledger next to it is committed)
+bridges/.state/*.log
