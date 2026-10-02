@@ -1,0 +1,46 @@
+# What dlmm_bridge.py exports from the trading bot into this vault. Paths are relative to bot_root.
+# The bridge only READS the bot repo. Anything not listed here is never read. See bridges/dlmm_bridge.py.
+
+bot_root = "C:/Code/Active/dlmm-hedge-bot/development"
+
+# Verbatim mirrors: bridge_managed notes under wiki/dlmm/ (ingestion and Level 1 never write there).
+[[mirror]]
+kind = "adr"
+globs = ["docs/decisions/[0-9][0-9][0-9]-*.md"]
+dest = "wiki/dlmm/adr"
+
+[[mirror]]
+kind = "blueprint"
+globs = ["docs/architect/*.md"]
+dest = "wiki/dlmm/blueprints"
+
+[[mirror]]
+kind = "report"
+globs = ["todo/research/CL_POLICY_REPORT_*.md"]
+dest = "wiki/dlmm/reports"
+
+[[mirror]]
+kind = "finding"
+dest = "wiki/dlmm/findings"
+also_raw = true   # also copied to raw/ so Gemini can extract general concepts from them
+globs = [
+  "todo/findings/EV_GATE_CALIBRATION_*.md",
+  "todo/findings/EV_GATE_VS_SIMULATOR_*.md",
+  "todo/findings/POOL_SIGMA_FORECAST_*.md",
+  "todo/findings/FEE_COUNTER_G1_*.md",
+  "todo/findings/F-021 - *.md",
+  "todo/findings/F-022 - *.md",
+  "todo/findings/F-024 - *.md",
+  "todo/findings/F-026 - *.md",
+]
+
+# Research material for Gemini concept extraction: copied to raw/ with a provenance header (text) or as-is (pdf/html).
+[[raw]]
+globs = [
+  "todo/research/00 dual-inventory-growth-policy.md",
+  "todo/research/01 warehouse-manager-cl-inventory-strategy.md",
+  "todo/research/02 nash-equilibrium-cl-provider-strategies.md",
+  "todo/research/AMM and Loss-Versus-Rebalancing.pdf",
+]
+# Not exported: "todo/research/AMM Delta Hedging.html" is a generated interactive widget page (D3/three.js/KaTeX in
+# scripts) with almost no readable text, so it carries nothing for concept extraction.

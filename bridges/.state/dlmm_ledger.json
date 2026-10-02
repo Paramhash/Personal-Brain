@@ -1,0 +1,460 @@
+{
+ "docs/architect/backtest_research.md": {
+  "commit": "e532796",
+  "dest": "wiki/dlmm/blueprints/blueprint-backtest-research.md",
+  "exported_at": "2026-10-02T12:50:27Z",
+  "sha256": "ab0f3575e60df0ce080b20f56256c53bc9c85aea443c997caecc104a181e4b8a"
+ },
+ "docs/architect/config_contract.md": {
+  "commit": "e532796",
+  "dest": "wiki/dlmm/blueprints/blueprint-config-contract.md",
+  "exported_at": "2026-10-02T12:50:27Z",
+  "sha256": "7feab5f8f884311cddc3ea7cb0cf124db94038f6398f916d597d8bc536ee9107"
+ },
+ "docs/architect/data_ingestion_flow.md": {
+  "commit": "93d497d",
+  "dest": "wiki/dlmm/blueprints/blueprint-data-ingestion-flow.md",
+  "exported_at": "2026-10-02T12:50:27Z",
+  "sha256": "c01b94755fb32db938ce9ba1eef82e436b62eaf11470cd2e2b06db8edf69661b"
+ },
+ "docs/architect/ev_policy.md": {
+  "commit": "e532796",
+  "dest": "wiki/dlmm/blueprints/blueprint-ev-policy.md",
+  "exported_at": "2026-10-02T12:50:27Z",
+  "sha256": "8a70e6e842406406bc097c8a1115414101220a2790d30a11d1b089921461f0e9"
+ },
+ "docs/architect/execution_router.md": {
+  "commit": "93d497d",
+  "dest": "wiki/dlmm/blueprints/blueprint-execution-router.md",
+  "exported_at": "2026-10-02T12:50:28Z",
+  "sha256": "ee330e8c511591e9187c93ab36e6864d8cd747f7cdabcd06fbaca262ebdeb914"
+ },
+ "docs/architect/fee_growth.md": {
+  "commit": "1fa5166",
+  "dest": "wiki/dlmm/blueprints/blueprint-fee-growth.md",
+  "exported_at": "2026-10-02T12:50:28Z",
+  "sha256": "28cf31a4bf65482fc7520a4a3c6ee5997b3bd7b18d919f8f38b734c68c08448c"
+ },
+ "docs/architect/gex_intelligence.md": {
+  "commit": "3f1eec9",
+  "dest": "wiki/dlmm/blueprints/blueprint-gex-intelligence.md",
+  "exported_at": "2026-10-02T12:50:28Z",
+  "sha256": "f9925337af13d9d8df6bb95e5962864557936186733d243fb12684c8c0112287"
+ },
+ "docs/architect/hedge_engine.md": {
+  "commit": "93d497d",
+  "dest": "wiki/dlmm/blueprints/blueprint-hedge-engine.md",
+  "exported_at": "2026-10-02T12:50:28Z",
+  "sha256": "2d3805c64a6b34d7e68e6cb7ad0f83f06d6a3c62b7624863934aac823477475c"
+ },
+ "docs/architect/liquidity_position_manager.md": {
+  "commit": "aebf1c0",
+  "dest": "wiki/dlmm/blueprints/blueprint-liquidity-position-manager.md",
+  "exported_at": "2026-10-02T12:50:28Z",
+  "sha256": "6ac0536c3bde3544be1dfb3c5390e07d0f552a04de4f53cea37177c5d114c0de"
+ },
+ "docs/architect/monitor.md": {
+  "commit": "e532796",
+  "dest": "wiki/dlmm/blueprints/blueprint-monitor.md",
+  "exported_at": "2026-10-02T12:50:28Z",
+  "sha256": "f3aa5eb7d7a7fa6346bb0edfc497cf5f462e2ff31fa97bf3c538f65ec3385096"
+ },
+ "docs/architect/observability_contract.md": {
+  "commit": "93d497d",
+  "dest": "wiki/dlmm/blueprints/blueprint-observability-contract.md",
+  "exported_at": "2026-10-02T12:50:28Z",
+  "sha256": "b56bce5385967629ed31d167f358b2bc507354417b53cc2761471412d434a1a0"
+ },
+ "docs/architect/observation_archive.md": {
+  "commit": "3f1eec9",
+  "dest": "wiki/dlmm/blueprints/blueprint-observation-archive.md",
+  "exported_at": "2026-10-02T12:50:28Z",
+  "sha256": "f5b3677d17897bbbbba2df36fdd24e2249627017920bda09f3e3d7afadd19252"
+ },
+ "docs/architect/protocol_contract.md": {
+  "commit": "93d497d",
+  "dest": "wiki/dlmm/blueprints/blueprint-protocol-contract.md",
+  "exported_at": "2026-10-02T12:50:28Z",
+  "sha256": "669a54ddfec796230c7f224fde2ad247db052219b3b9b32ae71026f3c1c818c8"
+ },
+ "docs/architect/range_planning.md": {
+  "commit": "ab766fb",
+  "dest": "wiki/dlmm/blueprints/blueprint-range-planning.md",
+  "exported_at": "2026-10-02T12:50:28Z",
+  "sha256": "daad6bbcc1da9a65b7ab41f9866f7248e3c58b796a3738c919e2c42c6c8a40a5"
+ },
+ "docs/architect/risk_guardrails.md": {
+  "commit": "93d497d",
+  "dest": "wiki/dlmm/blueprints/blueprint-risk-guardrails.md",
+  "exported_at": "2026-10-02T12:50:28Z",
+  "sha256": "e0a3a8e40a7eb5ce0d9f601943c9c8319c67e76e1971817add4fd1c8b72772c1"
+ },
+ "docs/architect/state_machine.md": {
+  "commit": "93d497d",
+  "dest": "wiki/dlmm/blueprints/blueprint-state-machine.md",
+  "exported_at": "2026-10-02T12:50:28Z",
+  "sha256": "09b14891fff55883ac884e9ffda6e48de166494faa2de1960dd2bd9c167aab8d"
+ },
+ "docs/architect/state_store.md": {
+  "commit": "93d497d",
+  "dest": "wiki/dlmm/blueprints/blueprint-state-store.md",
+  "exported_at": "2026-10-02T12:50:29Z",
+  "sha256": "a074f71f1f52942a94534b073cdc6e6b05ded61896e4b8fb17f29e8e226c687c"
+ },
+ "docs/architect/system_index.md": {
+  "commit": "b5fb1ab",
+  "dest": "wiki/dlmm/blueprints/blueprint-system-index.md",
+  "exported_at": "2026-10-02T12:50:29Z",
+  "sha256": "47c4d150b25e2591ea135ac7839b13fdab301da16fa4b3f53021265c684cf935"
+ },
+ "docs/decisions/001-deprecate-legacy-onnx-vpin-and-phantom-deps.md": {
+  "commit": "93d497d",
+  "dest": "wiki/dlmm/adr/adr-001-deprecate-legacy-onnx-vpin-and-phantom-deps.md",
+  "exported_at": "2026-10-02T12:50:24Z",
+  "sha256": "67fc1fa58d1d5943dbafd8ab372c3357041d873eda9b777383b0fc8bfca8be0c"
+ },
+ "docs/decisions/002-hierarchical-fsm-boundary.md": {
+  "commit": "93d497d",
+  "dest": "wiki/dlmm/adr/adr-002-hierarchical-fsm-boundary.md",
+  "exported_at": "2026-10-02T12:50:24Z",
+  "sha256": "40bb639a70c7ff23bcbf0d7382cef85d74b64e8ea0a66bdee3b67f06a2577666"
+ },
+ "docs/decisions/003-anchor-version-resolution.md": {
+  "commit": "93d497d",
+  "dest": "wiki/dlmm/adr/adr-003-anchor-version-resolution.md",
+  "exported_at": "2026-10-02T12:50:24Z",
+  "sha256": "f92c18ce6ec4a1b21d86a365ff67acbc524e8ea1153e463cc10ab4a7cf531835"
+ },
+ "docs/decisions/004-execution-intent-edge-triggered.md": {
+  "commit": "93d497d",
+  "dest": "wiki/dlmm/adr/adr-004-execution-intent-edge-triggered.md",
+  "exported_at": "2026-10-02T12:50:24Z",
+  "sha256": "5087dee07636028d11eae0c505a37a6408df248a4d4905c56b6850b9035a9cca"
+ },
+ "docs/decisions/005-borsh-version-resolution.md": {
+  "commit": "93d497d",
+  "dest": "wiki/dlmm/adr/adr-005-borsh-version-resolution.md",
+  "exported_at": "2026-10-02T12:50:24Z",
+  "sha256": "0e80e7e7c0a124b3cceee26fbc023e5194c74f10194d753a9aec0cdd76623fcb"
+ },
+ "docs/decisions/006-test-runner-authorization.md": {
+  "commit": "93d497d",
+  "dest": "wiki/dlmm/adr/adr-006-test-runner-authorization.md",
+  "exported_at": "2026-10-02T12:50:24Z",
+  "sha256": "67c8445ec9dc8b16a067d1e3ea49f79207a3db78a5a13877594fb8de28d93907"
+ },
+ "docs/decisions/009-orchestration-loop-architecture.md": {
+  "commit": "93d497d",
+  "dest": "wiki/dlmm/adr/adr-009-orchestration-loop-architecture.md",
+  "exported_at": "2026-10-02T12:50:24Z",
+  "sha256": "4ae629c5ff844a1d879f1e7e4eab85fb29f9f3503641fc2e588e75b3784915e9"
+ },
+ "docs/decisions/012-deribit-linear-options-usdc-settlement.md": {
+  "commit": "93d497d",
+  "dest": "wiki/dlmm/adr/adr-012-deribit-linear-options-usdc-settlement.md",
+  "exported_at": "2026-10-02T12:50:25Z",
+  "sha256": "ef965b5a0201c6893d9dcf02f0b56b59db92e3620168a970c9108742a537ae05"
+ },
+ "docs/decisions/014-zero-open-interest-degradation.md": {
+  "commit": "93d497d",
+  "dest": "wiki/dlmm/adr/adr-014-zero-open-interest-degradation.md",
+  "exported_at": "2026-10-02T12:50:25Z",
+  "sha256": "4564e565c52ee18823f81755f7940f73a66d97d5e4290a0a2bb69707037cc2dd"
+ },
+ "docs/decisions/015-fsm-cold-start-and-ev-gate.md": {
+  "commit": "93d497d",
+  "dest": "wiki/dlmm/adr/adr-015-fsm-cold-start-and-ev-gate.md",
+  "exported_at": "2026-10-02T12:50:25Z",
+  "sha256": "4b2614f615e00217a21714bd8c1a9a6c1bfe573e03ae5efceb602f9cc828cd7c"
+ },
+ "docs/decisions/016-fsm-withdrawal-guard-and-rpc-binding.md": {
+  "commit": "93d497d",
+  "dest": "wiki/dlmm/adr/adr-016-fsm-withdrawal-guard-and-rpc-binding.md",
+  "exported_at": "2026-10-02T12:50:25Z",
+  "sha256": "b48ec7be52cbf1a3acd1535f07d00b2e2bf7cfa53a1b9c7060158bb6582d6957"
+ },
+ "docs/decisions/018-binance-userdata-freshness.md": {
+  "commit": "93d497d",
+  "dest": "wiki/dlmm/adr/adr-018-binance-userdata-freshness.md",
+  "exported_at": "2026-10-02T12:50:25Z",
+  "sha256": "6c976892c93bea7d551dcfbc2c12113e22f34b4b3523e6c0df93d88421567f19"
+ },
+ "docs/decisions/020-ev-numeraire-active-bin-pricing.md": {
+  "commit": "93d497d",
+  "dest": "wiki/dlmm/adr/adr-020-ev-numeraire-active-bin-pricing.md",
+  "exported_at": "2026-10-02T12:50:25Z",
+  "sha256": "e2f43d8ce54ac8689ece7b773a2938fe71c55eb447b9cfafccbb22044f57d3d9"
+ },
+ "docs/decisions/022-range-planner-numeraire-alignment.md": {
+  "commit": "93d497d",
+  "dest": "wiki/dlmm/adr/adr-022-range-planner-numeraire-alignment.md",
+  "exported_at": "2026-10-02T12:50:25Z",
+  "sha256": "28983a2c1f186c0381dce87c967b66554e6da00b8570cd02c0bd08fbb4007a40"
+ },
+ "docs/decisions/023-range-planner-devnet-scaling-and-containment.md": {
+  "commit": "93d497d",
+  "dest": "wiki/dlmm/adr/adr-023-range-planner-devnet-scaling-and-containment.md",
+  "exported_at": "2026-10-02T12:50:25Z",
+  "sha256": "4d4d7aa72472483db523f11045fe491a5086cfddafd0b04894d83f000e264786"
+ },
+ "docs/decisions/024-rebalance-bypass-and-telemetry-fixes.md": {
+  "commit": "93d497d",
+  "dest": "wiki/dlmm/adr/adr-024-rebalance-bypass-and-telemetry-fixes.md",
+  "exported_at": "2026-10-02T12:50:25Z",
+  "sha256": "17b902832b2191321de0ada38018b49c55783b4322ac7376b82aad2e1a7e9d80"
+ },
+ "docs/decisions/025-dynamic-reratio-imbalance-calculation.md": {
+  "commit": "93d497d",
+  "dest": "wiki/dlmm/adr/adr-025-dynamic-reratio-imbalance-calculation.md",
+  "exported_at": "2026-10-02T12:50:25Z",
+  "sha256": "19a472c62f667319d238571be3f9c1b2f7014f61a9cf2de4106614959d032fd3"
+ },
+ "docs/decisions/026-devnet-tolerance-and-timeout-adjustments.md": {
+  "commit": "93d497d",
+  "dest": "wiki/dlmm/adr/adr-026-devnet-tolerance-and-timeout-adjustments.md",
+  "exported_at": "2026-10-02T12:50:25Z",
+  "sha256": "45d076d11d0454223ee90857ba8af5efab4041720556039d37aed11e47731322"
+ },
+ "docs/decisions/027-socket-stability-and-boot-validation.md": {
+  "commit": "93d497d",
+  "dest": "wiki/dlmm/adr/adr-027-socket-stability-and-boot-validation.md",
+  "exported_at": "2026-10-02T12:50:25Z",
+  "sha256": "2577107e195774c76fd6799de7e8d3515bdde7be31b37a2175a9c3da536aae2b"
+ },
+ "docs/decisions/028-ev-calculator-zero-inventory-support.md": {
+  "commit": "93d497d",
+  "dest": "wiki/dlmm/adr/adr-028-ev-calculator-zero-inventory-support.md",
+  "exported_at": "2026-10-02T12:50:25Z",
+  "sha256": "e6b594ac55f86feb0b0ea11a5510bc1cc770e6cfedc47d7b50f8df4301f1b8a9"
+ },
+ "docs/decisions/029-binance-premium-index-mark-price.md": {
+  "commit": "93d497d",
+  "dest": "wiki/dlmm/adr/adr-029-binance-premium-index-mark-price.md",
+  "exported_at": "2026-10-02T12:50:26Z",
+  "sha256": "484b8277e6eee0514c7d4fc21243fa2f65a713f9204451fed390ca244b7490ca"
+ },
+ "docs/decisions/030-deployment-sol-reserve.md": {
+  "commit": "93d497d",
+  "dest": "wiki/dlmm/adr/adr-030-deployment-sol-reserve.md",
+  "exported_at": "2026-10-02T12:50:26Z",
+  "sha256": "8fbff84ac7d2fa02dc5c9f9acde3df2f4b703a87e923444c4f76861c948d2ff2"
+ },
+ "docs/decisions/031-funding-drag-numeraire-and-unknown-cost-policy.md": {
+  "commit": "93d497d",
+  "dest": "wiki/dlmm/adr/adr-031-funding-drag-numeraire-and-unknown-cost-policy.md",
+  "exported_at": "2026-10-02T12:50:26Z",
+  "sha256": "da65d04883ae0c45a2d6eefe7b7e02c658e5c14fafea0a685407071a72913150"
+ },
+ "docs/decisions/032-observation-archive-ownership-and-isolation.md": {
+  "commit": "93d497d",
+  "dest": "wiki/dlmm/adr/adr-032-observation-archive-ownership-and-isolation.md",
+  "exported_at": "2026-10-02T12:50:26Z",
+  "sha256": "bfed81d124b58b3cc579f1c08dbef9a4eaa7b22b9188768ba8bc2a830064f95a"
+ },
+ "docs/decisions/033-fee-yield-measurement-route.md": {
+  "commit": "93d497d",
+  "dest": "wiki/dlmm/adr/adr-033-fee-yield-measurement-route.md",
+  "exported_at": "2026-10-02T12:50:26Z",
+  "sha256": "011d8980b7abf298d6e6fef21f44e40326713b399a5adf46426126b79f4f7141"
+ },
+ "docs/decisions/034-range-width-rule-for-fine-binned-pools.md": {
+  "commit": "93d497d",
+  "dest": "wiki/dlmm/adr/adr-034-range-width-rule-for-fine-binned-pools.md",
+  "exported_at": "2026-10-02T12:50:26Z",
+  "sha256": "4f91e1d244c3138db42dc376ff927b48b8fd0c19aa1b2f2c1e0c63c0e5649d33"
+ },
+ "docs/decisions/035-promotion-workflow.md": {
+  "commit": "f5901da",
+  "dest": "wiki/dlmm/adr/adr-035-promotion-workflow.md",
+  "exported_at": "2026-10-02T12:50:26Z",
+  "sha256": "1586f1edc3ae13d365e6f6e721cd07e5ee7ccb01606c6ac46dd3ee37b5c15ed5"
+ },
+ "docs/decisions/036-single-volume-host-and-archive-free-space-floor.md": {
+  "commit": "3f1eec9",
+  "dest": "wiki/dlmm/adr/adr-036-single-volume-host-and-archive-free-space-floor.md",
+  "exported_at": "2026-10-02T12:50:26Z",
+  "sha256": "e753a6278cbf060bef9de08debe0e08b4408dbaf0c5073a3d8280599bd751e29"
+ },
+ "docs/decisions/038-gex-walls-are-selected-on-the-correct-side-of-spot.md": {
+  "commit": "3f1eec9",
+  "dest": "wiki/dlmm/adr/adr-038-gex-walls-are-selected-on-the-correct-side-of-spot.md",
+  "exported_at": "2026-10-02T12:50:26Z",
+  "sha256": "bcc17c22e2b23bd49866d9506dd7af1bbf2162c36e206c24624231807e67d2ce"
+ },
+ "docs/decisions/039-deploy-reserve-is-derived-from-the-plan.md": {
+  "commit": "aebf1c0",
+  "dest": "wiki/dlmm/adr/adr-039-deploy-reserve-is-derived-from-the-plan.md",
+  "exported_at": "2026-10-02T12:50:26Z",
+  "sha256": "ccd4130e4fa3daf03b366da0c873da0f9d3f9e68cb481e1d23420cf40bae25de"
+ },
+ "docs/decisions/040-sunk-deployment-rent-is-an-ev-term.md": {
+  "commit": "3f1eec9",
+  "dest": "wiki/dlmm/adr/adr-040-sunk-deployment-rent-is-an-ev-term.md",
+  "exported_at": "2026-10-02T12:50:26Z",
+  "sha256": "89b5d567841b04b5a8477572f5693827f5a56e61b503270994f4235a8fe041fa"
+ },
+ "docs/decisions/041-wall-buffer-and-proximity-exit-are-one-policy.md": {
+  "commit": "3f1eec9",
+  "dest": "wiki/dlmm/adr/adr-041-wall-buffer-and-proximity-exit-are-one-policy.md",
+  "exported_at": "2026-10-02T12:50:26Z",
+  "sha256": "ea7dd3ac0c260e3e4fde22f7436efec3540bf0dc23d5456d9a0a627e965bf84a"
+ },
+ "docs/decisions/042-adr033-window-recorder-runs-as-moham.md": {
+  "commit": "df5a53c",
+  "dest": "wiki/dlmm/adr/adr-042-adr033-window-recorder-runs-as-moham.md",
+  "exported_at": "2026-10-02T12:50:27Z",
+  "sha256": "c34128867f9fdbb3928c518397af2536ab852195d98eb4ecb454181f570e041f"
+ },
+ "docs/decisions/043-research-simulator-reads-archive-offline.md": {
+  "commit": "1a03346",
+  "dest": "wiki/dlmm/adr/adr-043-research-simulator-reads-archive-offline.md",
+  "exported_at": "2026-10-02T12:50:27Z",
+  "sha256": "6c5a1f56be9ad450badb33d9b067acd0dc7476eb13ad7645befcf21a43bbd7e7"
+ },
+ "docs/decisions/044-read-only-orca-whirlpool-adapter-for-the-monitor.md": {
+  "commit": "766f0ac",
+  "dest": "wiki/dlmm/adr/adr-044-read-only-orca-whirlpool-adapter-for-the-monitor.md",
+  "exported_at": "2026-10-02T12:50:27Z",
+  "sha256": "1174f63927a9eaacf8d37afb593eb8f968f0880f23f2462ce2143a5b970f7938"
+ },
+ "docs/decisions/045-orca-monitor-records-its-own-frames-for-replay.md": {
+  "commit": "ab766fb",
+  "dest": "wiki/dlmm/adr/adr-045-orca-monitor-records-its-own-frames-for-replay.md",
+  "exported_at": "2026-10-02T12:50:27Z",
+  "sha256": "2db2d662ea1b09b710c5a7a10ea7ada9c68049c036d327f98f67870d58111d54"
+ },
+ "docs/decisions/046-real-time-hurdle-rate-restates-the-ev-gate.md": {
+  "commit": "e532796",
+  "dest": "wiki/dlmm/adr/adr-046-real-time-hurdle-rate-restates-the-ev-gate.md",
+  "exported_at": "2026-10-02T12:50:27Z",
+  "sha256": "18d31784123993e07fc11de284cd35fa5771263ec1251ab01cc0d95e5f741345"
+ },
+ "docs/decisions/047-provisional-sigma-estimator.md": {
+  "commit": "ab766fb",
+  "dest": "wiki/dlmm/adr/adr-047-provisional-sigma-estimator.md",
+  "exported_at": "2026-10-02T12:50:27Z",
+  "sha256": "57561bca134ddaef201874723a61b485e020c025f9f561e996510d856d9586be"
+ },
+ "docs/decisions/048-health-alarms-to-the-operators-discord.md": {
+  "commit": "ab766fb",
+  "dest": "wiki/dlmm/adr/adr-048-health-alarms-to-the-operators-discord.md",
+  "exported_at": "2026-10-02T12:50:27Z",
+  "sha256": "e8d071d2b0acc7405d517d90a65c1d27013306a17d38c3b3848e366263169f41"
+ },
+ "docs/decisions/049-market-events-and-daily-summary-to-discord.md": {
+  "commit": "ab766fb",
+  "dest": "wiki/dlmm/adr/adr-049-market-events-and-daily-summary-to-discord.md",
+  "exported_at": "2026-10-02T12:50:27Z",
+  "sha256": "90e48cbe780c0e815c6b0fd1f85f6d4774c71396dbe2038054d7ac47e07f38a6"
+ },
+ "docs/decisions/050-fee-yield-from-on-chain-bin-fee-counters.md": {
+  "commit": "c717b09",
+  "dest": "wiki/dlmm/adr/adr-050-fee-yield-from-on-chain-bin-fee-counters.md",
+  "exported_at": "2026-10-02T12:50:27Z",
+  "sha256": "faad5a7ee301ac3c0e1d2142bef4cab05cb33b53a486222e3fcecc908967ce12"
+ },
+ "docs/decisions/051-inventory-objective-benchmark-hedge.md": {
+  "commit": "1fa5166",
+  "dest": "wiki/dlmm/adr/adr-051-inventory-objective-benchmark-hedge.md",
+  "exported_at": "2026-10-02T12:50:27Z",
+  "sha256": "768aa7ba9adde106ec7913b26c8102746801ae7065ed6a15a8f59651d1b32992"
+ },
+ "docs/decisions/052-ev-gate-prices-range-dependent-lvr-and-hedge-cost.md": {
+  "commit": "8a2bf46",
+  "dest": "wiki/dlmm/adr/adr-052-ev-gate-prices-range-dependent-lvr-and-hedge-cost.md",
+  "exported_at": "2026-10-02T12:50:27Z",
+  "sha256": "21c61e768c1b911f85772de0dc79333cd5113634013caa4221159f34752494f0"
+ },
+ "raw::todo/research/00 dual-inventory-growth-policy.md": {
+  "commit": "a522ec9",
+  "exported_at": "2026-10-02T12:50:30Z",
+  "sha256": "bb6c9dc84e032b42c761587b7a49214eeea4d5704f1f871d04804d056a33357d"
+ },
+ "raw::todo/research/01 warehouse-manager-cl-inventory-strategy.md": {
+  "commit": "a522ec9",
+  "exported_at": "2026-10-02T12:50:30Z",
+  "sha256": "c0d2b358b11048f1f810e0cac28ef5423e36962008bc7db6b98f33933f56ff5f"
+ },
+ "raw::todo/research/02 nash-equilibrium-cl-provider-strategies.md": {
+  "commit": "a522ec9",
+  "exported_at": "2026-10-02T12:50:30Z",
+  "sha256": "c8a3bc7d01e03303f64381f40e7ff8c69bc14ea47c5a083c89ca2f853b385be2"
+ },
+ "raw::todo/research/AMM and Loss-Versus-Rebalancing.pdf": {
+  "commit": "93d497d",
+  "exported_at": "2026-10-02T12:50:30Z",
+  "sha256": "a2481c4852f4e93c0169531f30637e6206b3ed5509b893b0a13bc3553cc0059e"
+ },
+ "todo/findings/EV_GATE_CALIBRATION_2026-10-01.md": {
+  "commit": "afc819c",
+  "dest": "wiki/dlmm/findings/finding-ev-gate-calibration-2026-10-01.md",
+  "exported_at": "2026-10-02T12:50:29Z",
+  "sha256": "b1dd7a639d3ddbac44664dfee37dfbe6d94b37c0a31a898f4e997845a971f3e9"
+ },
+ "todo/findings/EV_GATE_VS_SIMULATOR_2026-10-01.md": {
+  "commit": "e7421f6",
+  "dest": "wiki/dlmm/findings/finding-ev-gate-vs-simulator-2026-10-01.md",
+  "exported_at": "2026-10-02T12:50:29Z",
+  "sha256": "76061c550dd846a55b090b2ce96b505156027745c18d134ff13dee9d407595aa"
+ },
+ "todo/findings/F-021 - The call wall oscillates between strikes and the planner accepts uncontaining bounds.md": {
+  "commit": "3f1eec9",
+  "dest": "wiki/dlmm/findings/finding-f-021-the-call-wall-oscillates-between-strikes-and-the-planner-accepts-uncontaining-bounds.md",
+  "exported_at": "2026-10-02T12:50:29Z",
+  "sha256": "dccea9ea79a9a9b52968b6a7f2214101ac3881ac1537c9d59ea4f0bb27d27d19"
+ },
+ "todo/findings/F-022 - The planner deploys the wall envelope as the range and never implements the ratified width rule.md": {
+  "commit": "3f1eec9",
+  "dest": "wiki/dlmm/findings/finding-f-022-the-planner-deploys-the-wall-envelope-as-the-range-and-never-implements-the-ratified-width-rule.md",
+  "exported_at": "2026-10-02T12:50:29Z",
+  "sha256": "e9c96eb8b02cde37bc72ac49fdece7c92fc2d02a9b1e6ef2951694d56575f8fd"
+ },
+ "todo/findings/F-024 - The wall envelope is routinely narrower than the sigma width, so ADR-034 never binds.md": {
+  "commit": "3f1eec9",
+  "dest": "wiki/dlmm/findings/finding-f-024-the-wall-envelope-is-routinely-narrower-than-the-sigma-width-so-adr-034-never-binds.md",
+  "exported_at": "2026-10-02T12:50:29Z",
+  "sha256": "a884af9e1cce1d5cb1224630dfe1304ae04ea4f9ab6810e44994bad448d796cd"
+ },
+ "todo/findings/F-026 - The EV gate has no rent term, so wider ranges look cheaper than they are.md": {
+  "commit": "3f1eec9",
+  "dest": "wiki/dlmm/findings/finding-f-026-the-ev-gate-has-no-rent-term-so-wider-ranges-look-cheaper-than-they-are.md",
+  "exported_at": "2026-10-02T12:50:29Z",
+  "sha256": "838cc6eaa706c213593f4b7a92b6909723f06ebda26193cc58f4c60933fbed13"
+ },
+ "todo/findings/FEE_COUNTER_G1_2026-09-30.md": {
+  "commit": "1fa5166",
+  "dest": "wiki/dlmm/findings/finding-fee-counter-g1-2026-09-30.md",
+  "exported_at": "2026-10-02T12:50:29Z",
+  "sha256": "384e00b1a0c073692c5592a0dac5f65f31234e342e8c2cc9a4d52746415893c9"
+ },
+ "todo/findings/POOL_SIGMA_FORECAST_2026-10-01.md": {
+  "commit": "574c920",
+  "dest": "wiki/dlmm/findings/finding-pool-sigma-forecast-2026-10-01.md",
+  "exported_at": "2026-10-02T12:50:29Z",
+  "sha256": "11e89c335e2a99017a096886bb667a111b17eb0a6195d7d60b50e9e49c35536f"
+ },
+ "todo/research/CL_POLICY_REPORT_2026-09-28.md": {
+  "commit": "1a03346",
+  "dest": "wiki/dlmm/reports/cl-policy-report-2026-09-28.md",
+  "exported_at": "2026-10-02T12:50:29Z",
+  "sha256": "7e47c2e13c60d42db52cbfc9b4e5d10a3edb119205671a4fd4eeb7c7a59a30a4"
+ },
+ "todo/research/CL_POLICY_REPORT_2026-09-29.md": {
+  "commit": "72bc8fe",
+  "dest": "wiki/dlmm/reports/cl-policy-report-2026-09-29.md",
+  "exported_at": "2026-10-02T12:50:29Z",
+  "sha256": "220f7273a361ee91577e06846fdc3089d1d7fd26f9fce95d57be887fe6d83e72"
+ },
+ "todo/research/CL_POLICY_REPORT_2026-09-30.md": {
+  "commit": "ab766fb",
+  "dest": "wiki/dlmm/reports/cl-policy-report-2026-09-30.md",
+  "exported_at": "2026-10-02T12:50:29Z",
+  "sha256": "41f52c7b695eaa66f90c672223e242a13f1cefa4af98b97acf1a0a5a280ce3c6"
+ },
+ "todo/research/CL_POLICY_REPORT_2026-10-01.md": {
+  "commit": "e532796",
+  "dest": "wiki/dlmm/reports/cl-policy-report-2026-10-01.md",
+  "exported_at": "2026-10-02T12:50:29Z",
+  "sha256": "79039b9278c9ffaaed2d67f8ad1565a879e50ee31009ae402b2ac89add1d46a1"
+ }
+}
